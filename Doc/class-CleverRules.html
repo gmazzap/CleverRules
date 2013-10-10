@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Class CleverRules | CleverRules</title>
+
+	<script type="text/javascript" src="resources/combined.js?2391869379"></script>
+	<script type="text/javascript" src="elementlist.js?3032930469"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li class="active"><a href="package-CleverRules.html">CleverRules</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-CleverRule.html">CleverRule</a></li>
+				<li class="active"><a href="class-CleverRules.html">CleverRules</a></li>
+				<li><a href="class-CleverRuleSanitize.html">CleverRuleSanitize</a></li>
+			</ul>
+
+
+
+
+
+			<h3>Functions</h3>
+			<ul>
+				<li><a href="function-cleverRulesInit.html">cleverRulesInit</a></li>
+				<li><a href="function-get_the_clever_ruleid.html">get_the_clever_ruleid</a></li>
+				<li><a href="function-get_the_cleverlink.html">get_the_cleverlink</a></li>
+				<li><a href="function-register_clever_group.html">register_clever_group</a></li>
+				<li><a href="function-register_clever_rule.html">register_clever_rule</a></li>
+				<li><a href="function-the_cleverlink.html">the_cleverlink</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-CleverRules.html" title="Summary of CleverRules"><span>Package</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class CleverRules</h1>
+
+
+	<div class="description">
+	
+<p>CleverRules class</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+WP
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by" />
+<b><span>CleverRules</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		
+		<b>Package:</b> <a href="package-CleverRules.html">CleverRules</a><br />
+
+				<b>Author:</b>
+				Giuseppe Mazzapica<br />
+				<b>Extends:</b>
+				WP<br />
+		<b>Located at</b> <a href="source-class-CleverRules.html#476-942" title="Go to source code">CleverRules.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="parse_request" id="_parse_request">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_parse_request">#</a>
+		<code><a href="source-class-CleverRules.html#522-555" title="Go to source code">parse_request</a>( <span>array <var>$extra_query_vars</var> = <span class="php-quote">''</span> </span> )</code>
+
+		<div class="description short">
+			
+<p>Only function in the package that override a core one. Called on every
+frontend request and in some admin screens, this function create the query vars
+based on the url request.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Only function in the package that override a core one. Called on every
+frontend request and in some admin screens, this function create the query vars
+based on the url request.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$extra_query_vars</var></dt>
+					<dd><code>array</code><br>$extra_query_vars additional query vars WordPress pass to core parse_request</dd>
+				</dl></div>
+
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CleverRules.html#_clever_unset_wp_rewrite">CleverRules::clever_unset_wp_rewrite()</a></code></code> <br />
+						<code><code><a href="class-CleverRules.html#_get_clever_rules">CleverRules::get_clever_rules()</a></code></code> <br />
+						CleverRules::find_clever_rules<br />
+						CleverRules::clever_pieces_match<br />
+						<code><code><a href="class-CleverRules.html#_clever_request">CleverRules::clever_request()</a></code></code> <br />
+						<code><code><a href="class-CleverRules.html#_to_wp">CleverRules::to_wp()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="clever_unset_wp_rewrite" id="_clever_unset_wp_rewrite">
+
+		<td class="attributes"><code>
+			 protected 
+			null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_clever_unset_wp_rewrite">#</a>
+		<code><a href="source-class-CleverRules.html#558-574" title="Go to source code">clever_unset_wp_rewrite</a>( )</code>
+
+		<div class="description short">
+			
+<p>Used by parse_request, backup the current global $wp_rewrite object in a
+static variable, then empty it. This prevents any unwanted redirection.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Used by parse_request, backup the current global $wp_rewrite object in a
+static variable, then empty it. This prevents any unwanted redirection.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>null</code><br />
+				</div>
+
+
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-CleverRules.html#_parse_request">CleverRules::parse_request()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="clever_reset_wp_rewrite" id="_clever_reset_wp_rewrite">
+
+		<td class="attributes"><code>
+			 protected 
+			null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_clever_reset_wp_rewrite">#</a>
+		<code><a href="source-class-CleverRules.html#577-586" title="Go to source code">clever_reset_wp_rewrite</a>( )</code>
+
+		<div class="description short">
+			
+<p>Reset the global $wp_rewrite object after parse request runned</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Reset the global $wp_rewrite object after parse request runned</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>null</code><br />
+				</div>
+
+
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-CleverRules.html#_clever_request">CleverRules::clever_request()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="to_wp" id="_to_wp">
+
+		<td class="attributes"><code>
+			 protected 
+			null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_to_wp">#</a>
+		<code><a href="source-class-CleverRules.html#589-600" title="Go to source code">to_wp</a>( <span>array <var>$extra_query_vars</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Run the WordPress core parse_request if no clever rule match the current
+request</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Run the WordPress core parse_request if no clever rule match the current
+request</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$extra_query_vars</var></dt>
+					<dd><code>array</code><br>$extra_query_vars vars passed by WordPress to core parse_request method</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>null</code><br />
+				</div>
+
+
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-CleverRules.html#_parse_request">CleverRules::parse_request()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="clever_request" id="_clever_request">
+
+		<td class="attributes"><code>
+			 protected 
+			null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_clever_request">#</a>
+		<code><a href="source-class-CleverRules.html#603-633" title="Go to source code">clever_request</a>( <span>array <var>$rule</var></span>, <span>array <var>$pieces</var></span>, <span>array <var>$url_qs</var> = <span class="php-keyword1">array</span>()</span>, <span>array <var>$extra_qv</var> = <span class="php-keyword1">array</span>() </span> )</code>
+
+		<div class="description short">
+			
+<p>Once a rule match the current request this function check its arg and set
+query vars and also handle all the clever rule favilities</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Once a rule match the current request this function check its arg and set
+query vars and also handle all the clever rule favilities</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$rule</var></dt>
+					<dd><code>array</code><br>$rule the rule that match current request</dd>
+					<dt><var>$pieces</var></dt>
+					<dd><code>array</code><br>$pieces url pieces</dd>
+					<dt><var>$url_qs</var></dt>
+					<dd><code>array</code><br>$url_qs array of url query string</dd>
+					<dt><var>$extra_qv</var></dt>
+					<dd><code>array</code><br>$extra_qv array of vars WorpPress pass to parse_request. Used for core
+parse_request call.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>null</code><br />
+				</div>
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CleverRules.html#_clever_request_utils">CleverRules::clever_request_utils()</a></code></code> <br />
+						<code><code><a href="class-CleverRules.html#_clever_reset_wp_rewrite">CleverRules::clever_reset_wp_rewrite()</a></code></code> <br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-CleverRules.html#_parse_request">CleverRules::parse_request()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="merge_group" id="_merge_group">
+
+		<td class="attributes"><code>
+			 protected 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_merge_group">#</a>
+		<code><a href="source-class-CleverRules.html#636-652" title="Go to source code">merge_group</a>( <span>array <var>$rule</var> = <span class="php-keyword1">array</span>() </span> )</code>
+
+		<div class="description short">
+			
+<p>Used by clever_request merge rule options with group options</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Used by clever_request merge rule options with group options</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$rule</var></dt>
+					<dd><code>array</code><br>$rule the rule that match current request</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>array of rule settings<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="clever_request_vars" id="_clever_request_vars">
+
+		<td class="attributes"><code>
+			 protected 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_clever_request_vars">#</a>
+		<code><a href="source-class-CleverRules.html#655-674" title="Go to source code">clever_request_vars</a>( <span>array <var>$rule</var> = <span class="php-keyword1">array</span>()</span>, <span>array <var>$url_qs</var> = <span class="php-keyword1">array</span>() </span> )</code>
+
+		<div class="description short">
+			
+<p>Used by clever_request to setup the rule query vars to check after</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Used by clever_request to setup the rule query vars to check after</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$rule</var></dt>
+					<dd><code>array</code><br>$rule the rule that match current request</dd>
+					<dt><var>$url_qs</var></dt>
+					<dd><code>array</code><br>$url_qs array of vars passed via url</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>array of query vars<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="clever_request_check" id="_clever_request_check">
+
+		<td class="attributes"><code>
+			 protected 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_clever_request_check">#</a>
+		<code><a href="source-class-CleverRules.html#677-699" title="Go to source code">clever_request_check</a>( <span>array <var>$all_vars</var> = <span class="php-keyword1">array</span>()</span>, <span>mixed <var>$pieces</var> = <span class="php-keyword1">array</span>() </span> )</code>
+
+		<div class="description short">
+			
+<p>Used by clever_request to setup the rule query vars to check after</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Used by clever_request to setup the rule query vars to check after</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$all_vars</var></dt>
+					<dd><code>array</code><br>$all_vars all the query vars for the rule that match request</dd>
+					<dt><var>$pieces</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>array of query vars<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="clever_request_utils" id="_clever_request_utils">
+
+		<td class="attributes"><code>
+			 protected 
+			null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_clever_request_utils">#</a>
+		<code><a href="source-class-CleverRules.html#702-721" title="Go to source code">clever_request_utils</a>( <span>array <var>$rule</var> = <span class="php-keyword1">array</span>() </span> )</code>
+
+		<div class="description short">
+			
+<p>Used by clever_request to setup template, and before and after action</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Used by clever_request to setup template, and before and after action</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$rule</var></dt>
+					<dd><code>array</code><br>$rule the rule that match current request</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>null</code><br />
+				</div>
+
+
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-CleverRules.html#_clever_request">CleverRules::clever_request()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="get_clever_rules" id="_get_clever_rules">
+
+		<td class="attributes"><code>
+			 public static
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_get_clever_rules">#</a>
+		<code><a href="source-class-CleverRules.html#724-742" title="Go to source code">get_clever_rules</a>( )</code>
+
+		<div class="description short">
+			
+<p>Static method used to get the rules array. When called before parse_request
+is runned, it scan all registered rules and register the paginated version if
+needed</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Static method used to get the rules array. When called before parse_request
+is runned, it scan all registered rules and register the paginated version if
+needed</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>all the rules registered<br />
+				</div>
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						CleverRules::verify_rule<br />
+						CleverRules::paginate_rule<br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-CleverRules.html#_parse_request">CleverRules::parse_request()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_rp" id="__rp">
+
+		<td class="attributes"><code>
+			 protected static
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__rp">#</a>
+		<code><a href="source-class-CleverRules.html#914-923" title="Go to source code">_rp</a>( <span>array <var>$matches</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Static method used as callback for preg_replace_callback in
+CleverRules::clever_request</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Static method used as callback for preg_replace_callback in
+CleverRules::clever_request</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$matches</var></dt>
+					<dd><code>array</code><br>$matches Matches coming from preg_replace_callback</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br>replaced matches<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="clever_template" id="_clever_template">
+
+		<td class="attributes"><code>
+			 public static
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_clever_template">#</a>
+		<code><a href="source-class-CleverRules.html#927-939" title="Go to source code">clever_template</a>( <span>string <var>$template</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Static method used as callback for preg_replace_callback in
+CleverRules::clever_request</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Static method used as callback for preg_replace_callback in
+CleverRules::clever_request</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$template</var></dt>
+					<dd><code>string</code><br>$template Template path passed by template_include filter</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br>Template path to include<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+	<table class="summary" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="rules" id="$rules">
+		<td class="attributes"><code>
+			public static 
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-CleverRules.html#487-491" title="Go to source code"><var>$rules</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
+		<td class="description"><div>
+			<a href="#$rules" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="rule_groups" id="$rule_groups">
+		<td class="attributes"><code>
+			public static 
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-CleverRules.html#494-498" title="Go to source code"><var>$rule_groups</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
+		<td class="description"><div>
+			<a href="#$rule_groups" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="clever_vars" id="$clever_vars">
+		<td class="attributes"><code>
+			public static 
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-CleverRules.html#501-505" title="Go to source code"><var>$clever_vars</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
+		<td class="description"><div>
+			<a href="#$clever_vars" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="or_wp_rewrite" id="$or_wp_rewrite">
+		<td class="attributes"><code>
+			protected static 
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-CleverRules.html#508-512" title="Go to source code"><var>$or_wp_rewrite</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$or_wp_rewrite" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="template" id="$template">
+		<td class="attributes"><code>
+			protected static 
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-CleverRules.html#515-519" title="Go to source code"><var>$template</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$template" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		CleverRules API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>
