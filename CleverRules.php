@@ -4,7 +4,7 @@
  * Plugin Name: Clever Rules
  * Plugin URI: http://rules.zoomlab.it/
  * Description: Just a "no surprises" and clever way to handle rewrite rules in WordPress.
- * Version: 0.1.5
+ * Version: 0.1.6
  * Author: Giuseppe Mazzapica
  * Requires at least: 3.6
  * Tested up to: 3.6.1
