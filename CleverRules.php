@@ -149,17 +149,17 @@ class CleverRule {
      * @access protected
      */
     protected static $_valid_sanitize_types = array(
-		'after'		=> 'callable',
-		'before'	=> 'callable',
-		'group'		=> 'safe_string',
-		'id'		=> 'safe_string',
-		'paginated'	=> 'bool',
-		'priority'	=> 'int',
-		'qs_merge'	=> 'bool',
-		'query'		=> 'string_keyed_array',
-        'route'		=> 'route',
-		'template'	=> 'php_file',
-        'vars'		=> 'array'
+		'after' => 'callable',
+		'before' => 'callable',
+		'group' => 'safe_string',
+		'id' => 'safe_string',
+		'paginated' => 'bool',
+		'priority' => 'int',
+		'qs_merge' => 'bool',
+		'query' => 'string_keyed_array',
+        'route' => 'route',
+		'template' => 'php_file',
+        'vars' => 'array'
     );
 
 
@@ -387,7 +387,7 @@ class CleverRule {
         }
         $defaults = array(
             'route' => null, 'id' => '', 'query' => array(), 'priority' => 0, 'before' => null,
-            'after' => null, 'vars' => array(), 'paginated' => true, 'qs_merge' => false
+            'after' => null, 'vars' => array(), 'paginated' => false, 'qs_merge' => false
         );
         $args = apply_filters( 'clever_rule_args', wp_parse_args( $args, $defaults ) );
         return ( ! empty( $args ) && is_array( $args ) ) ? new CleverRule( $args ) : self::obj();
@@ -546,7 +546,7 @@ class CleverRules extends WP {
         $url = $sane_url[0];
         $pieces = array_values( array_filter( explode( '/', $url ) ) );
         $found = self::find_clever_rules( $the_rules, $pieces );
-        if ( $found[0] == 'home' )
+        if ( $found[0] == 'static' )
             return $this->clever_request( $found[1], array(), $_qs, $extra_query_vars );
         if ( empty( $found[1] ) ) return $this->to_wp( $extra_query_vars );
         $match_rule = self::clever_pieces_match( array_values( $found[1] ), $pieces );
@@ -765,11 +765,12 @@ class CleverRules extends WP {
      */
     private static function paginate_rule( $rule ) {
         if ( isset( $rule['paginated'] ) && $rule['paginated'] ) {
+            $var = $rule['paginated'] === 'single' ? 'page' : 'paged';
             $id = isset( $rule['id'] ) && ! empty( $rule['id'] ) ? $rule['id'] . '.page' : false;
             $paged = '[' . substr_count( $rule['route'], '%' ) . ']';
             $newrule = array(
                 'route' => $rule['route'] . 'page/%d/',
-                'query' => array_merge( (array) $rule['query'], array('paged' => $paged) ),
+                'query' => array_merge( (array) $rule['query'], array( $var => $paged ) ),
                 'paginated' => false
             );
             if ( $id ) $newrule['id'] = $id;
@@ -796,7 +797,7 @@ class CleverRules extends WP {
             $query = isset( $rule['query'] ) ? $rule['query'] : false;
             if ( $route[0] == '{{home}}' && ( $pieces === array() ) && $query ) {
                 $rule['route'] = '/';
-                return array('home', $rule);
+                return array('static', $rule);
             }
 			if (  substr_count($route[0], '{{home}}') == 1 )
 				$route[0] = str_replace('{{home}}', '', $route[0]);
@@ -825,12 +826,17 @@ class CleverRules extends WP {
      */
     private static function clever_pieces_match( $found_rules, $pieces ) {
         ksort( $found_rules );
+        $match_dyn = array();
         foreach ( $found_rules as $rule ) {
             if ( apply_filters( 'skip_clever_rule', false, $rule, $pieces ) ) continue;
             $match = self::clever_pieces_find( $pieces, $rule );
-            if ( $match[0] == count( $pieces ) ) return array($rule, $match[1]);
+            if ( $match[0] == count( $pieces ) && empty( $match[1] ) ) {
+                return array($rule, array() ); // static match
+            } elseif (  $match[0] == count( $pieces ) ) {
+                $match_dyn[] = array( $rule, $match[1] );
+            }
         }
-        return false;
+        return empty( $match_dyn ) ? false : array_shift( $match_dyn );
     }
 
 
@@ -840,9 +846,10 @@ class CleverRules extends WP {
      * @param array $pieces the url pieces
      * @param array $rule   the rule array
      * @uses CleverRules::clever_piece
-     * @access private
      * @return array    two items array, first is the number of matches,
      *                  second is dynamic query vars found
+     * @access private
+     * @todo refactor
      */
     private static function clever_pieces_find( $pieces, $rule ) {
         $match = 0;
