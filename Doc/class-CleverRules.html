@@ -126,7 +126,7 @@ WP
 				Giuseppe Mazzapica<br />
 				<b>Extends:</b>
 				WP<br />
-		<b>Located at</b> <a href="source-class-CleverRules.html#473-945" title="Go to source code">CleverRules.php</a><br />
+		<b>Located at</b> <a href="source-class-CleverRules.html#480-961" title="Go to source code">CleverRules.php</a><br />
 	</div>
 
 
@@ -137,14 +137,14 @@ WP
 
 		<td class="attributes"><code>
 			 public 
-			
+			null
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_parse_request">#</a>
-		<code><a href="source-class-CleverRules.html#519-552" title="Go to source code">parse_request</a>( <span>array <var>$extra_query_vars</var> = <span class="php-quote">''</span> </span> )</code>
+		<code><a href="source-class-CleverRules.html#526-560" title="Go to source code">parse_request</a>( <span>array <var>$extra_query_vars</var> = <span class="php-quote">''</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -168,6 +168,10 @@ based on the url request.</p>
 					<dd><code>array</code><br>$extra_query_vars additional query vars WordPress pass to core parse_request</dd>
 				</dl></div>
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code>null</code><br />
+				</div>
 
 
 				<h4>Uses</h4>
@@ -195,7 +199,7 @@ based on the url request.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_clever_unset_wp_rewrite">#</a>
-		<code><a href="source-class-CleverRules.html#555-571" title="Go to source code">clever_unset_wp_rewrite</a>( )</code>
+		<code><a href="source-class-CleverRules.html#563-579" title="Go to source code">clever_unset_wp_rewrite</a>( )</code>
 
 		<div class="description short">
 			
@@ -238,7 +242,7 @@ static variable, then empty it. This prevents any unwanted redirection.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_clever_reset_wp_rewrite">#</a>
-		<code><a href="source-class-CleverRules.html#574-583" title="Go to source code">clever_reset_wp_rewrite</a>( )</code>
+		<code><a href="source-class-CleverRules.html#582-591" title="Go to source code">clever_reset_wp_rewrite</a>( )</code>
 
 		<div class="description short">
 			
@@ -279,7 +283,7 @@ static variable, then empty it. This prevents any unwanted redirection.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_to_wp">#</a>
-		<code><a href="source-class-CleverRules.html#586-597" title="Go to source code">to_wp</a>( <span>array <var>$extra_query_vars</var></span> )</code>
+		<code><a href="source-class-CleverRules.html#594-605" title="Go to source code">to_wp</a>( <span>array <var>$extra_query_vars</var></span> )</code>
 
 		<div class="description short">
 			
@@ -310,6 +314,7 @@ request</p>
 				<h4>Used by</h4>
 				<div class="list">
 						<code><code><a href="class-CleverRules.html#_parse_request">CleverRules::parse_request()</a></code></code> <br />
+						<code><code><a href="class-CleverRules.html#_clever_request">CleverRules::clever_request()</a></code></code> <br />
 				</div>
 
 
@@ -327,7 +332,7 @@ request</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_clever_request">#</a>
-		<code><a href="source-class-CleverRules.html#600-630" title="Go to source code">clever_request</a>( <span>array <var>$rule</var></span>, <span>array <var>$pieces</var></span>, <span>array <var>$url_qs</var> = <span class="php-keyword1">array</span>()</span>, <span>array <var>$extra_qv</var> = <span class="php-keyword1">array</span>() </span> )</code>
+		<code><a href="source-class-CleverRules.html#608-641" title="Go to source code">clever_request</a>( <span>array <var>$rule</var></span>, <span>array <var>$rep</var></span>, <span>array <var>$url_qs</var> = <span class="php-keyword1">array</span>()</span>, <span>array <var>$extra_qv</var> = <span class="php-keyword1">array</span>() </span> )</code>
 
 		<div class="description short">
 			
@@ -347,8 +352,8 @@ query vars and also handle all the clever rule favilities</p>
 				<div class="list"><dl>
 					<dt><var>$rule</var></dt>
 					<dd><code>array</code><br>$rule the rule that match current request</dd>
-					<dt><var>$pieces</var></dt>
-					<dd><code>array</code><br>$pieces url pieces</dd>
+					<dt><var>$rep</var></dt>
+					<dd><code>array</code><br>$rep replacement for placeholders in the rule route</dd>
 					<dt><var>$url_qs</var></dt>
 					<dd><code>array</code><br>$url_qs array of url query string</dd>
 					<dt><var>$extra_qv</var></dt>
@@ -364,6 +369,9 @@ parse_request call.</dd>
 
 				<h4>Uses</h4>
 				<div class="list">
+						<code><code><a href="class-CleverRules.html#_clever_request_vars">CleverRules::clever_request_vars()</a></code></code> <br />
+						<code><code><a href="class-CleverRules.html#_clever_request_check">CleverRules::clever_request_check()</a></code></code> <br />
+						<code><code><a href="class-CleverRules.html#_to_wp">CleverRules::to_wp()</a></code></code> <br />
 						<code><code><a href="class-CleverRules.html#_clever_request_utils">CleverRules::clever_request_utils()</a></code></code> <br />
 						<code><code><a href="class-CleverRules.html#_clever_reset_wp_rewrite">CleverRules::clever_reset_wp_rewrite()</a></code></code> <br />
 				</div>
@@ -387,17 +395,17 @@ parse_request call.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_merge_group">#</a>
-		<code><a href="source-class-CleverRules.html#633-649" title="Go to source code">merge_group</a>( <span>array <var>$rule</var> = <span class="php-keyword1">array</span>() </span> )</code>
+		<code><a href="source-class-CleverRules.html#644-660" title="Go to source code">merge_group</a>( <span>array <var>$rule</var> = <span class="php-keyword1">array</span>() </span> )</code>
 
 		<div class="description short">
 			
-<p>Used by clever_request merge rule options with group options</p>
+<p>Used by clever_request to merge rule options with group options</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Used by clever_request merge rule options with group options</p>
+<p>Used by clever_request to merge rule options with group options</p>
 
 
 
@@ -429,7 +437,7 @@ parse_request call.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_clever_request_vars">#</a>
-		<code><a href="source-class-CleverRules.html#652-671" title="Go to source code">clever_request_vars</a>( <span>array <var>$rule</var> = <span class="php-keyword1">array</span>()</span>, <span>array <var>$url_qs</var> = <span class="php-keyword1">array</span>() </span> )</code>
+		<code><a href="source-class-CleverRules.html#663-682" title="Go to source code">clever_request_vars</a>( <span>array <var>$rule</var> = <span class="php-keyword1">array</span>()</span>, <span>array <var>$url_qs</var> = <span class="php-keyword1">array</span>() </span> )</code>
 
 		<div class="description short">
 			
@@ -457,6 +465,10 @@ parse_request call.</dd>
 				</div>
 
 
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-CleverRules.html#_clever_request">CleverRules::clever_request()</a></code></code> <br />
+				</div>
 
 
 		</div>
@@ -473,7 +485,7 @@ parse_request call.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_clever_request_check">#</a>
-		<code><a href="source-class-CleverRules.html#674-696" title="Go to source code">clever_request_check</a>( <span>array <var>$all_vars</var> = <span class="php-keyword1">array</span>()</span>, <span>mixed <var>$pieces</var> = <span class="php-keyword1">array</span>() </span> )</code>
+		<code><a href="source-class-CleverRules.html#685-712" title="Go to source code">clever_request_check</a>( <span>array <var>$all_vars</var> = <span class="php-keyword1">array</span>()</span>, <span>array <var>$rep</var> = <span class="php-keyword1">array</span>() </span> )</code>
 
 		<div class="description short">
 			
@@ -491,8 +503,8 @@ parse_request call.</dd>
 				<div class="list"><dl>
 					<dt><var>$all_vars</var></dt>
 					<dd><code>array</code><br>$all_vars all the query vars for the rule that match request</dd>
-					<dt><var>$pieces</var></dt>
-					<dd></dd>
+					<dt><var>$rep</var></dt>
+					<dd><code>array</code><br>$rep all the placeholders replacements for the url</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -501,6 +513,10 @@ parse_request call.</dd>
 				</div>
 
 
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-CleverRules.html#_clever_request">CleverRules::clever_request()</a></code></code> <br />
+				</div>
 
 
 		</div>
@@ -517,17 +533,19 @@ parse_request call.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_clever_request_utils">#</a>
-		<code><a href="source-class-CleverRules.html#699-718" title="Go to source code">clever_request_utils</a>( <span>array <var>$rule</var> = <span class="php-keyword1">array</span>() </span> )</code>
+		<code><a href="source-class-CleverRules.html#715-733" title="Go to source code">clever_request_utils</a>( <span>array <var>$rule</var> = <span class="php-keyword1">array</span>() </span> )</code>
 
 		<div class="description short">
 			
-<p>Used by clever_request to setup template, and before and after action</p>
+<p>Used by clever_request to setup template, and rule actions (before and
+after)</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Used by clever_request to setup template, and before and after action</p>
+<p>Used by clever_request to setup template, and rule actions (before and
+after)</p>
 
 
 
@@ -563,7 +581,7 @@ parse_request call.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_get_clever_rules">#</a>
-		<code><a href="source-class-CleverRules.html#721-739" title="Go to source code">get_clever_rules</a>( )</code>
+		<code><a href="source-class-CleverRules.html#736-754" title="Go to source code">get_clever_rules</a>( )</code>
 
 		<div class="description short">
 			
@@ -613,7 +631,7 @@ needed</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__rp">#</a>
-		<code><a href="source-class-CleverRules.html#918-927" title="Go to source code">_rp</a>( <span>array <var>$matches</var></span> )</code>
+		<code><a href="source-class-CleverRules.html#934-943" title="Go to source code">_rp</a>( <span>array <var>$matches</var></span> )</code>
 
 		<div class="description short">
 			
@@ -657,7 +675,7 @@ CleverRules::clever_request</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_clever_template">#</a>
-		<code><a href="source-class-CleverRules.html#930-942" title="Go to source code">clever_template</a>( <span>string <var>$template</var></span> )</code>
+		<code><a href="source-class-CleverRules.html#946-958" title="Go to source code">clever_template</a>( <span>string <var>$template</var></span> )</code>
 
 		<div class="description short">
 			
@@ -712,7 +730,7 @@ CleverRules::clever_request</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-CleverRules.html#484-488" title="Go to source code"><var>$rules</var></a>
+				<a href="source-class-CleverRules.html#491-495" title="Go to source code"><var>$rules</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
 		<td class="description"><div>
@@ -735,7 +753,7 @@ CleverRules::clever_request</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-CleverRules.html#491-495" title="Go to source code"><var>$rule_groups</var></a>
+				<a href="source-class-CleverRules.html#498-502" title="Go to source code"><var>$rule_groups</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
 		<td class="description"><div>
@@ -758,7 +776,7 @@ CleverRules::clever_request</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-CleverRules.html#498-502" title="Go to source code"><var>$clever_vars</var></a>
+				<a href="source-class-CleverRules.html#505-509" title="Go to source code"><var>$clever_vars</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
 		<td class="description"><div>
@@ -781,7 +799,7 @@ CleverRules::clever_request</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-CleverRules.html#505-509" title="Go to source code"><var>$or_wp_rewrite</var></a>
+				<a href="source-class-CleverRules.html#512-516" title="Go to source code"><var>$or_wp_rewrite</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -804,7 +822,7 @@ CleverRules::clever_request</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-CleverRules.html#512-516" title="Go to source code"><var>$template</var></a>
+				<a href="source-class-CleverRules.html#519-523" title="Go to source code"><var>$template</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>

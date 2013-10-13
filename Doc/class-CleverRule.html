@@ -111,7 +111,7 @@
 
 				<b>Author:</b>
 				Giuseppe Mazzapica<br />
-		<b>Located at</b> <a href="source-class-CleverRule.html#116-470" title="Go to source code">CleverRules.php</a><br />
+		<b>Located at</b> <a href="source-class-CleverRule.html#119-477" title="Go to source code">CleverRules.php</a><br />
 	</div>
 
 
@@ -129,7 +129,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___call">#</a>
-		<code><a href="source-class-CleverRule.html#195-205" title="Go to source code">__call</a>( <span>string <var>$name</var></span>, <span>array <var>$args</var></span> )</code>
+		<code><a href="source-class-CleverRule.html#198-209" title="Go to source code">__call</a>( <span>string <var>$name</var></span>, <span>array <var>$args</var></span> )</code>
 
 		<div class="description short">
 			
@@ -153,10 +153,14 @@
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>mixed</code><br>$this-&gt;chained result<br />
+					<code>mixed</code><br>CleverRule::chained result<br />
 				</div>
 
 
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CleverRule.html#_chained">CleverRule::chained()</a></code></code> <br />
+				</div>
 
 
 		</div>
@@ -173,7 +177,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-CleverRule.html#208-229" title="Go to source code">__construct</a>( <span>array <var>$args</var> = <span class="php-keyword1">array</span>()</span>, <span>mixed <var>$is_group</var> = <span class="php-keyword1">false</span> </span> )</code>
+		<code><a href="source-class-CleverRule.html#212-235" title="Go to source code">__construct</a>( <span>array <var>$args</var> = <span class="php-keyword1">array</span>()</span>, <span>boolean <var>$is_group</var> = <span class="php-keyword1">false</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -194,7 +198,7 @@ register_clever_rule API function should be used instead.</p>
 					<dt><var>$args</var></dt>
 					<dd><code>array</code><br>$args The argumuments array passe to register_clever_rule</dd>
 					<dt><var>$is_group</var></dt>
-					<dd></dd>
+					<dd><code>boolean</code><br>$is_group if current argument are for group or not</dd>
 				</dl></div>
 
 
@@ -204,6 +208,7 @@ register_clever_rule API function should be used instead.</p>
 						<code><code><a href="class-CleverRule.html#_add_valid">CleverRule::add_valid()</a></code></code><br>to setup custom callback to sanitize custom arguments<br />
 						<code><code><a href="class-CleverRule.html#_only_valid">CleverRule::only_valid()</a></code></code><br>Method used to remove not valid arguments<br />
 						<code><code><a href="class-CleverRule.html#_setup_rule">CleverRule::setup_rule()</a></code></code><br>The method that handle the rule setup<br />
+						<code><code><a href="class-CleverRule.html#_setup_group">CleverRule::setup_group()</a></code></code><br>The method that handle the group setup<br />
 				</div>
 
 
@@ -221,7 +226,7 @@ register_clever_rule API function should be used instead.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_add_valid">#</a>
-		<code><a href="source-class-CleverRule.html#232-254" title="Go to source code">add_valid</a>( <span>array <var>$args</var></span> )</code>
+		<code><a href="source-class-CleverRule.html#238-259" title="Go to source code">add_valid</a>( <span>array <var>$args</var></span> )</code>
 
 		<div class="description short">
 			
@@ -238,7 +243,7 @@ register_clever_rule API function should be used instead.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$args</var></dt>
-					<dd><code>array</code><br>$args The argumuments array passed to register_clever_rule</dd>
+					<dd><code>array</code><br>$args The arguments array passed to register_clever_rule</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -251,7 +256,6 @@ register_clever_rule API function should be used instead.</p>
 				<div class="list">
 						CleverRule::set_cb_sanitize Used to set custom sanitize callback to custom
 argument<br />
-						<code><code><a href="class-CleverRule.html#_setup_rule">CleverRule::setup_rule()</a></code></code><br>The method that handle the rule setup<br />
 				</div>
 				<h4>Used by</h4>
 				<div class="list">
@@ -273,7 +277,7 @@ argument<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_only_valid">#</a>
-		<code><a href="source-class-CleverRule.html#257-270" title="Go to source code">only_valid</a>( <span>array <var>$args</var> = <span class="php-keyword1">array</span>() </span> )</code>
+		<code><a href="source-class-CleverRule.html#262-275" title="Go to source code">only_valid</a>( <span>array <var>$args</var> = <span class="php-keyword1">array</span>() </span> )</code>
 
 		<div class="description short">
 			
@@ -319,7 +323,7 @@ argument<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_set_sanitize_cb">#</a>
-		<code><a href="source-class-CleverRule.html#273-288" title="Go to source code">set_sanitize_cb</a>( <span>string <var>$arg</var> = <span class="php-quote">''</span></span>, <span>array <var>$args</var> = <span class="php-keyword1">array</span>() </span> )</code>
+		<code><a href="source-class-CleverRule.html#278-293" title="Go to source code">set_sanitize_cb</a>( <span>string <var>$arg</var> = <span class="php-quote">''</span></span>, <span>array <var>$args</var> = <span class="php-keyword1">array</span>() </span> )</code>
 
 		<div class="description short">
 			
@@ -338,7 +342,7 @@ argument<br />
 					<dt><var>$arg</var></dt>
 					<dd><code>string</code><br>$arg The custom argument name</dd>
 					<dt><var>$args</var></dt>
-					<dd><code>array</code><br>$args The array of all argument passsed to constructor</dd>
+					<dd><code>array</code><br>$args The array of all argument passed to constructor</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -363,7 +367,7 @@ argument<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_sanitize">#</a>
-		<code><a href="source-class-CleverRule.html#291-313" title="Go to source code">sanitize</a>( <span>mixed <var>$args</var> = <span class="php-keyword1">array</span>()</span>, <span>mixed <var>$scbs</var> = <span class="php-keyword1">array</span>() </span> )</code>
+		<code><a href="source-class-CleverRule.html#296-320" title="Go to source code">sanitize</a>( <span>array <var>$args</var> = <span class="php-keyword1">array</span>()</span>, <span>array <var>$scbs</var> = <span class="php-keyword1">array</span>() </span> )</code>
 
 		<div class="description short">
 			
@@ -377,6 +381,13 @@ argument<br />
 
 
 
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$args</var></dt>
+					<dd><code>array</code><br>$args The array of all argument passed to constructor</dd>
+					<dt><var>$scbs</var></dt>
+					<dd><code>array</code><br>$scbs The array of all custom callables</dd>
+				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
@@ -386,7 +397,7 @@ argument<br />
 
 				<h4>Uses</h4>
 				<div class="list">
-						Class Sanitize Class that handle the sanitation<br />
+						Class CleverRuleSanitize Class that handle the sanitation<br />
 				</div>
 				<h4>Used by</h4>
 				<div class="list">
@@ -408,7 +419,7 @@ argument<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setup_rule">#</a>
-		<code><a href="source-class-CleverRule.html#316-327" title="Go to source code">setup_rule</a>( )</code>
+		<code><a href="source-class-CleverRule.html#323-334" title="Go to source code">setup_rule</a>( )</code>
 
 		<div class="description short">
 			
@@ -434,7 +445,6 @@ contruct and on every chained method</p>
 				<h4>Used by</h4>
 				<div class="list">
 						<code><code><a href="class-CleverRule.html#___construct">CleverRule::__construct()</a></code></code><br>The method that handle the rule setup<br />
-						<code><code><a href="class-CleverRule.html#_add_valid">CleverRule::add_valid()</a></code></code><br>The method that handle the rule setup<br />
 						<code><code><a href="class-CleverRule.html#_chained">CleverRule::chained()</a></code></code> <br />
 				</div>
 
@@ -453,7 +463,7 @@ contruct and on every chained method</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setup_group">#</a>
-		<code><a href="source-class-CleverRule.html#330-342" title="Go to source code">setup_group</a>( )</code>
+		<code><a href="source-class-CleverRule.html#337-349" title="Go to source code">setup_group</a>( )</code>
 
 		<div class="description short">
 			
@@ -478,6 +488,7 @@ Called on contruct for groups</p>
 
 				<h4>Used by</h4>
 				<div class="list">
+						<code><code><a href="class-CleverRule.html#___construct">CleverRule::__construct()</a></code></code><br>The method that handle the group setup<br />
 						<code><code><a href="class-CleverRule.html#_chained">CleverRule::chained()</a></code></code> <br />
 				</div>
 
@@ -496,7 +507,7 @@ Called on contruct for groups</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_chained">#</a>
-		<code><a href="source-class-CleverRule.html#345-366" title="Go to source code">chained</a>( <span>string <var>$which</var></span>, <span>mixed <var>$value</var></span> )</code>
+		<code><a href="source-class-CleverRule.html#352-373" title="Go to source code">chained</a>( <span>string <var>$which</var></span>, <span>mixed <var>$value</var></span> )</code>
 
 		<div class="description short">
 			
@@ -530,9 +541,13 @@ static array using setup_rule</p>
 
 				<h4>Uses</h4>
 				<div class="list">
+						<code><code><a href="class-CleverRule.html#_sanitize">CleverRule::sanitize()</a></code></code> <br />
 						<code><code><a href="class-CleverRule.html#_setup_rule">CleverRule::setup_rule()</a></code></code> <br />
 						<code><code><a href="class-CleverRule.html#_setup_group">CleverRule::setup_group()</a></code></code> <br />
-						<code><code><a href="class-CleverRule.html#_sanitize">CleverRule::sanitize()</a></code></code> <br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-CleverRule.html#___call">CleverRule::__call()</a></code></code> <br />
 				</div>
 
 
@@ -550,7 +565,7 @@ static array using setup_rule</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_register">#</a>
-		<code><a href="source-class-CleverRule.html#369-391" title="Go to source code">register</a>( <span>array <var>$args</var> = <span class="php-keyword1">array</span>() </span> )</code>
+		<code><a href="source-class-CleverRule.html#376-398" title="Go to source code">register</a>( <span>array <var>$args</var> = <span class="php-keyword1">array</span>() </span> )</code>
 
 		<div class="description short">
 			
@@ -591,14 +606,14 @@ merging defaults and create a new instance</p>
 
 		<td class="attributes"><code>
 			 public static
-			null
+			object
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_register_group">#</a>
-		<code><a href="source-class-CleverRule.html#394-413" title="Go to source code">register_group</a>( <span>array <var>$args</var> = <span class="php-keyword1">array</span>() </span> )</code>
+		<code><a href="source-class-CleverRule.html#401-420" title="Go to source code">register_group</a>( <span>array <var>$args</var> = <span class="php-keyword1">array</span>() </span> )</code>
 
 		<div class="description short">
 			
@@ -622,7 +637,7 @@ rule group</p>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>null</code><br />
+					<code>object</code><br>new CleverRule instance<br />
 				</div>
 
 
@@ -646,7 +661,7 @@ rule group</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_get_name">#</a>
-		<code><a href="source-class-CleverRule.html#416-436" title="Go to source code">get_name</a>( <span>string|array <var>$args</var> = <span class="php-keyword1">array</span>() </span> )</code>
+		<code><a href="source-class-CleverRule.html#423-443" title="Go to source code">get_name</a>( <span>string|array <var>$args</var> = <span class="php-keyword1">array</span>() </span> )</code>
 
 		<div class="description short">
 			
@@ -693,7 +708,7 @@ array.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_get_link">#</a>
-		<code><a href="source-class-CleverRule.html#439-454" title="Go to source code">get_link</a>( <span>string <var>$id</var> = <span class="php-quote">''</span></span>, <span>array <var>$args</var> = <span class="php-keyword1">array</span>() </span> )</code>
+		<code><a href="source-class-CleverRule.html#446-461" title="Go to source code">get_link</a>( <span>string <var>$id</var> = <span class="php-quote">''</span></span>, <span>array <var>$args</var> = <span class="php-keyword1">array</span>() </span> )</code>
 
 		<div class="description short">
 			
@@ -741,7 +756,7 @@ array.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_obj">#</a>
-		<code><a href="source-class-CleverRule.html#457-467" title="Go to source code">obj</a>( )</code>
+		<code><a href="source-class-CleverRule.html#464-474" title="Go to source code">obj</a>( )</code>
 
 		<div class="description short">
 			
@@ -796,7 +811,7 @@ access on dynamic methods without setting another rule</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-CleverRule.html#126-143" title="Go to source code"><var>$_valid</var></a>
+				<a href="source-class-CleverRule.html#129-146" title="Go to source code"><var>$_valid</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">array</span>(
     <span class="php-quote">'after'</span>,
@@ -831,14 +846,14 @@ access on dynamic methods without setting another rule</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-CleverRule.html#146-162" title="Go to source code"><var>$_valid_sanitize_types</var></a>
+				<a href="source-class-CleverRule.html#149-165" title="Go to source code"><var>$_valid_sanitize_types</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">array</span>(
     <span class="php-quote">'after'</span> =&gt; <span class="php-quote">'callable'</span>,
     <span class="php-quote">'before'</span> =&gt; <span class="php-quote">'callable'</span>,
     <span class="php-quote">'group'</span> =&gt; <span class="php-quote">'safe_string'</span>,
     <span class="php-quote">'id'</span> =&gt; <span class="php-quote">'safe_string'</span>,
-    <span class="php-quote">'paginated'</span> =&gt; <span class="php-quote">'bool'</span>,
+    <span class="php-quote">'paginated'</span> =&gt; <span class="php-quote">'paginated'</span>,
     <span class="php-quote">'priority'</span> =&gt; <span class="php-quote">'int'</span>,
     <span class="php-quote">'qs_merge'</span> =&gt; <span class="php-quote">'bool'</span>,
     <span class="php-quote">'query'</span> =&gt; <span class="php-quote">'string_keyed_array'</span>,
@@ -866,7 +881,7 @@ access on dynamic methods without setting another rule</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-CleverRule.html#165-170" title="Go to source code"><var>$chained_called</var></a>
+				<a href="source-class-CleverRule.html#168-173" title="Go to source code"><var>$chained_called</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
 		<td class="description"><div>
@@ -895,7 +910,7 @@ repetitions</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-CleverRule.html#173-177" title="Go to source code"><var>$args</var></a>
+				<a href="source-class-CleverRule.html#176-180" title="Go to source code"><var>$args</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -922,7 +937,7 @@ repetitions</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-CleverRule.html#180-185" title="Go to source code"><var>$valid</var></a>
+				<a href="source-class-CleverRule.html#183-188" title="Go to source code"><var>$valid</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -951,7 +966,7 @@ array (maybe) altered by a filter</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-CleverRule.html#188-192" title="Go to source code"><var>$is_group</var></a>
+				<a href="source-class-CleverRule.html#191-195" title="Go to source code"><var>$is_group</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">false</span></code></td>
 		<td class="description"><div>

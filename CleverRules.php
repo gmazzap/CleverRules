@@ -24,7 +24,7 @@ class CleverRuleSanitize {
 
 
     /**
-     * @var mixed $name The value to be sanitized
+     * @var mixed $value The value to be sanitized
      * @access protected
      */
     protected $value;
@@ -54,9 +54,9 @@ class CleverRuleSanitize {
     /**
      * Do sanization. Return the sanitized value or null if sanitization fails
      *
-     * @access protected
-     * @return mixed Sanitized value or false
      * @uses Sanitize::sanitize_type
+     * @return mixed Sanitized value or null
+     * @access public
      */
     function sanitize() {
         if ( is_null( $this->value ) ) return null;
@@ -200,7 +200,8 @@ class CleverRule {
      *
      * @param string $name the name of the requested method
      * @param array $args arguments passed to method
-     * @return mixed $this->chained result
+     * @uses CleverRule::chained
+     * @return mixed CleverRule::chained result
      * @access public
      */
     function __call( $name, $args ) {
@@ -213,9 +214,11 @@ class CleverRule {
      * the register_clever_rule API function should be used instead.
      *
      * @param array $args The argumuments array passe to register_clever_rule
+     * @param bool $is_group    if current argument are for group or not
      * @uses CleverRule::add_valid to setup custom callback to sanitize custom arguments
      * @uses CleverRule::only_valid Method used to remove not valid arguments
      * @uses CleverRule::setup_rule The method that handle the rule setup
+     * @uses CleverRule::setup_group    The method that handle the group setup
      * @access protected
      */
     protected function __construct( $args = array(), $is_group = false ) {
@@ -235,9 +238,8 @@ class CleverRule {
     /**
      * Used to setup custom callback to sanitize custom arguments
      *
-     * @param array $args   The argumuments array passed to register_clever_rule
+     * @param array $args   The arguments array passed to register_clever_rule
      * @uses CleverRule::set_cb_sanitize    Used to set custom sanitize callback to custom argument
-     * @uses CleverRule::setup_rule The method that handle the rule setup
      * @return array    The array of custom callbacks
      * @access protected
      */
@@ -277,7 +279,7 @@ class CleverRule {
      * Used by contructor to set custom sanitize callback for custom argument
      *
      * @param string $arg The custom argument name
-     * @param array $args The array of all argument passsed to constructor
+     * @param array $args The array of all argument passed to constructor
      * @return mixed Custom callable or false on wrong arguments
      * @access protected
      */
@@ -294,7 +296,9 @@ class CleverRule {
     /**
      * Sanitize the arguments an launch the setup
      *
-     * @uses Class Sanitize  Class that handle the sanitation
+     * @param array $args The array of all argument passed to constructor
+     * @param array $scbs The array of all custom callables
+     * @uses Class CleverRuleSanitize   Class that handle the sanitation
      * @return null
      * @access protected
      */
@@ -352,9 +356,9 @@ class CleverRule {
      *
      * @param string $which the argument to setup
      * @param mixed $value the argument value
+     * @uses CleverRule::sanitize
      * @uses CleverRule::setup_rule
      * @uses CleverRule::setup_group
-     * @uses CleverRule::sanitize
      * @return object current CleverRule instance
      * @access protected
      */
@@ -398,7 +402,7 @@ class CleverRule {
      * Static method used by register_clever_group API function to setup args of a rule group
      *
      * @param array $args the group arguments array
-     * @return null
+     * @return object new CleverRule instance
      * @access public
      */
     public static function register_group( $args = array() ) {
@@ -499,21 +503,21 @@ class CleverRules extends WP {
 
 
     /**
-     * @staticvar array $clever_vars    The array of additiona query variables
+     * @staticvar array $clever_vars    The array of all allowed query variables
      * @access public
      */
     static $clever_vars = array();
 
 
     /**
-     * @staticvar object $or_wp_rewrite    Objet cloned from global $wp_rewrite
+     * @staticvar object $or_wp_rewrite    Object cloned from global $wp_rewrite
      * @access protected
      */
     protected static $or_wp_rewrite;
 
 
     /**
-     * @staticvar string $template	Template file path
+     * @staticvar string $template	Template file name
      * @access protected
      */
     protected static $template;
@@ -531,6 +535,7 @@ class CleverRules extends WP {
      * @uses CleverRules::clever_pieces_match
      * @uses CleverRules::clever_request
      * @uses CleverRules::to_wp
+     * @return null
      * @access public
      */
     function parse_request( $extra_query_vars = '' ) {
@@ -605,10 +610,13 @@ class CleverRules extends WP {
      * also handle all the clever rule favilities
      *
      * @param array $rule   the rule that match current request
-     * @param array $pieces url pieces
+     * @param array $rep    replacement for placeholders in the rule route
      * @param array $url_qs array of url query string
      * @param array $extra_qv   array of vars WorpPress pass to parse_request.
      *                          Used for core parse_request call.
+     * @uses CleverRules::clever_request_vars
+     * @uses CleverRules::clever_request_check
+     * @uses CleverRules::to_wp
      * @uses CleverRules::clever_request_utils
      * @uses CleverRules::clever_reset_wp_rewrite
      * @return null
@@ -634,7 +642,7 @@ class CleverRules extends WP {
 
 
     /**
-     * Used by clever_request merge rule options with group options
+     * Used by clever_request to merge rule options with group options
      *
      * @param array $rule   the rule that match current request
      * @return array	array of rule settings
@@ -705,10 +713,9 @@ class CleverRules extends WP {
 
 
     /**
-     * Used by clever_request to setup template, and before and after action
+     * Used by clever_request to setup template, and rule actions (before and after)
      *
      * @param array $rule   the rule that match current request
-     * @param array $qs query   string setted by clever_request
      * @return null
      * @access protected
      */
@@ -751,7 +758,7 @@ class CleverRules extends WP {
      * Static method used to verify if a registered rule has required args
      *
      * @param array $rule   the original rule array
-     * @return bool true    if the rule is vaild, false otherwise
+     * @return bool true if the rule is vaild, false otherwise
      * @access private
      */
     private static function verify_rule( $rule ) {
@@ -764,7 +771,7 @@ class CleverRules extends WP {
      * Static method used to create the paginated version of a rule when get_clever_rules is called
      * before pre_clever_rules_query_vars
      *
-     * @param array $rules   the original rule array
+     * @param array $rule   the original rule array
      * @return null
      * @access private
      */
@@ -786,12 +793,12 @@ class CleverRules extends WP {
 
 
     /**
-     * Static method used to loop through refistered rules to find one that have same number
+     * Static method used to loop through registered rules to find one that have same number
      * of pieces of the url, and order tham based on priority
      *
      * @param array $rules    the array of registered rules
      * @param array $pieces  the url pieces
-     * @return array    two items array, first is a string 'home' or 'found',
+     * @return array    two items array, first is a string 'static' or 'found',
      *                  second is the array of found rules or the home rule array
      * @access private
      */
