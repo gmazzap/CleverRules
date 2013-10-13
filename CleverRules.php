@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name: Clever Rules
  * Plugin URI: http://rules.zoomlab.it/
@@ -81,30 +82,28 @@ class CleverRuleSanitize {
                 return preg_match( '/^[a-z0-9_\.]+$/', $this->value ) === 1 ? $this->value : null;
             case 'callable' :
                 return is_callable( $this->value ) ? $this->value : null;
-			case 'array' :
+            case 'array' :
                 $this->value = (array) wp_parse_args( $this->value );
                 $f_values = array_filter( array_map( 'is_string', array_values( $this->value ) ) );
                 if ( empty( $f_values ) ) return null;
                 return $this->value;
             case 'string_keyed_array' :
-				$this->value = (array) wp_parse_args( $this->value );
+                $this->value = (array) wp_parse_args( $this->value );
                 $f_keys = array_filter( array_map( 'is_string', array_keys( $this->value ) ) );
                 $f_values = array_filter( array_map( 'is_string', array_values( $this->value ) ) );
                 if ( empty( $f_keys ) || empty( $f_values ) ) return null;
                 return $this->value;
             case 'route' :
                 if ( ! is_string( $this->value ) || ! substr_count( $this->value, '/' ) )
-					return null;
-				return trim( $this->value );
-			case 'file' :
-			case 'php_file' :
-				$pi = pathinfo( $this->value );
-				if ( empty( $pi ) || ! isset( $pi['filename'] ) ) return null;
-				if ( $this->type == 'file') return $this->value;
-				$ext = str_replace( '_file', '', $this->type );
-				return isset( $pi['extension'] ) && ( $pi['extension'] == $ext )
-                    ? $this->value
-                    : null;
+                        return null;
+                return trim( $this->value );
+            case 'file' :
+            case 'php_file' :
+                $pi = pathinfo( $this->value );
+                if ( empty( $pi ) || ! isset( $pi['filename'] ) ) return null;
+                if ( $this->type == 'file' ) return $this->value;
+                $ext = str_replace( '_file', '', $this->type );
+                return isset( $pi['extension'] ) && ( $pi['extension'] == $ext ) ? $this->value : null;
             default :
                 return null;
         }
@@ -131,16 +130,16 @@ class CleverRule {
      */
     protected static $_valid = array(
         'after',
-		'before',
-		'group',
-		'id',
-		'paginated',
-		'priority',
-		'qs_merge',
-		'query',
-		'route',
-		'template',
-		'vars'
+        'before',
+        'group',
+        'id',
+        'paginated',
+        'priority',
+        'qs_merge',
+        'query',
+        'route',
+        'template',
+        'vars'
     );
 
 
@@ -149,16 +148,16 @@ class CleverRule {
      * @access protected
      */
     protected static $_valid_sanitize_types = array(
-		'after' => 'callable',
-		'before' => 'callable',
-		'group' => 'safe_string',
-		'id' => 'safe_string',
-		'paginated' => 'bool',
-		'priority' => 'int',
-		'qs_merge' => 'bool',
-		'query' => 'string_keyed_array',
+        'after' => 'callable',
+        'before' => 'callable',
+        'group' => 'safe_string',
+        'id' => 'safe_string',
+        'paginated' => 'bool',
+        'priority' => 'int',
+        'qs_merge' => 'bool',
+        'query' => 'string_keyed_array',
         'route' => 'route',
-		'template' => 'php_file',
+        'template' => 'php_file',
         'vars' => 'array'
     );
 
@@ -184,9 +183,9 @@ class CleverRule {
      * @access protected
      */
     protected $valid;
-	
-	
-	/**
+
+
+    /**
      * @var bool $is_group	If the current instance is a broup or not
      * @access protected
      */
@@ -202,10 +201,7 @@ class CleverRule {
      * @access public
      */
     function __call( $name, $args ) {
-        if ( in_array( $name, self::$_valid ) ) {
-			$args = isset( $args[0] ) ? $args[0] : null;
-            return $this->chained( $name, $args );
-		}
+        if ( in_array( $name, self::$_valid ) ) return $this->chained( $name, $args );
     }
 
 
@@ -215,47 +211,47 @@ class CleverRule {
      *
      * @param array $args The argumuments array passe to register_clever_rule
      * @uses CleverRule::add_valid to setup custom callback to sanitize custom arguments
-	 * @uses CleverRule::only_valid Method used to remove not valid arguments
+     * @uses CleverRule::only_valid Method used to remove not valid arguments
      * @uses CleverRule::setup_rule The method that handle the rule setup
      * @access protected
      */
     protected function __construct( $args = array(), $is_group = false ) {
         if ( ! is_array( $args ) || empty( $args ) ) return;
-		$sanitize_cbs = $this->add_valid( $args );
-		$this->is_group = (bool) $is_group;
-        $args = $this->only_valid( $args );		
+        $sanitize_cbs = $this->add_valid( $args );
+        $this->is_group = (bool) $is_group;
+        $args = $this->only_valid( $args );
         $this->sanitize( $args, $sanitize_cbs );
-		if ( ! $is_group ) {
-        	$this->setup_rule();
-		} else {
-			$this->setup_group();
-		}
+        if ( ! $is_group ) {
+            $this->setup_rule();
+        } else {
+            $this->setup_group();
+        }
     }
-	
-	
-	/**
+
+
+    /**
      * Used to setup custom callback to sanitize custom arguments
      *
-	 * @param array $args   The argumuments array passed to register_clever_rule
+     * @param array $args   The argumuments array passed to register_clever_rule
      * @uses CleverRule::set_cb_sanitize    Used to set custom sanitize callback to custom argument
      * @uses CleverRule::setup_rule The method that handle the rule setup
-	 * @return array    The array of custom callbacks
+     * @return array    The array of custom callbacks
      * @access protected
      */
-	protected function add_valid( $args ) {
-		$sanitize_cbs = array();
-		$this->valid = (array) apply_filters( 'clever_rules_valid_args', array() );
+    protected function add_valid( $args ) {
+        $sanitize_cbs = array();
+        $this->valid = (array) apply_filters( 'clever_rules_valid_args', array() );
         if ( empty( $this->valid ) ) {
-			$this->valid = self::$_valid;
-			return $sanitize_cbs;
-		}
-		foreach ( $this->valid as $add_valid ) {
-			$cb = $this->set_sanitize_cb( $add_valid, $args );
-			if ( $cb ) $sanitize_cbs['sanitize_' . $add_valid] = $cb;
-		}
-		$this->valid = array_merge( $this->valid, self::$_valid );
-		return $sanitize_cbs;
-	}
+            $this->valid = self::$_valid;
+            return $sanitize_cbs;
+        }
+        foreach ( $this->valid as $add_valid ) {
+            $cb = $this->set_sanitize_cb( $add_valid, $args );
+            if ( $cb ) $sanitize_cbs['sanitize_' . $add_valid] = $cb;
+        }
+        $this->valid = array_merge( $this->valid, self::$_valid );
+        return $sanitize_cbs;
+    }
 
 
     /**
@@ -329,9 +325,9 @@ class CleverRule {
         $route = isset( $this->args['route'] ) ? $this->get_name() : false;
         if ( $route ) CleverRules::$rules[$route] = $this->args;
     }
-	
-	
-	/**
+
+
+    /**
      * Write the group argument on the CleverRules::$rule_groups static array.
      * Called on contruct for groups
      *
@@ -339,9 +335,9 @@ class CleverRule {
      * @access protected
      */
     protected function setup_group() {
-		if ( ! isset( $this->args['id'] ) ) return;
-		if ( isset( $this->args['route'] ) ) unset( $this->args['route'] );
-		$id = $this->get_name();
+        if ( ! isset( $this->args['id'] ) ) return;
+        if ( isset( $this->args['route'] ) ) unset( $this->args['route'] );
+        $id = $this->get_name();
         if ( $id ) CleverRules::$rule_groups[$id] = $this->args;
     }
 
@@ -360,11 +356,12 @@ class CleverRule {
      * @access protected
      */
     protected function chained( $which, $value ) {
-		if ( $which == 'id' || $which == 'route' ) return $this;
+        if ( $which == 'id' || $which == 'route' ) return $this;
         if ( in_array( $which, $this->chained_called ) || empty( $this->args ) ) return $this;
         $this->chained_called[] = $which;
         $this->sanitize( array($which => $value) );
-		if ( ! $this->is_group ) $this->setup_rule(); else $this->setup_group();
+        if ( ! $this->is_group ) $this->setup_rule();
+        else $this->setup_group();
         return $this;
     }
 
@@ -392,9 +389,9 @@ class CleverRule {
         $args = apply_filters( 'clever_rule_args', wp_parse_args( $args, $defaults ) );
         return ( ! empty( $args ) && is_array( $args ) ) ? new CleverRule( $args ) : self::obj();
     }
-	
-	
-	/**
+
+
+    /**
      * Static method used by register_clever_group API function to setup args of a rule group
      *
      * @param array $args the group arguments array
@@ -450,7 +447,7 @@ class CleverRule {
     function get_link( $id = '', $args = array() ) {
         if ( array_key_exists( $id, CleverRules::$rules ) ) {
             $rule = CleverRules::$rules[$id];
-			$route = str_replace('{{home}}', '/', $rule['route']);
+            $route = str_replace( '{{home}}', '/', $rule['route'] );
             $part = trim( vsprintf( $route, $args ), '/\\ ' );
             return trailingslashit( trailingslashit( home_url() ) . $part );
         }
@@ -489,13 +486,13 @@ class CleverRules extends WP {
      * @access public
      */
     static $rules = array();
-	
-	
-	/**
+
+
+    /**
      * @staticvar array $rule_groups    The array of registered rule groups
      * @access public
      */
-	static $rule_groups = array();
+    static $rule_groups = array();
 
 
     /**
@@ -510,16 +507,16 @@ class CleverRules extends WP {
      * @access protected
      */
     protected static $or_wp_rewrite;
-	
-	
-	/**
+
+
+    /**
      * @staticvar string $template	Template file path
      * @access protected
      */
     protected static $template;
-	
-	
-	/**
+
+
+    /**
      * Only function in the package that override a core one.
      * Called on every frontend request and in some admin screens, this function create
      * the query vars based on the url request.
@@ -534,9 +531,9 @@ class CleverRules extends WP {
      * @access public
      */
     function parse_request( $extra_query_vars = '' ) {
-		if ( ! defined( 'CLEVER_RULES' ) ) return;
+        if ( ! defined( 'CLEVER_RULES' ) ) return;
         $this->clever_unset_wp_rewrite();
-		self::$clever_vars = array_merge( $this->public_query_vars, $this->private_query_vars );
+        self::$clever_vars = array_merge( $this->public_query_vars, $this->private_query_vars );
         $the_rules = (array) self::get_clever_rules();
         if ( empty( $the_rules ) ) return $this->to_wp( $extra_query_vars );
         $full_url = add_query_arg( array() );
@@ -547,7 +544,7 @@ class CleverRules extends WP {
         $pieces = array_values( array_filter( explode( '/', $url ) ) );
         $found = self::find_clever_rules( $the_rules, $pieces );
         if ( $found[0] == 'static' )
-            return $this->clever_request( $found[1], array(), $_qs, $extra_query_vars );
+                return $this->clever_request( $found[1], array(), $_qs, $extra_query_vars );
         if ( empty( $found[1] ) ) return $this->to_wp( $extra_query_vars );
         $match_rule = self::clever_pieces_match( array_values( $found[1] ), $pieces );
         if ( $match_rule === FALSE ) return $this->to_wp( $extra_query_vars );
@@ -615,66 +612,66 @@ class CleverRules extends WP {
      * @access protected
      */
     protected function clever_request( $rule, $pieces, $url_qs = array(), $extra_qv = array() ) {
-		if ( apply_filters( 'stop_clever_rule_rule', false, $rule, $this ) )
-            return $this->to_wp( $extra_qv );
-		do_action_ref_array( 'pre_clever_rules_merge_group', $rule );
-		$rule = isset( $rule['group'] ) && ! empty($rule['group'])
-            ? self::merge_group($rule)
+        if ( apply_filters( 'stop_clever_rule_rule', false, $rule, $this ) )
+                return $this->to_wp( $extra_qv );
+        do_action_ref_array( 'pre_clever_rules_merge_group', $rule );
+        $rule = isset( $rule['group'] ) && ! empty( $rule['group'] )
+            ? self::merge_group( $rule )
             : $rule;
-		do_action_ref_array( 'pre_clever_rule', $rule );
+        do_action_ref_array( 'pre_clever_rule', $rule );
         do_action( 'pre_clever_rules_query_vars' );
-		$all_vars = $this->clever_request_vars( $rule, $url_qs );
-		$qs = ! empty( $all_vars ) ? $this->clever_request_check( $all_vars, $pieces ) : array();
-		if ( empty( $qs ) ) return $this->to_wp( $extra_qv );
+        $all_vars = $this->clever_request_vars( $rule, $url_qs );
+        $qs = ! empty( $all_vars ) ? $this->clever_request_check( $all_vars, $pieces ) : array();
+        if ( empty( $qs ) ) return $this->to_wp( $extra_qv );
         $this->clever_request_utils( $rule );
         $this->query_vars = $qs;
         do_action( 'clever_rules_query_vars', $this->query_vars );
         $this->clever_reset_wp_rewrite();
     }
-	
-	
-	/**
+
+
+    /**
      * Used by clever_request merge rule options with group options
      *
      * @param array $rule   the rule that match current request
      * @return array	array of rule settings
      * @access protected
      */
-    protected function merge_group( $rule = array()  ) {
+    protected function merge_group( $rule = array() ) {
         $ruleObj = CleverRule::obj();
-        $g_id = $ruleObj->get_name( array( 'id' => $rule['group'] ) );
+        $g_id = $ruleObj->get_name( array('id' => $rule['group']) );
         $group = isset( self::$rule_groups[$g_id] ) ? self::$rule_groups[$g_id] : false;
         if ( $group ) {
-            if ( isset($group['id']) ) unset($group['id']);
-            return wp_parse_args($rule, $group);
+            if ( isset( $group['id'] ) ) unset( $group['id'] );
+            return wp_parse_args( $rule, $group );
         }
-		return $rule;
+        return $rule;
     }
-	
-	
-	/**
+
+
+    /**
      * Used by clever_request to setup the rule query vars to check after
      *
      * @param array $rule   the rule that match current request
-	 * @param array $url_qs	array of vars passed via url
+     * @param array $url_qs	array of vars passed via url
      * @return array	array of query vars
      * @access protected
      */
-    protected function clever_request_vars( $rule = array(), $url_qs = array()  ) {
-		if ( isset( $rule['vars'] ) && is_array( $rule['vars'] ) && ! empty( $rule['vars'] ) ) {
-			$rule_vars = array_merge( $rule['vars'], self::$clever_vars );
+    protected function clever_request_vars( $rule = array(), $url_qs = array() ) {
+        if ( isset( $rule['vars'] ) && is_array( $rule['vars'] ) && ! empty( $rule['vars'] ) ) {
+            $rule_vars = array_merge( $rule['vars'], self::$clever_vars );
             self::$clever_vars = $rule_vars;
         }
-		$allow_url_qs = apply_filters( 'clever_rules_allow_merge_qs', $rule['qs_merge'] );
-		if ( $allow_url_qs && ! empty( $url_qs ) ) {
-			$filtered_url_qs = (array) apply_filters( 'clever_rules_merge_qs', $url_qs, $rule );
-			return array_merge( $filtered_url_qs, $rule['query'] );
-		}
-		return $rule['query'];
+        $allow_url_qs = apply_filters( 'clever_rules_allow_merge_qs', $rule['qs_merge'] );
+        if ( $allow_url_qs && ! empty( $url_qs ) ) {
+            $filtered_url_qs = (array) apply_filters( 'clever_rules_merge_qs', $url_qs, $rule );
+            return array_merge( $filtered_url_qs, $rule['query'] );
+        }
+        return $rule['query'];
     }
-	
-	
-	/**
+
+
+    /**
      * Used by clever_request to setup the rule query vars to check after
      *
      * @param array $all_vars   all the query vars for the rule that match request
@@ -682,12 +679,12 @@ class CleverRules extends WP {
      * @access protected
      */
     protected function clever_request_check( $all_vars = array(), $pieces = array() ) {
-		$qs = array();
-		foreach ( $all_vars as $key => $value ) {
-			$good = $value && preg_match( '/^[a-z0-9\-_]*(\[([0-9]+)\])*[a-z0-9\-_]*$/', $value );
-			if ( ! in_array($key, self::$clever_vars) ) $good = false;
+        $qs = array();
+        foreach ( $all_vars as $key => $value ) {
+            $good = $value && preg_match( '/^[a-z0-9\-_]*(\[([0-9]+)\])*[a-z0-9\-_]*$/', $value );
+            if ( ! in_array( $key, self::$clever_vars ) ) $good = false;
             if ( ! $good ) continue;
-			$is_variable = (bool) preg_match( '/^[a-z_]*(\[([0-9]+)\])+[a-z_]*$/', $value );
+            $is_variable = (bool) preg_match( '/^[a-z_]*(\[([0-9]+)\])+[a-z_]*$/', $value );
             if ( $is_variable && ! empty( $pieces ) ) {
                 $f = preg_replace_callback( '/\[([0-9]+)\]/', array(__CLASS__, '_rp'), $value );
                 $qs[$key] = vsprintf( $f, $pieces );
@@ -695,7 +692,7 @@ class CleverRules extends WP {
                 $qs[$key] = $value;
             }
         }
-		return $qs;
+        return $qs;
     }
 
 
@@ -709,11 +706,11 @@ class CleverRules extends WP {
      */
     protected function clever_request_utils( $rule = array() ) {
         if ( isset( $rule['template'] ) ) {
-			self::$template = $rule['template'];
-			add_filter( 'template_include', array( __CLASS__, 'clever_template' ), 99999 );
-		}
-		if ( isset( $rule['before'] ) && is_callable( $rule['before'] ) )
-			call_user_func( $rule['before'], $rule, $this );
+            self::$template = $rule['template'];
+            add_filter( 'template_include', array(__CLASS__, 'clever_template'), 99999 );
+        }
+        if ( isset( $rule['before'] ) && is_callable( $rule['before'] ) )
+                call_user_func( $rule['before'], $rule, $this );
         if ( isset( $rule['after'] ) && is_callable( $rule['after'] ) ) {
             $action = apply_filters( 'clever_rule_after', 'template_redirect', $rule, $this );
             add_action( $action, $rule['after'] );
@@ -731,7 +728,7 @@ class CleverRules extends WP {
      * @access public
      */
     static function get_clever_rules() {
-		if ( ! defined( 'CLEVER_RULES' ) ) return;
+        if ( ! defined( 'CLEVER_RULES' ) ) return;
         if ( ! empty( self::$rules ) && ! did_action( 'pre_clever_rules_query_vars' ) ) {
             foreach ( self::$rules as $rule ) {
                 if ( ! self::verify_rule( $rule ) ) continue;
@@ -770,7 +767,7 @@ class CleverRules extends WP {
             $paged = '[' . substr_count( $rule['route'], '%' ) . ']';
             $newrule = array(
                 'route' => $rule['route'] . 'page/%d/',
-                'query' => array_merge( (array) $rule['query'], array( $var => $paged ) ),
+                'query' => array_merge( (array) $rule['query'], array($var => $paged) ),
                 'paginated' => false
             );
             if ( $id ) $newrule['id'] = $id;
@@ -799,8 +796,8 @@ class CleverRules extends WP {
                 $rule['route'] = '/';
                 return array('static', $rule);
             }
-			if (  substr_count($route[0], '{{home}}') == 1 )
-				$route[0] = str_replace('{{home}}', '', $route[0]);
+            if ( substr_count( $route[0], '{{home}}' ) == 1 )
+                    $route[0] = str_replace( '{{home}}', '', $route[0] );
             if ( ( count( $route ) == count( $pieces ) ) && $query ) {
                 $priority = isset( $rule['priority'] )
                     ? intval( $rule['priority'] )
@@ -831,9 +828,9 @@ class CleverRules extends WP {
             if ( apply_filters( 'skip_clever_rule', false, $rule, $pieces ) ) continue;
             $match = self::clever_pieces_find( $pieces, $rule );
             if ( $match[0] == count( $pieces ) && empty( $match[1] ) ) {
-                return array($rule, array() ); // static match
-            } elseif (  $match[0] == count( $pieces ) ) {
-                $match_dyn[] = array( $rule, $match[1] );
+                return array($rule, array()); // static match
+            } elseif ( $match[0] == count( $pieces ) ) {
+                $match_dyn[] = array($rule, $match[1]);
             }
         }
         return empty( $match_dyn ) ? false : array_shift( $match_dyn );
@@ -928,10 +925,9 @@ class CleverRules extends WP {
     protected static function _rp( $matches ) {
         return '%' . ( intval( $matches[1] ) + 1 ) . '$s';
     }
-	
-	
-	
-	/**
+
+
+    /**
      * Static method used as callback for preg_replace_callback in CleverRules::clever_request
      *
      * @param string $template	Template path passed by template_include filter
@@ -939,9 +935,9 @@ class CleverRules extends WP {
      * @access public
      */
     static function clever_template( $template ) {
-		if ( ! defined( 'CLEVER_RULES' ) ) return;
-		if ( empty( self::$template ) ) return $template;
-		$replace = locate_template( self::$template, false, false );
+        if ( ! defined( 'CLEVER_RULES' ) ) return;
+        if ( empty( self::$template ) ) return $template;
+        $replace = locate_template( self::$template, false, false );
         return $replace ? $replace : $template;
     }
 
@@ -980,10 +976,9 @@ function register_clever_rule( $args = array() ) {
             . 'plugins_loaded hook is a good place.';
         _doing_it_wrong( ' register_clever_rule', $msg, null );
     }
-    if ( is_string( $args ) ) $args = array( 'route' => $args );
+    if ( is_string( $args ) ) $args = array('route' => $args);
     return CleverRule::register( $args );
 }
-
 
 
 /**
@@ -1002,7 +997,7 @@ function register_clever_group( $args = array() ) {
             . 'plugins_loaded hook is a good place.';
         _doing_it_wrong( ' register_clever_group', $msg, null );
     }
-	if ( is_string( $args ) ) $args = array( 'id' => $args );
+    if ( is_string( $args ) ) $args = array('id' => $args);
     return CleverRule::register_group( $args );
 }
 
