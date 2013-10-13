@@ -771,7 +771,7 @@ class CleverRules extends WP {
             $id = isset( $rule['id'] ) && ! empty( $rule['id'] ) ? $rule['id'] . '.page' : false;
             $paged = '[' . substr_count( $rule['route'], '%' ) . ']';
             $newrule = array(
-                'route' => $rule['route'] . 'page/%d/',
+                'route' => trailingslashit( $rule['route'] ) . 'page/%d/',
                 'query' => array_merge( (array) $rule['query'], array($var => $paged) ),
                 'paginated' => false
             );
