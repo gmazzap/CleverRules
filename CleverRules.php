@@ -682,10 +682,14 @@ class CleverRules extends WP {
     protected function clever_request_check( $all_vars = array(), $rep = array() ) {
         $qs = array();
         foreach ( $all_vars as $key => $value ) {
-            $good = $value && preg_match( '/^[a-z0-9\-_]*(\[([0-9]+)\])*[a-z0-9\-_]*$/', $value );
-            if ( ! in_array( $key, self::$clever_vars ) ) $good = false;
+            $good = false;
+            if ( in_array( $key, self::$clever_vars ) ) {
+                $r1 = preg_replace('/\[[0-9]\]/', '', $value );
+                $r2 = preg_replace('/\{[0-9]\}/', '', $r1);
+                $good = (bool)preg_match( '/^[a-z0-9\-_]*$/', $r2 );
+            }
             if ( ! $good ) continue;
-            $is_variable = (bool) preg_match( '/^[a-z_\-]*(\[([0-9]+)\])+[a-z_\-]*$/', $value );
+            $is_variable = (bool) substr_count( $value, '[' );
             if ( $is_variable && ! empty( $rep ) ) {
                 $f = preg_replace_callback( '/\[([0-9]+)\]/', array(__CLASS__, '_rp'), $value );
                 $qs[$key] = vsprintf( $f, $rep );
