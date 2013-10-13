@@ -546,7 +546,7 @@ class CleverRules extends WP {
         if ( $found[0] == 'static' )
             return $this->clever_request( $found[1], array(), $_qs, $extra_query_vars );
         if ( empty( $found[1] ) ) return $this->to_wp( $extra_query_vars );
-        $match_rule = self::clever_pieces_match( array_values( $found[1] ), $pieces );
+        $match_rule = self::clever_pieces_match( $found[1], $pieces );
         if ( $match_rule === FALSE ) return $this->to_wp( $extra_query_vars );
         return $this->clever_request( $match_rule[0], $match_rule[1], $_qs, $extra_query_vars );
     }
@@ -824,6 +824,7 @@ class CleverRules extends WP {
      */
     private static function clever_pieces_match( $found_rules, $pieces ) {
         ksort( $found_rules );
+        array_values( $found_rules );
         $match_dyn = array();
         foreach ( $found_rules as $rule ) {
             if ( apply_filters( 'skip_clever_rule', false, $rule, $pieces ) ) continue;
@@ -886,7 +887,7 @@ class CleverRules extends WP {
      */
     private static function clever_piece( $route_piece, $url_piece ) {
         if ( ! preg_match( '/^[a-zA-Z0-9\{\}\%]+$/', $route_piece ) ) return false;
-        if ( substr_count( $route_piece, '%d' ) == 1 ) {
+        if ( substr_count( $route_piece, '%d' ) == 1 && is_numeric( $url_piece ) ) {
             return self::clever_piece_dyn( $route_piece, $url_piece, '%d' );
         } elseif ( substr_count( $route_piece, '%s' ) == 1 ) {
             return self::clever_piece_dyn( $route_piece, $url_piece, '%s' );
