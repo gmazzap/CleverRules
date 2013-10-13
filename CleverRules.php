@@ -97,6 +97,9 @@ class CleverRuleSanitize {
                 if ( ! is_string( $this->value ) || ! substr_count( $this->value, '/' ) )
                         return null;
                 return trim( $this->value );
+            case 'paginated' :
+                if ( $this->value === 'single' ) return $this->value;
+                return (bool) $this->value;
             case 'file' :
             case 'php_file' :
                 $pi = pathinfo( $this->value );
@@ -152,7 +155,7 @@ class CleverRule {
         'before' => 'callable',
         'group' => 'safe_string',
         'id' => 'safe_string',
-        'paginated' => 'bool',
+        'paginated' => 'paginated',
         'priority' => 'int',
         'qs_merge' => 'bool',
         'query' => 'string_keyed_array',
@@ -772,7 +775,7 @@ class CleverRules extends WP {
             $paged = '[' . substr_count( $rule['route'], '%' ) . ']';
             $newrule = array(
                 'route' => trailingslashit( $rule['route'] ) . 'page/%d/',
-                'query' => array_merge( (array) $rule['query'], array($var => $paged) ),
+                'query' => wp_parse_args( array( $var => $paged ), (array) $rule['query'] ),
                 'paginated' => false
             );
             if ( $id ) $newrule['id'] = $id;
