@@ -683,7 +683,7 @@ class CleverRules extends WP {
         $qs = array();
         foreach ( $all_vars as $key => $value ) {
             $good = false;
-            if ( ! is_empty($value) && in_array( $key, self::$clever_vars ) ) {
+            if ( ! empty($value) && in_array( $key, self::$clever_vars ) ) {
                 $r1 = preg_replace('/\[[0-9]\]/', '', $value );
                 $r2 = preg_replace('/\{[0-9]\}/', '', $r1);
                 $good = (bool)preg_match( '/^[a-z0-9\-_]*$/', $r2 );
