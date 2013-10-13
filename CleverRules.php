@@ -201,7 +201,7 @@ class CleverRule {
      * @access public
      */
     function __call( $name, $args ) {
-        if ( in_array( $name, self::$_valid ) ) return $this->chained( $name, $args );
+        if ( in_array( $name, self::$_valid ) ) return $this->chained( $name, $args[0] );
     }
 
 
