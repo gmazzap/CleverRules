@@ -544,7 +544,7 @@ class CleverRules extends WP {
         $pieces = array_values( array_filter( explode( '/', $url ) ) );
         $found = self::find_clever_rules( $the_rules, $pieces );
         if ( $found[0] == 'static' )
-                return $this->clever_request( $found[1], array(), $_qs, $extra_query_vars );
+            return $this->clever_request( $found[1], array(), $_qs, $extra_query_vars );
         if ( empty( $found[1] ) ) return $this->to_wp( $extra_query_vars );
         $match_rule = self::clever_pieces_match( array_values( $found[1] ), $pieces );
         if ( $match_rule === FALSE ) return $this->to_wp( $extra_query_vars );
@@ -611,7 +611,7 @@ class CleverRules extends WP {
      * @return null
      * @access protected
      */
-    protected function clever_request( $rule, $pieces, $url_qs = array(), $extra_qv = array() ) {
+    protected function clever_request( $rule, $rep, $url_qs = array(), $extra_qv = array() ) {
         if ( apply_filters( 'stop_clever_rule_rule', false, $rule, $this ) )
                 return $this->to_wp( $extra_qv );
         do_action_ref_array( 'pre_clever_rules_merge_group', $rule );
@@ -621,7 +621,7 @@ class CleverRules extends WP {
         do_action_ref_array( 'pre_clever_rule', $rule );
         do_action( 'pre_clever_rules_query_vars' );
         $all_vars = $this->clever_request_vars( $rule, $url_qs );
-        $qs = ! empty( $all_vars ) ? $this->clever_request_check( $all_vars, $pieces ) : array();
+        $qs = ! empty( $all_vars ) ? $this->clever_request_check( $all_vars, $rep ) : array();
         if ( empty( $qs ) ) return $this->to_wp( $extra_qv );
         $this->clever_request_utils( $rule );
         $this->query_vars = $qs;
@@ -675,19 +675,20 @@ class CleverRules extends WP {
      * Used by clever_request to setup the rule query vars to check after
      *
      * @param array $all_vars   all the query vars for the rule that match request
+     * @param array $rep    all the placeholders replacements for the url
      * @return array	array of query vars
      * @access protected
      */
-    protected function clever_request_check( $all_vars = array(), $pieces = array() ) {
+    protected function clever_request_check( $all_vars = array(), $rep = array() ) {
         $qs = array();
         foreach ( $all_vars as $key => $value ) {
             $good = $value && preg_match( '/^[a-z0-9\-_]*(\[([0-9]+)\])*[a-z0-9\-_]*$/', $value );
             if ( ! in_array( $key, self::$clever_vars ) ) $good = false;
             if ( ! $good ) continue;
             $is_variable = (bool) preg_match( '/^[a-z_]*(\[([0-9]+)\])+[a-z_]*$/', $value );
-            if ( $is_variable && ! empty( $pieces ) ) {
+            if ( $is_variable && ! empty( $rep ) ) {
                 $f = preg_replace_callback( '/\[([0-9]+)\]/', array(__CLASS__, '_rp'), $value );
-                $qs[$key] = vsprintf( $f, $pieces );
+                $qs[$key] = vsprintf( $f, $rep );
             } elseif ( ! $is_variable ) {
                 $qs[$key] = $value;
             }
