@@ -668,7 +668,7 @@ class CleverRules extends WP {
         $allow_url_qs = apply_filters( 'clever_rules_allow_merge_qs', $rule['qs_merge'] );
         if ( $allow_url_qs && ! empty( $url_qs ) ) {
             $filtered_url_qs = (array) apply_filters( 'clever_rules_merge_qs', $url_qs, $rule );
-            return array_merge( $filtered_url_qs, $rule['query'] );
+            return wp_parse_args( $filtered_url_qs, $rule['query'] );
         }
         return $rule['query'];
     }
