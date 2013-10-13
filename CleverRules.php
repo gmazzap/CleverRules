@@ -912,7 +912,7 @@ class CleverRules extends WP {
         if ( substr_count( $pattern, '(' . $rep . '+){' ) == 1 )
             $pattern = str_replace( '(' . $rep . '+){', '(' . $rep . '){', $pattern );
         if ( preg_match( '/^' . $pattern . '$/', $url_piece, $matches ) == 1 )
-            return sprintf( $type, $matches[1] );
+            return sprintf( $type, $matches[0] );
         return false;
     }
 
