@@ -10,7 +10,7 @@ use CleverRules\Interfaces as CRI;
  * @package CleverRules
  * @author Giuseppe Mazzapica
  */
-class Paginated implements CRI\TypeSanitize {
+class Paginated implements CRI\TypeSanitizer {
 
 
     public function sanitize( $value ) {

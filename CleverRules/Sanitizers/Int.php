@@ -10,7 +10,7 @@ use CleverRules\Interfaces as CRI;
  * @package CleverRules
  * @author Giuseppe Mazzapica
  */
-class Int implements CRI\TypeSanitize {
+class Int implements CRI\TypeSanitizer {
 
 
     public function sanitize( $value ) {

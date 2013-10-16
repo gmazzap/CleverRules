@@ -10,7 +10,7 @@ use CleverRules\Interfaces as CRI;
  * @package CleverRules
  * @author Giuseppe Mazzapica
  */
-class Route implements CRI\TypeSanitize {
+class Route implements CRI\TypeSanitizer {
 
 
     public function sanitize( $value ) {
