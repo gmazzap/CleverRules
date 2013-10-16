@@ -22,6 +22,12 @@ class Matcher implements CRI\Matcher {
     var $replacements;
 
 
+    protected $rep;
+
+
+    protected $current_rule;
+
+
     public function __construct( CRI\Url $url ) {
         $this->url = $url;
     }
@@ -29,13 +35,14 @@ class Matcher implements CRI\Matcher {
 
     public function match( $rules = array() ) {
         $good = array();
+        $this->rep = array();
         while ( ! empty( $rules ) && empty( $this->match ) ) {
-            $this->replacements = array();
             $rule = \array_shift( $rules );
+            $this->current_rule = Rule::get_rule_name( $rule->args );
             $match = $this->match_rule( $rule );
-            if ( $match ) $good[] = $rule;
+            if ( $match ) $good[$this->current_rule] = $rule;
         }
-        if ( ! empty( $good ) && empty( $this->match ) ) $this->match = \array_shift( $good );
+        $this->set_matched( $good );
     }
 
 
@@ -44,7 +51,7 @@ class Matcher implements CRI\Matcher {
                 return false;
         $count = $this->check_rule( $rule );
         if ( $count === \count( $this->url->parts ) ) {
-            if ( empty( $this->replacements ) ) $this->match = $rule;
+            if ( empty( $this->rep[$this->current_rule] ) ) $this->match = $rule;
             return true;
         }
     }
@@ -72,7 +79,7 @@ class Matcher implements CRI\Matcher {
         } elseif ( \substr_count( $route_part, '%' ) == 1 ) {
             $replaced = $this->check_rule_part_dyn( $route_part, $url_part );
             if ( ! empty( $replaced ) ) {
-                $this->replacements[] = $replaced;
+                $this->rep[$this->current_rule][] = $replaced;
                 return true;
             }
         }
@@ -88,6 +95,18 @@ class Matcher implements CRI\Matcher {
         $matches = array();
         if ( \preg_match( '/^' . $pattern . '$/', $url_part, $matches ) == 1 )
                 return \sprintf( $type, $matches[0] );
+    }
+
+
+    protected function set_matched( $good = array() ) {
+        if ( ! empty( $good ) && empty( $this->match ) ) {
+            $keys = \array_keys( $good );
+            $first = \array_shift( $keys );
+            $this->replacements = $this->rep[$first];
+            $this->match = \array_shift( $good );
+        } else {
+            $this->replacements = array();
+        }
     }
 
 
