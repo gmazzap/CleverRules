@@ -105,12 +105,14 @@ class Rules implements CRI\Rules {
 
 
     protected function paginate_rules() {
-        foreach ( self::$rules as $rule )
+        foreach ( self::$rules as $rule ) {
             $rule->paginate();
+        }
     }
 
 
     protected function found_rules() {
+        if ( empty( self::$rules ) ) return false;
         foreach ( self::$rules as $rule ) {
             $home = $this->found_rule( $rule );
             if ( $home === true ) return true;

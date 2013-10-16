@@ -43,8 +43,9 @@ class Rule implements CRI\Rule {
 
 
     function __call( $name, $args ) {
-        if ( in_array( $name, $this->sanitizer->valid ) && ! empty( $args ) )
-                return $this->chained( $name, $args[0] );
+        if ( in_array( $name, $this->sanitizer->valid ) ) {
+            return ! empty($args) ? $this->chained( $name, $args[0] ) : $this;
+        }
     }
 
 
@@ -107,8 +108,8 @@ class Rule implements CRI\Rule {
 
 
     protected function get_name() {
-        $key = $this->id ? 'id' : 'route';
-        $value = $this->id ? $this->id : $this->route;
+        $key = isset($this->args['id']) ? 'id' : 'route';
+        $value = isset($this->args['id']) ? $this->args['id'] : $this->args['route'];
         return self::get_rule_name( array($key => $value) );
     }
 
@@ -139,13 +140,13 @@ class Rule implements CRI\Rule {
             $var = $this->paginated === 'single' ? 'page' : 'paged';
             $paged = '[' . substr_count( $this->route, '%' ) . ']';
             $args = array(
-                'route' => \trailingslashit( $this->route ) . 'page/%d/',
+                'route' => \trailingslashit( $this->route ) . 'page/%d',
                 'query' => \wp_parse_args( array($var => $paged), $this->query ),
                 'paginated' => false
             );
-            if ( ! $this->id ) $args['id'] = $this->id . '.page';
+            if ( $this->id ) $args['id'] = $this->id . '.page';
             $newrule = clone $this;
-            $newrule->args( \wp_parse_args( $args, $this->args ) );
+            $newrule->args = \wp_parse_args( $args, $this->args );
             $newrule->save();
         }
     }
