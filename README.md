@@ -8,6 +8,8 @@ Plugin require at least PHP 5.3
 
 ***
 
+##Register Rules##
+
 Rules are registered via the function `register_clever_rule`.
 
 ##Basic Usage##
