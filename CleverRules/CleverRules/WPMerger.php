@@ -35,5 +35,3 @@ class WPMerger implements CRI\WPMerger {
 
 
 }
-
-

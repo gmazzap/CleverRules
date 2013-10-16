@@ -106,5 +106,3 @@ function get_the_cleverlink( $id = null, $args = array() ) {
 function the_cleverlink( $id = null, $args = array() ) {
     echo apply_filters( 'the_cleverlink', get_the_cleverlink( $id, $args ), $id, $args );
 }
-
-

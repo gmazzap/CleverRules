@@ -40,5 +40,3 @@ interface WPMerger {
 
 
 }
-
-

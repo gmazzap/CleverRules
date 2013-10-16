@@ -79,5 +79,3 @@ class RuleSettings implements CRI\Settings {
 
 
 }
-
-

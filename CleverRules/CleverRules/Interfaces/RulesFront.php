@@ -43,5 +43,3 @@ interface RulesFront {
 
 
 }
-
-
