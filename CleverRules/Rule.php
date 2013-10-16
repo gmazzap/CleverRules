@@ -90,7 +90,7 @@ class Rule implements CRI\Rule {
     }
 
 
-    protected function save() {
+    public function save() {
         $id = $this->get_name();
         if ( $this->is_group ) {
             Rules::$groups[$id] = $this;
