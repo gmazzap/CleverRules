@@ -16,10 +16,10 @@ class Matcher implements CRI\Matcher {
     protected $url;
 
 
-    var $match;
+    public $match;
 
 
-    var $replacements;
+    public $replacements;
 
 
     protected $rep;
