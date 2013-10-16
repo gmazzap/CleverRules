@@ -42,6 +42,7 @@ class Parser implements CRI\Parser {
 
     public function parse( $rule, $replacements ) {
         if ( ! $rule->sanitizer->check_rule( $rule ) ) return;
+        if ( ! empty( $rule->args['group'] ) ) $rule->merge_group();
         $this->rule = $rule->args;
         $this->replacements = $replacements;
         if ( $this->pre_hooks() !== false ) $this->do_parse();

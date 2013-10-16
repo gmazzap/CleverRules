@@ -69,18 +69,16 @@ class Rule implements CRI\Rule {
         if ( empty( $args ) || ! is_array( $args ) ) return;
         $this->setter->set_all( $args );
         $this->args = $this->setter->get_all();
-        if ( ! empty( $this->args['group'] ) ) $this->merge_group();
         $this->sanitize();
         $this->args = $this->sanitizer->sanitized;
     }
 
 
     public function merge_group() {
-        $group = isset( $this->group ) ? $this->group_exists( $this->group ) : '';
+        $group = $this->group ? $this->group_exists( $this->group ) : '';
         if ( ! empty( $group ) ) {
-            if ( ! $group->sanizer->check_group( $group ) ) return;
-            $this->setter->merge_group( $group->args );
-            $this->args = $this->setter->get_all();
+            \do_action_ref_array( 'pre_clever_rules_merge_group', $this->args );
+            $this->args = \wp_parse_args( $this->args, $group->args );
         }
     }
 
@@ -103,7 +101,8 @@ class Rule implements CRI\Rule {
 
     protected function group_exists( $group ) {
         $id = md5( $group );
-        if ( array_key_exists( $id, Rules::$groups ) ) return Rules::$groups[$id];
+        if ( ! empty(Rules::$groups) && array_key_exists( $id, Rules::$groups ) )
+            return Rules::$groups[$id];
     }
 
 
@@ -127,10 +126,12 @@ class Rule implements CRI\Rule {
 
     protected function setup_chained( $name, $sanitized ) {
         $id = $this->get_name();
+        $this->args[$name] = $sanitized;
+        $this->setter->set_all($this->args);
         if ( ! $this->is_group ) {
-            Rules::$rules[$id]->args[$name] = $sanitized;
+            Rules::$rules[$id]->args = $this->args;
         } else {
-            Rules::$groups[$id]->args[$name] = $sanitized;
+            Rules::$groups[$id]->args = $this->args;
         }
     }
 

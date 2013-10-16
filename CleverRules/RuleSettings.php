@@ -54,13 +54,7 @@ class RuleSettings implements CRI\Settings {
     public function merge( $args = array() ) {
         $this->args = \wp_parse_args( $this->args, $args );
     }
-
-
-    public function merge_group( $args = array() ) {
-        \do_action_ref_array( 'pre_clever_rules_merge_group', $this->args );
-        $this->merge( $args );
-    }
-
+    
 
     public function defaults() {
         $rule_def = array('id' => '', 'route' => null, 'query' => array(), 'priority' => 0);
