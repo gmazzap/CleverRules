@@ -13,19 +13,19 @@ use CleverRules\Interfaces as CRI;
 class Url implements CRI\Url {
 
 
-    var $full;
+    public $full;
 
 
-    var $sane_array;
+    public $sane_array;
 
 
-    var $sane;
+    public $sane;
 
 
-    var $parts = array();
+    public $parts = array();
 
 
-    var $qs;
+    public $qs;
 
 
     public function __construct() {
