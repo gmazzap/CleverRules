@@ -85,7 +85,7 @@ class Rules implements CRI\Rules {
 
 
     public function match() {
-        $this->matcher->match( self::$rules );
+        $this->matcher->match( $this->found );
         $this->match = $this->matcher->match;
         return $this->match;
     }
@@ -126,7 +126,8 @@ class Rules implements CRI\Rules {
         }
         $route = \explode( '/', $rule->route );
         if ( ( count( $route ) == count( $this->url->parts ) ) && $rule->query ) {
-            $priority = isset( $rule->priority ) ? $rule->priority : \count( $this->found );
+            $priority = $rule->priority ? $rule->priority : \count( $this->found );
+            while ( isset($this->found[$priority]) ) $priority++;
             $this->found[$priority] = $rule;
         }
     }
