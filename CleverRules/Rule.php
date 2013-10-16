@@ -1,8 +1,16 @@
 <?php
 namespace CleverRules;
 
+use CleverRules\Interfaces as CRI;
 
-class Rule implements RuleInterface {
+
+/**
+ * Rule Class
+ *
+ * @package CleverRules
+ * @author Giuseppe Mazzapica
+ */
+class Rule implements CRI\Rule {
 
 
     public $sanitizer;
@@ -23,7 +31,7 @@ class Rule implements RuleInterface {
     protected $chained_called = array();
 
 
-    function __construct( RuleSanitizerInterface $sanitizer, SettingsInterface $setter ) {
+    function __construct( CRI\RuleSanitizer $sanitizer, CRI\Settings $setter ) {
         $this->sanitizer = $sanitizer;
         $this->setter = $setter;
     }
@@ -35,14 +43,15 @@ class Rule implements RuleInterface {
 
 
     function __call( $name, $args ) {
-        if ( in_array( $name, $this->sanitizer->valid ) ) return $this->chained( $name, $args[0] );
+        if ( in_array( $name, $this->sanitizer->valid ) && ! empty( $args ) )
+                return $this->chained( $name, $args[0] );
     }
 
 
     public function register( $args ) {
         $this->setup( $args );
         if ( $this->args['route'] === '/' ) $this->is_home = true;
-        $this->save();
+        if ( ! empty( $this->args ) ) $this->save();
         return $this;
     }
 
@@ -56,8 +65,9 @@ class Rule implements RuleInterface {
 
 
     public function setup( $args ) {
-        if ( empty( $this->args ) || ! is_array( $this->args ) ) return;
-        $this->args = $this->setter->set_all( $args );
+        if ( empty( $args ) || ! is_array( $args ) ) return;
+        $this->setter->set_all( $args );
+        $this->args = $this->setter->get_all();
         if ( ! empty( $this->args['group'] ) ) $this->merge_group();
         $this->sanitize();
         $this->args = $this->sanitizer->sanitized;
@@ -65,7 +75,7 @@ class Rule implements RuleInterface {
 
 
     public function merge_group() {
-        $group = isset( $this->args['group'] ) ? $this->group_exists( $this->args['group'] ) : '';
+        $group = isset( $this->group ) ? $this->group_exists( $this->group ) : '';
         if ( ! empty( $group ) ) {
             if ( ! $group->sanizer->check_group( $group ) ) return;
             $this->setter->merge_group( $group->args );
@@ -117,9 +127,9 @@ class Rule implements RuleInterface {
     protected function setup_chained( $name, $sanitized ) {
         $id = $this->get_name();
         if ( ! $this->is_group ) {
-            Rules::$rules[$id][$name] = $sanitized;
+            Rules::$rules[$id]->args[$name] = $sanitized;
         } else {
-            Rules::$groups[$id][$name] = $sanitized;
+            Rules::$groups[$id]->args[$name] = $sanitized;
         }
     }
 

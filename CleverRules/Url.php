@@ -1,8 +1,16 @@
 <?php
 namespace CleverRules;
 
+use CleverRules\Interfaces as CRI;
 
-class Url implements UrlInterface {
+
+/**
+ * Url Class
+ *
+ * @package CleverRules
+ * @author Giuseppe Mazzapica
+ */
+class Url implements CRI\Url {
 
 
     var $full;

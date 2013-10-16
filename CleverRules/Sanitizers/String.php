@@ -1,8 +1,16 @@
 <?php
 namespace CleverRules\Sanitizers;
 
+use CleverRules\Interfaces as CRI;
 
-class String implements \CleverRules\TypeSanitizerInterface {
+/**
+ * String Class
+ * Used to sanitize the string arguments
+ *
+ * @package CleverRules
+ * @author Giuseppe Mazzapica
+ */
+class String implements CRI\TypeSanitize {
 
 
     public function sanitize( $value ) {

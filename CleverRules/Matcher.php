@@ -1,8 +1,16 @@
 <?php
 namespace CleverRules;
 
+use CleverRules\Interfaces as CRI;
 
-class Matcher implements MatcherInterface {
+
+/**
+ * Matcher Class
+ *
+ * @package CleverRules
+ * @author Giuseppe Mazzapica
+ */
+class Matcher implements CRI\Matcher {
 
 
     protected $url;
@@ -14,7 +22,7 @@ class Matcher implements MatcherInterface {
     var $replacements;
 
 
-    public function __construct( UrlInterface $url ) {
+    public function __construct( CRI\Url $url ) {
         $this->url = $url;
     }
 
@@ -32,8 +40,8 @@ class Matcher implements MatcherInterface {
 
 
     protected function match_rule( $rule ) {
-        if ( \apply_filters( 'skip_clever_rule', false, (array)$rule, $this->url->parts ) )
-            return false;
+        if ( \apply_filters( 'skip_clever_rule', false, (array) $rule, $this->url->parts ) )
+                return false;
         $count = $this->check_rule( $rule );
         if ( $count === \count( $this->url->parts ) ) {
             if ( empty( $this->replacements ) ) $this->match = $rule;

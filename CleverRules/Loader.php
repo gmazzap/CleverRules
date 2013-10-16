@@ -1,16 +1,24 @@
 <?php
 namespace CleverRules;
 
+use CleverRules\Interfaces as CRI;
 
-class Loader implements LoaderInterface {
+
+/**
+ * Loader Class
+ *
+ * @package CleverRules
+ * @author Giuseppe Mazzapica
+ */
+class Loader implements CRI\Loader {
 
 
     protected static $instance = null;
 
 
     protected static $loaded = array();
-    
-    
+
+
     public $main_dir;
 
 
@@ -37,7 +45,8 @@ class Loader implements LoaderInterface {
     public static function is_loaded( $file ) {
         return isset( self::$loaded[$file] );
     }
-    
+
+
     public static function load( $path = '', $once = true ) {
         self::set_loaded( $path );
         if ( $once ) {
@@ -52,39 +61,27 @@ class Loader implements LoaderInterface {
         if ( empty( $main_dir ) ) $main_dir = plugin_dir_path( __FILE__ );
         $this->main_dir = $main_dir;
     }
-    
-    
+
+
     public function set_dir( $dir = '' ) {
+        if ( empty( $dir ) ) $dir = plugin_dir_path( __FILE__ );
         $this->main_dir = $dir;
     }
 
 
     public function load_dir( $dir = '', $once = true ) {
-        $before = array();
-        $after = array();
         if ( empty( $dir ) ) $dir = $this->main_dir;
-        $iterator = new \DirectoryIterator( \untrailingslashit($dir) );
+        $iterator = new \DirectoryIterator( \untrailingslashit( $dir ) );
         foreach ( $iterator as $fileinfo ) {
             if ( ! $fileinfo->isFile() ) continue;
-            if ( ! substr_count( $fileinfo->getBasename(), 'Interface' ) ) {
-                $before[] = $fileinfo->getBasename();
-            } else {
-                $after[] = $fileinfo->getBasename();
-            }
-        }
-        $all = array_merge( $after, $before );
-        if ( empty( $all ) ) return;
-        foreach ( $all as $file ) {
-            $path = trailingslashit( $dir ) . $file;
+            $path = trailingslashit( $dir ) . $fileinfo->getBasename();
             self::load( $path, $once );
         }
     }
 
 
     public function load_file( $which = '', $once = true ) {
-        $path = ( \substr_count( $which, $this->main_dir ) )
-            ? $which
-            : $this->main_dir . $which;
+        $path = ( \substr_count( $which, $this->main_dir ) ) ? $which : $this->main_dir . $which;
         self::load( $path, $once );
     }
 

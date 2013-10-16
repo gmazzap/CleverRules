@@ -15,11 +15,13 @@
 
 define( 'CLEVER_RULES_PATH', plugin_dir_path( __FILE__ ) );
 
-require_once CLEVER_RULES_PATH . 'CleverRules/LoaderInterface.php';
+require_once CLEVER_RULES_PATH . 'CleverRules/Interfaces/Loader.php';
 require_once CLEVER_RULES_PATH . 'CleverRules/Loader.php';
 require_once CLEVER_RULES_PATH . 'Api.php';
 
-\CleverRules\Loader::get_instance()->load_dir();
+$loader = \CleverRules\Loader::get_instance();
+$loader->load_dir( CLEVER_RULES_PATH . 'CleverRules/Interfaces' );
+$loader->load_dir( CLEVER_RULES_PATH . 'CleverRules' );
 
 
 /**
@@ -31,7 +33,7 @@ require_once CLEVER_RULES_PATH . 'Api.php';
  * @return null
  */
 function cleverRulesInit() {
-    if ( defined( 'CLEVER_RULES' ) && CLEVER_RULES ) return;
+    if ( defined( 'CLEVER_RULES' ) && CLEVER_RULES || ! defined( 'ABSPATH' ) ) return;
     define( 'CLEVER_RULES', 1 );
     global $wp;
     if ( get_class( $wp ) === 'WP' ) {

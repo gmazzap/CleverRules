@@ -1,8 +1,16 @@
 <?php
 namespace CleverRules;
 
+use CleverRules\Interfaces as CRI;
 
-class Parser implements ParserInterface {
+
+/**
+ * Parser Class
+ *
+ * @package CleverRules
+ * @author Giuseppe Mazzapica
+ */
+class Parser implements CRI\Parser {
 
 
     protected $settings;
@@ -20,20 +28,20 @@ class Parser implements ParserInterface {
     protected $vars;
 
 
-    protected $qv;
+    public $qv;
 
 
     public static $template;
 
 
-    public function __construct( SettingsInterface $settings, UrlInterface $url ) {
+    public function __construct( CRI\Settings $settings, CRI\Url $url ) {
         $this->settings = $settings;
         $this->url = $url;
     }
 
 
     public function parse( $rule, $replacements ) {
-        if ( ! $rule->sanizer->check_rule( $rule ) ) return;
+        if ( ! $rule->sanitizer->check_rule( $rule ) ) return;
         $this->rule = $rule->args;
         $this->replacements = $replacements;
         if ( $this->pre_hooks() !== false ) $this->do_parse();
@@ -60,7 +68,7 @@ class Parser implements ParserInterface {
 
 
     protected function vars() {
-        $vars = $this->settings->vars;
+        $vars = $this->settings->get( 'vars' );
         if ( ! empty( $this->rule['vars'] ) ) $vars = \array_merge( $this->rule['vars'], $vars );
         $this->vars = $vars;
     }
@@ -99,8 +107,7 @@ class Parser implements ParserInterface {
 
 
     protected function qv_key( $value ) {
-        $f = \preg_replace_callback( '/\[([0-9]+)\]/',
-                function( $m ) { return '%' . ( \intval( $m[1] ) + 1 ) . '$s'; }, $value );
+        $f = \preg_replace_callback( '/\[([0-9]+)\]/', function( $m ) { return '%' . ( \intval( $m[1] ) + 1 ) . '$s'; }, $value );
         return vsprintf( $f, $this->replacements );
     }
 

@@ -1,4 +1,6 @@
 <?php
+
+
 /**
  * Main API function used to register a new rule.
  * Must be called before setup_theme hook (on plugins_loaded).
@@ -15,10 +17,10 @@ function register_clever_rule( $args = array() ) {
             . 'plugins_loaded hook is a good place.';
         _doing_it_wrong( ' register_clever_rule', $msg, null );
     }
-    if ( is_string( $args ) ) $args = array( 'route' => $args );
-    $sanitizer = new CleverRules\RuleSanizer();
-    $setter = new CleverRules\RuleSettings( false );
-    $rule = new CleverRules\Rule( $sanitizer, $setter );
+    if ( is_string( $args ) ) $args = array('route' => $args);
+    $sanitizer = new \CleverRules\RuleSanitizer( false );
+    $setter = new \CleverRules\RuleSettings( false );
+    $rule = new \CleverRules\Rule( $sanitizer, $setter );
     return $rule->register( $args );
 }
 
@@ -39,10 +41,10 @@ function register_clever_group( $args = array() ) {
             . 'plugins_loaded hook is a good place.';
         _doing_it_wrong( ' register_clever_group', $msg, null );
     }
-    if ( is_string( $args ) ) $args = array( 'id' => $args );
-    $sanitizer = new CleverRules\RuleSanizer;
-    $setter = new CleverRules\RuleSettings( true );
-    $rule = new CleverRules\Rule( $sanitizer, $setter );
+    if ( is_string( $args ) ) $args = array('id' => $args);
+    $sanitizer = new \CleverRules\RuleSanitizer( true );
+    $setter = new \CleverRules\RuleSettings( true );
+    $rule = new \CleverRules\Rule( $sanitizer, $setter );
     return $rule->register_group( $args );
 }
 
@@ -58,14 +60,14 @@ function register_clever_group( $args = array() ) {
  * @access public
  */
 function get_the_clever_ruleid( $id = null, $rule = null ) {
-    if ( $rule instanceof CleverRules\Rule ) return $rule->get_name();
+    if ( $rule instanceof \CleverRules\Rule ) return $rule->get_name();
     $rule_name = false;
     if ( is_string( $id ) ) {
         $key = substr_count( $id, '/' ) ? 'route' : 'id';
-        $arg = array( $key => $id );
-        $rule_name = CleverRules\Rule::get_rule_name( $arg );
+        $arg = array($key => $id);
+        $rule_name = \CleverRules\Rule::get_rule_name( $arg );
     } elseif ( is_array( $id ) && ( isset( $id['route'] ) || isset( $id['id'] ) ) ) {
-        $rule_name = CleverRules\Rule::get_rule_name( $id );
+        $rule_name = \CleverRules\Rule::get_rule_name( $id );
     }
     return $rule_name;
 }
@@ -85,10 +87,8 @@ function get_the_clever_ruleid( $id = null, $rule = null ) {
  */
 function get_the_cleverlink( $id = null, $args = array() ) {
     $name = get_the_clever_ruleid( $id );
-    $link = $name ? CleverRules\Rule::get_rule_link($id, $args) : false;
-    return $link
-        ? apply_filters( 'get_the_cleverlink', $link, $id, $args )
-        : false;
+    $link = $name ? \CleverRules\Rule::get_rule_link( $id, $args ) : false;
+    return $link ? apply_filters( 'get_the_cleverlink', $link, $id, $args ) : false;
 }
 
 

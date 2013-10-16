@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Class CleverRules\Rules | CleverRules 0.2</title>
+
+	<script type="text/javascript" src="resources/combined.js?2391869379"></script>
+	<script type="text/javascript" src="elementlist.js?2845275725"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li class="active"><a href="namespace-CleverRules.html">CleverRules<span></span></a>
+						<ul>
+				<li><a href="namespace-CleverRules.Interfaces.html">Interfaces</a>
+						</li>
+				<li><a href="namespace-CleverRules.Sanitizers.html">Sanitizers</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-None.html">None</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-CleverRules.Loader.html">Loader</a></li>
+				<li><a href="class-CleverRules.Matcher.html">Matcher</a></li>
+				<li><a href="class-CleverRules.Parser.html">Parser</a></li>
+				<li><a href="class-CleverRules.Rule.html">Rule</a></li>
+				<li class="active"><a href="class-CleverRules.Rules.html">Rules</a></li>
+				<li><a href="class-CleverRules.RuleSanitizer.html">RuleSanitizer</a></li>
+				<li><a href="class-CleverRules.RuleSettings.html">RuleSettings</a></li>
+				<li><a href="class-CleverRules.RulesFront.html">RulesFront</a></li>
+				<li><a href="class-CleverRules.Settings.html">Settings</a></li>
+				<li><a href="class-CleverRules.Url.html">Url</a></li>
+				<li><a href="class-CleverRules.WPMerger.html">WPMerger</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-CleverRules.html" title="Summary of CleverRules"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+			<li>
+				<a href="deprecated.html" title="List of deprecated elements"><span>Deprecated</span></a>
+			</li>
+			<li>
+				<a href="todo.html" title="Todo list"><span>Todo</span></a>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="cleverrules-0-2-api-documentation.zip" title="Download documentation as ZIP archive"><span>Download</span></a>
+			</li>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Rules</h1>
+
+
+	<div class="description">
+	
+<p>Rules Class</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+<b><span>CleverRules\Rules</span></b>			
+			 implements 
+				<a href="class-CleverRules.Interfaces.Rules.html"><span>CleverRules\Interfaces\Rules</span></a>
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-CleverRules.html">CleverRules</a><br />
+		<b>Package:</b> CleverRules<br />
+
+				<b>Author:</b>
+				Giuseppe Mazzapica<br />
+		<b>Located at</b> <a href="source-class-CleverRules.Rules.html#7-144" title="Go to source code">CleverRules/Rules.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-CleverRules.Rules.html#46-51" title="Go to source code">__construct</a>( <span><code><a href="class-CleverRules.Interfaces.Url.html">CleverRules\Interfaces\Url</a></code> <var>$u</var></span>, <span><code><a href="class-CleverRules.Interfaces.Settings.html">CleverRules\Interfaces\Settings</a></code> <var>$s</var></span>, <span><code><a href="class-CleverRules.Interfaces.Matcher.html">CleverRules\Interfaces\Matcher</a></code> <var>$m</var></span>, <span><code><a href="class-CleverRules.Interfaces.Parser.html">CleverRules\Interfaces\Parser</a></code> <var>$p</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Contructor</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Contructor</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$u</var></dt>
+					<dd><code><code><a href="class-CleverRules.Interfaces.Url.html">CleverRules\Interfaces\Url</a></code></code><br>$url object implementing Url interface</dd>
+					<dt><var>$s</var></dt>
+					<dd><code><code><a href="class-CleverRules.Interfaces.Settings.html">CleverRules\Interfaces\Settings</a></code></code><br>$s object implementing Settings interface</dd>
+					<dt><var>$m</var></dt>
+					<dd><code><code><a href="class-CleverRules.Interfaces.Matcher.html">CleverRules\Interfaces\Matcher</a></code></code><br>$m pbject implementing Matcher interface</dd>
+					<dt><var>$p</var></dt>
+					<dd><code><code><a href="class-CleverRules.Interfaces.Parser.html">CleverRules\Interfaces\Parser</a></code></code><br>$p object implementing Parser interface</dd>
+				</dl></div>
+
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-CleverRules.Interfaces.Rules.html#___construct">CleverRules\Interfaces\Rules::__construct()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="unset_rewrite" id="_unset_rewrite">
+
+		<td class="attributes"><code>
+			 public 
+			null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_unset_rewrite">#</a>
+		<code><a href="source-class-CleverRules.Rules.html#54-63" title="Go to source code">unset_rewrite</a>( )</code>
+
+		<div class="description short">
+			
+<p>Clean the global $wp_rewrite to avoid unwanted redirection</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Clean the global $wp_rewrite to avoid unwanted redirection</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>null</code><br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-CleverRules.Interfaces.Rules.html#_unset_rewrite">CleverRules\Interfaces\Rules::unset_rewrite()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="reset_rewrite" id="_reset_rewrite">
+
+		<td class="attributes"><code>
+			 public 
+			null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_reset_rewrite">#</a>
+		<code><a href="source-class-CleverRules.Rules.html#66-69" title="Go to source code">reset_rewrite</a>( )</code>
+
+		<div class="description short">
+			
+<p>Reset global $wp_rewrite after a rule match or before sendind request to core
+method</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Reset global $wp_rewrite after a rule match or before sendind request to core
+method</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>null</code><br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-CleverRules.Interfaces.Rules.html#_reset_rewrite">CleverRules\Interfaces\Rules::reset_rewrite()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setup" id="_setup">
+
+		<td class="attributes"><code>
+			 public 
+			null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setup">#</a>
+		<code><a href="source-class-CleverRules.Rules.html#72-74" title="Go to source code">setup</a>( )</code>
+
+		<div class="description short">
+			
+<p>Prepare object for rules checking</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Prepare object for rules checking</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>null</code><br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-CleverRules.Interfaces.Rules.html#_setup">CleverRules\Interfaces\Rules::setup()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="found" id="_found">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_found">#</a>
+		<code><a href="source-class-CleverRules.Rules.html#77-84" title="Go to source code">found</a>( )</code>
+
+		<div class="description short">
+			
+<p>Loop through registered rules to find ones compatible with url. If more rules
+are found, order them by priority.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Loop through registered rules to find ones compatible with url. If more rules
+are found, order them by priority.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br>True if one or more rules are found, false otherwise<br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-CleverRules.Interfaces.Rules.html#_found">CleverRules\Interfaces\Rules::found()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="match" id="_match">
+
+		<td class="attributes"><code>
+			 public 
+			null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_match">#</a>
+		<code><a href="source-class-CleverRules.Rules.html#87-91" title="Go to source code">match</a>( )</code>
+
+		<div class="description short">
+			
+<p>Loop through found rules to find one that match (if exists)</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Loop through found rules to find one that match (if exists)</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>null</code><br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-CleverRules.Interfaces.Rules.html#_match">CleverRules\Interfaces\Rules::match()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="parse" id="_parse">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_parse">#</a>
+		<code><a href="source-class-CleverRules.Rules.html#94-104" title="Go to source code">parse</a>( )</code>
+
+		<div class="description short">
+			
+<p>When a rule match this method setup the query vars according to rule</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>When a rule match this method setup the query vars according to rule</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br>if a rule match and query vars are set up, false otherwise<br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-CleverRules.Interfaces.Rules.html#_parse">CleverRules\Interfaces\Rules::parse()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="paginate_rules" id="_paginate_rules">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_paginate_rules">#</a>
+		<code><a href="source-class-CleverRules.Rules.html#107-110" title="Go to source code">paginate_rules</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="found_rules" id="_found_rules">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_found_rules">#</a>
+		<code><a href="source-class-CleverRules.Rules.html#113-119" title="Go to source code">found_rules</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="found_rule" id="_found_rule">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_found_rule">#</a>
+		<code><a href="source-class-CleverRules.Rules.html#122-132" title="Go to source code">found_rule</a>( <span>mixed <var>$rule</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="prioritize" id="_prioritize">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_prioritize">#</a>
+		<code><a href="source-class-CleverRules.Rules.html#135-141" title="Go to source code">prioritize</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+	<table class="summary" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="rules" id="$rules">
+		<td class="attributes"><code>
+			public static 
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-CleverRules.Rules.html#16" title="Go to source code"><var>$rules</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$rules" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="groups" id="$groups">
+		<td class="attributes"><code>
+			public static 
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-CleverRules.Rules.html#19" title="Go to source code"><var>$groups</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$groups" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="query_vars" id="$query_vars">
+		<td class="attributes"><code>
+			public  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-CleverRules.Rules.html#22" title="Go to source code"><var>$query_vars</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$query_vars" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="url" id="$url">
+		<td class="attributes"><code>
+			protected  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-CleverRules.Rules.html#25" title="Go to source code"><var>$url</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$url" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="settings" id="$settings">
+		<td class="attributes"><code>
+			protected  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-CleverRules.Rules.html#28" title="Go to source code"><var>$settings</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$settings" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="parser" id="$parser">
+		<td class="attributes"><code>
+			protected  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-CleverRules.Rules.html#31" title="Go to source code"><var>$parser</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$parser" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="matcher" id="$matcher">
+		<td class="attributes"><code>
+			protected  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-CleverRules.Rules.html#34" title="Go to source code"><var>$matcher</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$matcher" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="rewrite" id="$rewrite">
+		<td class="attributes"><code>
+			protected static 
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-CleverRules.Rules.html#37" title="Go to source code"><var>$rewrite</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$rewrite" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="found" id="$found">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-CleverRules.Rules.html#40" title="Go to source code"><var>$found</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
+		<td class="description"><div>
+			<a href="#$found" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="match" id="$match">
+		<td class="attributes"><code>
+			protected  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-CleverRules.Rules.html#43" title="Go to source code"><var>$match</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$match" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		CleverRules 0.2 API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

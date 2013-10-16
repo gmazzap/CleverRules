@@ -1,8 +1,16 @@
 <?php
 namespace CleverRules\Sanitizers;
 
+use CleverRules\Interfaces as CRI;
 
-class Paginated implements \CleverRules\TypeSanitizerInterface {
+/**
+ * Paginated Class
+ * Used to sanitize the paginated rule argument
+ *
+ * @package CleverRules
+ * @author Giuseppe Mazzapica
+ */
+class Paginated implements CRI\TypeSanitize {
 
 
     public function sanitize( $value ) {

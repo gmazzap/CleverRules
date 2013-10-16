@@ -1,11 +1,19 @@
 <?php
 namespace CleverRules;
 
+use CleverRules\Interfaces as CRI;
 
-class Settings implements SettingsInterface {
+
+/**
+ * Settings Class
+ *
+ * @package CleverRules
+ * @author Giuseppe Mazzapica
+ */
+class Settings implements CRI\Settings {
 
 
-    protected $settings = array();
+    public $settings = array();
 
 
     public function get_all() {

@@ -1,8 +1,16 @@
 <?php
 namespace CleverRules;
 
+use CleverRules\Interfaces as CRI;
 
-class RuleSettings implements SettingsInterface {
+
+/**
+ * RuleSettings Class
+ *
+ * @package CleverRules
+ * @author Giuseppe Mazzapica
+ */
+class RuleSettings implements CRI\Settings {
 
 
     protected $args;
@@ -21,10 +29,10 @@ class RuleSettings implements SettingsInterface {
 
 
     public function set_all( $args = array() ) {
-        $args = array_filter( $args );
-        $merged = wp_parse_args( $args, $this->defaults );
-        $filtered = apply_filters( 'clever_rule_args', $merged );
-        $this->args = is_array($filtered) && ! empty($filtered) ? $filtered : $merged;
+        $args = \array_filter( $args );
+        $merged = \wp_parse_args( $args, $this->defaults );
+        $filtered = $this->preserve_group_args( \apply_filters( 'clever_rule_args', $merged ) );
+        $this->args = \is_array( $filtered ) && ! empty( $filtered ) ? $filtered : $merged;
     }
 
 
@@ -55,12 +63,24 @@ class RuleSettings implements SettingsInterface {
 
 
     public function defaults() {
-        $rule_def = array('route' => null, 'query' => array(), 'priority' => 0);
+        $rule_def = array('id' => '', 'route' => null, 'query' => array(), 'priority' => 0);
         $def = array(
-            'id' => '', 'vars' => array(), 'paginated' => false,
+            'vars' => array(), 'paginated' => false,
             'before' => null, 'after' => null, 'qs_merge' => false
         );
-        $this->defaults = ( ! $this->is_group ) ? \array_merge( $def, $rule_def ) : $def;
+        $merged = ! $this->is_group ? \wp_parse_args( $rule_def, $def ) : $def;
+        $filtered = \apply_filters( 'clever_rule_default_args', $merged );
+        $this->defaults = $filtered;
+    }
+
+
+    protected function preserve_group_args( $args = array() ) {
+        if ( ! $this->is_group ) return $args;
+        $preserve = array('route', 'priority', 'query');
+        foreach ( $preserve as $key ) {
+            if ( isset( $args[$key] ) ) unset( $args[$key] );
+        }
+        return $args;
     }
 
 

@@ -1,8 +1,16 @@
 <?php
 namespace CleverRules\Sanitizers;
 
+use CleverRules\Interfaces as CRI;
 
-class SimpleArray implements \CleverRules\TypeSanitizerInterface {
+/**
+ * SimpleArray Class
+ * Used to sanitize the array arguments
+ *
+ * @package CleverRules
+ * @author Giuseppe Mazzapica
+ */
+class SimpleArray implements CRI\TypeSanitize {
 
 
     public function sanitize( $value ) {

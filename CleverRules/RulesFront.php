@@ -1,17 +1,25 @@
 <?php
 namespace CleverRules;
 
-
-class RulesFront extends \WP implements RulesFrontInterface {
-
-
-    private $cr_rules;
+use CleverRules\Interfaces as CRI;
 
 
-    private $cr_extra = '';
+/**
+ * RulesFront Class
+ *
+ * @package CleverRules
+ * @author Giuseppe Mazzapica
+ */
+class RulesFront extends \WP implements CRI\RulesFront {
 
 
-    public function __construct( RulesInterface $rules ) {
+    protected $cr_rules;
+
+
+    protected $cr_extra = '';
+
+
+    public function __construct( CRI\Rules $rules ) {
         $this->cr_rules = $rules;
     }
 

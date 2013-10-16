@@ -1,8 +1,16 @@
 <?php
 namespace CleverRules;
 
+use CleverRules\Interfaces as CRI;
 
-class Rules implements RulesInterface {
+
+/**
+ * Rules Class
+ *
+ * @package CleverRules
+ * @author Giuseppe Mazzapica
+ */
+class Rules implements CRI\Rules {
 
 
     public static $rules;
@@ -35,9 +43,7 @@ class Rules implements RulesInterface {
     protected $match;
 
 
-    public function __construct(
-    UrlInterface $u, SettingsInterface $s, MatcherInterface $m, ParserInterface $p
-    ) {
+    public function __construct( CRI\Url $u, CRI\Settings $s, CRI\Matcher $m, CRI\Parser $p ) {
         $this->url = $u;
         $this->settings = $s;
         $this->parser = $p;

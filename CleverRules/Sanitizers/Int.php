@@ -1,8 +1,16 @@
 <?php
 namespace CleverRules\Sanitizers;
 
+use CleverRules\Interfaces as CRI;
 
-class Int implements \CleverRules\TypeSanitizerInterface {
+/**
+ * Int Class
+ * Used to sanitize integer arguments
+ *
+ * @package CleverRules
+ * @author Giuseppe Mazzapica
+ */
+class Int implements CRI\TypeSanitize {
 
 
     public function sanitize( $value ) {

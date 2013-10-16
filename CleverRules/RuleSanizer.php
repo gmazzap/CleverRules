@@ -1,13 +1,21 @@
 <?php
 namespace CleverRules;
 
+use CleverRules\Interfaces as CRI;
 
-class RuleSanitizer implements RuleSanitizerInterface {
+
+/**
+ * RuleSanitizer Class
+ *
+ * @package CleverRules
+ * @author Giuseppe Mazzapica
+ */
+class RuleSanitizer implements CRI\RuleSanitizer {
 
 
     protected static $sanitizers = array(
-        'after' => '\CleverRules\Sanitizers\Callable',
-        'before' => '\CleverRules\Sanitizers\Callable',
+        'after' => '\CleverRules\Sanitizers\Callback',
+        'before' => '\CleverRules\Sanitizers\Callback',
         'group' => '\CleverRules\Sanitizers\String',
         'id' => '\CleverRules\Sanitizers\String',
         'paginated' => '\CleverRules\Sanitizers\Paginated',
@@ -26,19 +34,25 @@ class RuleSanitizer implements RuleSanitizerInterface {
     public $cbs;
 
 
+    public $is_group;
+
+
     public $raw;
 
 
     public $sanitized;
 
 
-    public function __construct() {
+    public function __construct( $is_group ) {
         $this->valid = array_keys( self::$sanitizers );
         $this->cbs = array();
+        $this->is_group = $is_group;
     }
 
 
     public function setup( $args = array() ) {
+        if ( $this->is_group && ! isset( $args['id'] ) || empty( $args['id'] ) ) return;
+        if ( ! $this->is_group && ! isset( $args['route'] ) || empty( $args['route'] ) ) return;
         $this->raw = $args;
         $loader = Loader::get_instance();
         $loader->load_dir( CLEVER_RULES_PATH . 'CleverRules/Sanitizers' );
@@ -47,6 +61,7 @@ class RuleSanitizer implements RuleSanitizerInterface {
 
 
     public function sanitize( $args = array() ) {
+        if ( empty( $args ) && empty( $this->raw ) ) return;
         if ( empty( $args ) ) $args = $this->raw;
         foreach ( $args as $key => $value ) {
             if ( in_array( $key, array_keys( self::$sanitizers ) ) ) {
@@ -92,7 +107,16 @@ class RuleSanitizer implements RuleSanitizerInterface {
 
 
     public function check_group( $group ) {
+        $this->remove_group_args( $group );
         return $group->id;
+    }
+
+
+    protected function remove_group_args( $group ) {
+        $preserve = array('route', 'priority', 'query');
+        foreach ( $preserve as $key ) {
+            if ( isset( $group->args[$key] ) ) unset( $group->args[$key] );
+        }
     }
 
 
