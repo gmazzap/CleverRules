@@ -33,7 +33,7 @@ class RulesFront extends \WP implements CRI\RulesFront {
         $this->cr_extra = $extra_query_vars;
         $clever = $this->cr_rules->found() && $this->cr_rules->parse();
         if ( $clever ) $this->query_vars = $this->cr_rules->query_vars;
-        $this->cr_rules->reset_rewrite();
+        $this->cr_rules->reset_rewrite( $clever );
         if ( ! $clever ) $this->to_wp();
     }
 

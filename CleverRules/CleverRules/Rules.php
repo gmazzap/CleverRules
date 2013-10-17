@@ -63,7 +63,15 @@ class Rules implements CRI\Rules {
     }
 
 
-    public function reset_rewrite() {
+    public function reset_rewrite( $late = false ) {
+        if ( ! $late ) {
+            self::reset_rewrite_now();
+        } else {
+            \add_action( 'template_redirect',  array( __CLASS__, 'reset_rewrite_now' ), 9999 );
+        }
+    }
+    
+    public static function reset_rewrite_now() {
         global $wp_rewrite;
         $wp_rewrite = self::$rewrite;
     }
