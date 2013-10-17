@@ -126,7 +126,8 @@ class Rules implements CRI\Rules {
             $this->match = $rule;
             return true;
         }
-        $route = \explode( '/', $rule->route );
+        if ( $rule->is_home ) return;
+        $route = \explode( '/', \trim($rule->route, '/') );
         if ( ( count( $route ) == count( $this->url->parts ) ) && $rule->query ) {
             $priority = $rule->priority ? $rule->priority : \count( $this->found );
             while ( isset($this->found[$priority]) ) $priority++;

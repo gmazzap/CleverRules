@@ -147,6 +147,7 @@ class Rule implements CRI\Rule {
             );
             if ( $this->id ) $args['id'] = $this->id . '.page';
             $newrule = clone $this;
+            $newrule->is_home = null;
             $newrule->args = \wp_parse_args( $args, $this->args );
             $newrule->save();
         }

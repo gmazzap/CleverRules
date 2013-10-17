@@ -62,7 +62,7 @@ class Matcher implements CRI\Matcher {
         $stop = false;
         $i = 0;
         $url_parts = $this->url->parts;
-        $route = \explode( '/', $rule->route );
+        $route = \explode( '/', \trim($rule->route, '/') );
         while ( ! empty( $url_parts ) && ( $stop === false ) ) {
             $url_part = \array_shift( $url_parts );
             $stop = $this->check_rule_part( $route[$i], $url_part ) !== true;
