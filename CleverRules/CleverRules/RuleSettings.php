@@ -29,10 +29,8 @@ class RuleSettings implements CRI\Settings {
 
 
     public function set_all( $args = array() ) {
-        $args = \array_filter( $args );
-        $merged = \wp_parse_args( $args, $this->defaults );
-        $filtered = $this->preserve_group_args( \apply_filters( 'clever_rule_args', $merged ) );
-        $this->args = \is_array( $filtered ) && ! empty( $filtered ) ? $filtered : $merged;
+        $merged = \wp_parse_args( \array_filter($args), $this->defaults );
+        $filtered = $this->preserve_group_args( $merged );
     }
 
 

@@ -47,7 +47,7 @@ class Matcher implements CRI\Matcher {
 
 
     protected function match_rule( $rule ) {
-        if ( \apply_filters( 'skip_clever_rule', false, (array) $rule, $this->url->parts ) )
+        if ( \apply_filters( 'skip_clever_rule', false, (array) $rule->args, $this->url->parts ) )
                 return false;
         $count = $this->check_rule( $rule );
         if ( $count === \count( $this->url->parts ) ) {

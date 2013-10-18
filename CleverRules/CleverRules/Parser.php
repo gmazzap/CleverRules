@@ -75,7 +75,7 @@ class Parser implements CRI\Parser {
 
 
     protected function merge_qs() {
-        $allow = \apply_filters( 'clever_rules_allow_merge_qs', $this->rule['qs_merge'] );
+        $allow = \apply_filters( 'clever_rules_allow_merge_qs', $this->rule['qs_merge'], $this->rule );
         if ( $allow && ! empty( $this->url->qs ) ) {
             $filtered = \apply_filters( 'clever_rules_merge_qs', $this->url->qs, $this->rule );
             $this->rule['query'] = \wp_parse_args( (array) $filtered, $this->rule['query'] );
