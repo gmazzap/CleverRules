@@ -43,7 +43,7 @@ class Parser implements CRI\Parser {
     public function parse( $rule, $replacements ) {
         if ( ! $rule->sanitizer->check_rule( $rule ) ) return;
         if ( ! empty( $rule->args['group'] ) ) $rule->merge_group();
-        $this->rule = $rule->args;
+        $this->rule = \apply_filters( 'clever_rule_matched_args', $rule->args, $this->url->parts );
         $this->replacements = $replacements;
         if ( $this->pre_hooks() !== false ) $this->do_parse();
     }
@@ -63,8 +63,7 @@ class Parser implements CRI\Parser {
 
     protected function pre_hooks() {
         if ( \apply_filters( 'stop_clever_rule_rule', false, $this->rule ) ) return false;
-        \do_action_ref_array( 'pre_clever_rule', $this->rule );
-        \do_action( 'pre_clever_rules_query_vars' );
+        \do_action( 'pre_clever_rule', $this->rule, $this->url->parts );
     }
 
 
@@ -108,7 +107,9 @@ class Parser implements CRI\Parser {
 
 
     protected function qv_key( $value ) {
-        $f = \preg_replace_callback( '/\[([0-9]+)\]/', function( $m ) { return '%' . ( \intval( $m[1] ) + 1 ) . '$s'; }, $value );
+        $f = \preg_replace_callback( '/\[([0-9]+)\]/',
+            function( $m ) { return '%' . ( \intval( $m[1] ) + 1 ) . '$s'; }
+            , $value );
         return vsprintf( $f, $this->replacements );
     }
 

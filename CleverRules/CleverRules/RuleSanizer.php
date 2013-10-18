@@ -64,12 +64,12 @@ class RuleSanitizer implements CRI\RuleSanitizer {
         if ( empty( $args ) && empty( $this->raw ) ) return;
         if ( empty( $args ) ) $args = $this->raw;
         foreach ( $args as $key => $value ) {
-            if ( in_array( $key, array_keys( self::$sanitizers ) ) ) {
+            if ( \in_array( $key, \array_keys( self::$sanitizers ) ) ) {
                 $val = $this->sanitize_type( self::$sanitizers[$key], $value );
-            } elseif ( in_array( $key, $this->valid ) && isset( $this->cbs[$key] ) ) {
-                $val = call_user_func( $this->cbs[$key] );
+            } elseif ( \in_array( $key, $this->valid ) && isset( $this->cbs[$key] ) ) {
+                $val = \call_user_func( $this->cbs[$key] );
             }
-            if ( ! is_null( $val ) ) $this->sanitized[$key] = $val;
+            if ( ! \is_null( $val ) ) $this->sanitized[$key] = $val;
         }
     }
 

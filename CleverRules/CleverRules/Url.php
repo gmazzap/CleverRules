@@ -44,13 +44,13 @@ class Url implements CRI\Url {
     public function set_vars() {
         $qs = array();
         if ( isset( $this->sane_array[1] ) ) \parse_str( $this->sane_array[1], $qs );
-        $this->sane = $this->sane_array[0];
+        $this->sane = trim($this->sane_array[0], '/\\');
         $this->qs = $qs;
     }
 
 
     public function set_parts() {
-        $this->parts = \array_values( \array_filter( \explode( '/', $this->sane ) ) );
+        $this->parts = \array_filter( \explode( '/', $this->sane ) );
     }
 
 

@@ -43,7 +43,7 @@ class Rule implements CRI\Rule {
 
 
     function __call( $name, $args ) {
-        if ( in_array( $name, $this->sanitizer->valid ) ) {
+        if ( \in_array( $name, $this->sanitizer->valid ) ) {
             return ! empty($args) ? $this->chained( $name, $args[0] ) : $this;
         }
     }
@@ -77,8 +77,8 @@ class Rule implements CRI\Rule {
     public function merge_group() {
         $group = $this->group ? $this->group_exists( $this->group ) : '';
         if ( ! empty( $group ) ) {
-            \do_action_ref_array( 'pre_clever_rules_merge_group', $this->args );
-            $this->args = \wp_parse_args( $this->args, $group->args );
+            $group_args = \apply_filters( 'clever_rules_group_args', $group->args, $this->args );
+            $this->args = \wp_parse_args( $this->args, $group_args );
         }
     }
 
@@ -139,7 +139,7 @@ class Rule implements CRI\Rule {
     public function paginate() {
         if ( $this->paginated === true || $this->paginated === 'single' ) {
             $var = $this->paginated === 'single' ? 'page' : 'paged';
-            $paged = '[' . substr_count( $this->route, '%' ) . ']';
+            $paged = '[' . \substr_count( $this->route, '%' ) . ']';
             $args = array(
                 'route' => \trailingslashit( $this->route ) . 'page/%d',
                 'query' => \wp_parse_args( array($var => $paged), $this->query ),
@@ -156,18 +156,18 @@ class Rule implements CRI\Rule {
 
     static function get_rule_name( $args = array() ) {
         if ( isset( $args['id'] ) && ! empty( $args['id'] ) ) {
-            return md5( $args['id'] );
+            return \md5( $args['id'] );
         } elseif ( isset( $args['route'] ) && ! empty( $args['route'] ) ) {
-            return md5( $args['route'] );
+            return \md5( $args['route'] );
         }
     }
 
 
     static function get_rule_link( $id = '', $args = array() ) {
-        if ( array_key_exists( $id, Rules::$rules ) ) {
+        if ( \array_key_exists( $id, Rules::$rules ) ) {
             $rule = Rules::$rules[$id];
-            $part = trim( vsprintf( $rule['route'], $args ), '/\\ ' );
-            return trailingslashit( trailingslashit( home_url() ) . $part );
+            $part = trim( \vsprintf( $rule['route'], $args ), '/\\ ' );
+            return \trailingslashit( \trailingslashit( \home_url() ) . $part );
         }
     }
 

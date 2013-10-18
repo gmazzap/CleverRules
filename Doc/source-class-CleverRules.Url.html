@@ -5,7 +5,7 @@
 	<meta name="generator" content="ApiGen 2.8.0" />
 	<meta name="robots" content="noindex" />
 
-	<title>File CleverRules/Url.php | CleverRules 0.2</title>
+	<title>File CleverRules/Url.php | CleverRules</title>
 
 	<script type="text/javascript" src="resources/combined.js?2391869379"></script>
 	<script type="text/javascript" src="elementlist.js?2845275725"></script>
@@ -88,17 +88,8 @@
 			<li>
 				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
 			</li>
-			<li>
-				<a href="deprecated.html" title="List of deprecated elements"><span>Deprecated</span></a>
-			</li>
-			<li>
-				<a href="todo.html" title="Todo list"><span>Todo</span></a>
-			</li>
 		</ul>
 		<ul>
-			<li>
-				<a href="cleverrules-0-2-api-documentation.zip" title="Download documentation as ZIP archive"><span>Download</span></a>
-			</li>
 		</ul>
 	</div>
 
@@ -117,19 +108,19 @@
 </span><span id="13" class="l"><a class="l" href="#13">13: </a><span class="php-keyword1">class</span> <a id="Url" href="#Url">Url</a> <span class="php-keyword1">implements</span> CRI\Url {
 </span><span id="14" class="l"><a class="l" href="#14">14: </a>
 </span><span id="15" class="l"><a class="l" href="#15">15: </a>
-</span><span id="16" class="l"><a class="l" href="#16">16: </a>    <span class="php-keyword1">var</span> <span class="php-var"><a id="$full" href="#$full">$full</a></span>;
+</span><span id="16" class="l"><a class="l" href="#16">16: </a>    <span class="php-keyword1">public</span> <span class="php-var"><a id="$full" href="#$full">$full</a></span>;
 </span><span id="17" class="l"><a class="l" href="#17">17: </a>
 </span><span id="18" class="l"><a class="l" href="#18">18: </a>
-</span><span id="19" class="l"><a class="l" href="#19">19: </a>    <span class="php-keyword1">var</span> <span class="php-var"><a id="$sane_array" href="#$sane_array">$sane_array</a></span>;
+</span><span id="19" class="l"><a class="l" href="#19">19: </a>    <span class="php-keyword1">public</span> <span class="php-var"><a id="$sane_array" href="#$sane_array">$sane_array</a></span>;
 </span><span id="20" class="l"><a class="l" href="#20">20: </a>
 </span><span id="21" class="l"><a class="l" href="#21">21: </a>
-</span><span id="22" class="l"><a class="l" href="#22">22: </a>    <span class="php-keyword1">var</span> <span class="php-var"><a id="$sane" href="#$sane">$sane</a></span>;
+</span><span id="22" class="l"><a class="l" href="#22">22: </a>    <span class="php-keyword1">public</span> <span class="php-var"><a id="$sane" href="#$sane">$sane</a></span>;
 </span><span id="23" class="l"><a class="l" href="#23">23: </a>
 </span><span id="24" class="l"><a class="l" href="#24">24: </a>
-</span><span id="25" class="l"><a class="l" href="#25">25: </a>    <span class="php-keyword1">var</span> <span class="php-var"><a id="$parts" href="#$parts">$parts</a></span> = <span class="php-keyword1">array</span>();
+</span><span id="25" class="l"><a class="l" href="#25">25: </a>    <span class="php-keyword1">public</span> <span class="php-var"><a id="$parts" href="#$parts">$parts</a></span> = <span class="php-keyword1">array</span>();
 </span><span id="26" class="l"><a class="l" href="#26">26: </a>
 </span><span id="27" class="l"><a class="l" href="#27">27: </a>
-</span><span id="28" class="l"><a class="l" href="#28">28: </a>    <span class="php-keyword1">var</span> <span class="php-var"><a id="$qs" href="#$qs">$qs</a></span>;
+</span><span id="28" class="l"><a class="l" href="#28">28: </a>    <span class="php-keyword1">public</span> <span class="php-var"><a id="$qs" href="#$qs">$qs</a></span>;
 </span><span id="29" class="l"><a class="l" href="#29">29: </a>
 </span><span id="30" class="l"><a class="l" href="#30">30: </a>
 </span><span id="31" class="l"><a class="l" href="#31">31: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="___construct" href="#___construct">__construct</a>() {
@@ -148,20 +139,21 @@
 </span><span id="44" class="l"><a class="l" href="#44">44: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_set_vars" href="#_set_vars">set_vars</a>() {
 </span><span id="45" class="l"><a class="l" href="#45">45: </a>        <span class="php-var">$qs</span> = <span class="php-keyword1">array</span>();
 </span><span id="46" class="l"><a class="l" href="#46">46: </a>        <span class="php-keyword1">if</span> ( <span class="php-keyword1">isset</span>( <span class="php-var">$this</span>-&gt;sane_array[<span class="php-num">1</span>] ) ) \<span class="php-keyword2">parse_str</span>( <span class="php-var">$this</span>-&gt;sane_array[<span class="php-num">1</span>], <span class="php-var">$qs</span> );
-</span><span id="47" class="l"><a class="l" href="#47">47: </a>        <span class="php-var">$this</span>-&gt;sane = <span class="php-var">$this</span>-&gt;sane_array[<span class="php-num">0</span>];
+</span><span id="47" class="l"><a class="l" href="#47">47: </a>        <span class="php-var">$this</span>-&gt;sane = <span class="php-keyword2">trim</span>(<span class="php-var">$this</span>-&gt;sane_array[<span class="php-num">0</span>], <span class="php-quote">'/\\'</span>);
 </span><span id="48" class="l"><a class="l" href="#48">48: </a>        <span class="php-var">$this</span>-&gt;qs = <span class="php-var">$qs</span>;
 </span><span id="49" class="l"><a class="l" href="#49">49: </a>    }
 </span><span id="50" class="l"><a class="l" href="#50">50: </a>
 </span><span id="51" class="l"><a class="l" href="#51">51: </a>
 </span><span id="52" class="l"><a class="l" href="#52">52: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_set_parts" href="#_set_parts">set_parts</a>() {
-</span><span id="53" class="l"><a class="l" href="#53">53: </a>        <span class="php-var">$this</span>-&gt;parts = \<span class="php-keyword2">array_values</span>( \<span class="php-keyword2">array_filter</span>( \<span class="php-keyword2">explode</span>( <span class="php-quote">'/'</span>, <span class="php-var">$this</span>-&gt;sane ) ) );
+</span><span id="53" class="l"><a class="l" href="#53">53: </a>        <span class="php-var">$this</span>-&gt;parts = \<span class="php-keyword2">array_filter</span>( \<span class="php-keyword2">explode</span>( <span class="php-quote">'/'</span>, <span class="php-var">$this</span>-&gt;sane ) );
 </span><span id="54" class="l"><a class="l" href="#54">54: </a>    }
 </span><span id="55" class="l"><a class="l" href="#55">55: </a>
 </span><span id="56" class="l"><a class="l" href="#56">56: </a>
-</span><span id="57" class="l"><a class="l" href="#57">57: </a></span>}</code></pre>
+</span><span id="57" class="l"><a class="l" href="#57">57: </a>}
+</span><span id="58" class="l"><a class="l" href="#58">58: </a></span></code></pre>
 
 	<div id="footer">
-		CleverRules 0.2 API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+		CleverRules API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

@@ -5,7 +5,7 @@
 	<meta name="generator" content="ApiGen 2.8.0" />
 	<meta name="robots" content="noindex" />
 
-	<title>File CleverRules/Rule.php | CleverRules 0.2</title>
+	<title>File CleverRules/Rule.php | CleverRules</title>
 
 	<script type="text/javascript" src="resources/combined.js?2391869379"></script>
 	<script type="text/javascript" src="elementlist.js?2845275725"></script>
@@ -88,17 +88,8 @@
 			<li>
 				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
 			</li>
-			<li>
-				<a href="deprecated.html" title="List of deprecated elements"><span>Deprecated</span></a>
-			</li>
-			<li>
-				<a href="todo.html" title="Todo list"><span>Todo</span></a>
-			</li>
 		</ul>
 		<ul>
-			<li>
-				<a href="cleverrules-0-2-api-documentation.zip" title="Download documentation as ZIP archive"><span>Download</span></a>
-			</li>
 		</ul>
 	</div>
 
@@ -147,72 +138,72 @@
 </span><span id="43" class="l"><a class="l" href="#43"> 43: </a>
 </span><span id="44" class="l"><a class="l" href="#44"> 44: </a>
 </span><span id="45" class="l"><a class="l" href="#45"> 45: </a>    <span class="php-keyword1">function</span> <a id="___call" href="#___call">__call</a>( <span class="php-var">$name</span>, <span class="php-var">$args</span> ) {
-</span><span id="46" class="l"><a class="l" href="#46"> 46: </a>        <span class="php-keyword1">if</span> ( <span class="php-keyword2">in_array</span>( <span class="php-var">$name</span>, <span class="php-var">$this</span>-&gt;sanitizer-&gt;valid ) &amp;&amp; ! <span class="php-keyword1">empty</span>( <span class="php-var">$args</span> ) )
-</span><span id="47" class="l"><a class="l" href="#47"> 47: </a>                <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;chained( <span class="php-var">$name</span>, <span class="php-var">$args</span>[<span class="php-num">0</span>] );
-</span><span id="48" class="l"><a class="l" href="#48"> 48: </a>    }
-</span><span id="49" class="l"><a class="l" href="#49"> 49: </a>
+</span><span id="46" class="l"><a class="l" href="#46"> 46: </a>        <span class="php-keyword1">if</span> ( \<span class="php-keyword2">in_array</span>( <span class="php-var">$name</span>, <span class="php-var">$this</span>-&gt;sanitizer-&gt;valid ) ) {
+</span><span id="47" class="l"><a class="l" href="#47"> 47: </a>            <span class="php-keyword1">return</span> ! <span class="php-keyword1">empty</span>(<span class="php-var">$args</span>) ? <span class="php-var">$this</span>-&gt;chained( <span class="php-var">$name</span>, <span class="php-var">$args</span>[<span class="php-num">0</span>] ) : <span class="php-var">$this</span>;
+</span><span id="48" class="l"><a class="l" href="#48"> 48: </a>        }
+</span><span id="49" class="l"><a class="l" href="#49"> 49: </a>    }
 </span><span id="50" class="l"><a class="l" href="#50"> 50: </a>
-</span><span id="51" class="l"><a class="l" href="#51"> 51: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_register" href="#_register">register</a>( <span class="php-var">$args</span> ) {
-</span><span id="52" class="l"><a class="l" href="#52"> 52: </a>        <span class="php-var">$this</span>-&gt;setup( <span class="php-var">$args</span> );
-</span><span id="53" class="l"><a class="l" href="#53"> 53: </a>        <span class="php-keyword1">if</span> ( <span class="php-var">$this</span>-&gt;args[<span class="php-quote">'route'</span>] === <span class="php-quote">'/'</span> ) <span class="php-var">$this</span>-&gt;is_home = <span class="php-keyword1">true</span>;
-</span><span id="54" class="l"><a class="l" href="#54"> 54: </a>        <span class="php-keyword1">if</span> ( ! <span class="php-keyword1">empty</span>( <span class="php-var">$this</span>-&gt;args ) ) <span class="php-var">$this</span>-&gt;save();
-</span><span id="55" class="l"><a class="l" href="#55"> 55: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>;
-</span><span id="56" class="l"><a class="l" href="#56"> 56: </a>    }
-</span><span id="57" class="l"><a class="l" href="#57"> 57: </a>
+</span><span id="51" class="l"><a class="l" href="#51"> 51: </a>
+</span><span id="52" class="l"><a class="l" href="#52"> 52: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_register" href="#_register">register</a>( <span class="php-var">$args</span> ) {
+</span><span id="53" class="l"><a class="l" href="#53"> 53: </a>        <span class="php-var">$this</span>-&gt;setup( <span class="php-var">$args</span> );
+</span><span id="54" class="l"><a class="l" href="#54"> 54: </a>        <span class="php-keyword1">if</span> ( <span class="php-var">$this</span>-&gt;args[<span class="php-quote">'route'</span>] === <span class="php-quote">'/'</span> ) <span class="php-var">$this</span>-&gt;is_home = <span class="php-keyword1">true</span>;
+</span><span id="55" class="l"><a class="l" href="#55"> 55: </a>        <span class="php-keyword1">if</span> ( ! <span class="php-keyword1">empty</span>( <span class="php-var">$this</span>-&gt;args ) ) <span class="php-var">$this</span>-&gt;save();
+</span><span id="56" class="l"><a class="l" href="#56"> 56: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>;
+</span><span id="57" class="l"><a class="l" href="#57"> 57: </a>    }
 </span><span id="58" class="l"><a class="l" href="#58"> 58: </a>
-</span><span id="59" class="l"><a class="l" href="#59"> 59: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_register_group" href="#_register_group">register_group</a>( <span class="php-var">$args</span> ) {
-</span><span id="60" class="l"><a class="l" href="#60"> 60: </a>        <span class="php-var">$this</span>-&gt;is_group = <span class="php-keyword1">true</span>;
-</span><span id="61" class="l"><a class="l" href="#61"> 61: </a>        <span class="php-var">$this</span>-&gt;setup( <span class="php-var">$args</span> );
-</span><span id="62" class="l"><a class="l" href="#62"> 62: </a>        <span class="php-var">$this</span>-&gt;save();
-</span><span id="63" class="l"><a class="l" href="#63"> 63: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>;
-</span><span id="64" class="l"><a class="l" href="#64"> 64: </a>    }
-</span><span id="65" class="l"><a class="l" href="#65"> 65: </a>
+</span><span id="59" class="l"><a class="l" href="#59"> 59: </a>
+</span><span id="60" class="l"><a class="l" href="#60"> 60: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_register_group" href="#_register_group">register_group</a>( <span class="php-var">$args</span> ) {
+</span><span id="61" class="l"><a class="l" href="#61"> 61: </a>        <span class="php-var">$this</span>-&gt;is_group = <span class="php-keyword1">true</span>;
+</span><span id="62" class="l"><a class="l" href="#62"> 62: </a>        <span class="php-var">$this</span>-&gt;setup( <span class="php-var">$args</span> );
+</span><span id="63" class="l"><a class="l" href="#63"> 63: </a>        <span class="php-var">$this</span>-&gt;save();
+</span><span id="64" class="l"><a class="l" href="#64"> 64: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>;
+</span><span id="65" class="l"><a class="l" href="#65"> 65: </a>    }
 </span><span id="66" class="l"><a class="l" href="#66"> 66: </a>
-</span><span id="67" class="l"><a class="l" href="#67"> 67: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_setup" href="#_setup">setup</a>( <span class="php-var">$args</span> ) {
-</span><span id="68" class="l"><a class="l" href="#68"> 68: </a>        <span class="php-keyword1">if</span> ( <span class="php-keyword1">empty</span>( <span class="php-var">$args</span> ) || ! <span class="php-keyword2">is_array</span>( <span class="php-var">$args</span> ) ) <span class="php-keyword1">return</span>;
-</span><span id="69" class="l"><a class="l" href="#69"> 69: </a>        <span class="php-var">$this</span>-&gt;setter-&gt;set_all( <span class="php-var">$args</span> );
-</span><span id="70" class="l"><a class="l" href="#70"> 70: </a>        <span class="php-var">$this</span>-&gt;args = <span class="php-var">$this</span>-&gt;setter-&gt;get_all();
-</span><span id="71" class="l"><a class="l" href="#71"> 71: </a>        <span class="php-keyword1">if</span> ( ! <span class="php-keyword1">empty</span>( <span class="php-var">$this</span>-&gt;args[<span class="php-quote">'group'</span>] ) ) <span class="php-var">$this</span>-&gt;merge_group();
+</span><span id="67" class="l"><a class="l" href="#67"> 67: </a>
+</span><span id="68" class="l"><a class="l" href="#68"> 68: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_setup" href="#_setup">setup</a>( <span class="php-var">$args</span> ) {
+</span><span id="69" class="l"><a class="l" href="#69"> 69: </a>        <span class="php-keyword1">if</span> ( <span class="php-keyword1">empty</span>( <span class="php-var">$args</span> ) || ! <span class="php-keyword2">is_array</span>( <span class="php-var">$args</span> ) ) <span class="php-keyword1">return</span>;
+</span><span id="70" class="l"><a class="l" href="#70"> 70: </a>        <span class="php-var">$this</span>-&gt;setter-&gt;set_all( <span class="php-var">$args</span> );
+</span><span id="71" class="l"><a class="l" href="#71"> 71: </a>        <span class="php-var">$this</span>-&gt;args = <span class="php-var">$this</span>-&gt;setter-&gt;get_all();
 </span><span id="72" class="l"><a class="l" href="#72"> 72: </a>        <span class="php-var">$this</span>-&gt;sanitize();
 </span><span id="73" class="l"><a class="l" href="#73"> 73: </a>        <span class="php-var">$this</span>-&gt;args = <span class="php-var">$this</span>-&gt;sanitizer-&gt;sanitized;
 </span><span id="74" class="l"><a class="l" href="#74"> 74: </a>    }
 </span><span id="75" class="l"><a class="l" href="#75"> 75: </a>
 </span><span id="76" class="l"><a class="l" href="#76"> 76: </a>
 </span><span id="77" class="l"><a class="l" href="#77"> 77: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_merge_group" href="#_merge_group">merge_group</a>() {
-</span><span id="78" class="l"><a class="l" href="#78"> 78: </a>        <span class="php-var">$group</span> = <span class="php-keyword1">isset</span>( <span class="php-var">$this</span>-&gt;group ) ? <span class="php-var">$this</span>-&gt;group_exists( <span class="php-var">$this</span>-&gt;group ) : <span class="php-quote">''</span>;
+</span><span id="78" class="l"><a class="l" href="#78"> 78: </a>        <span class="php-var">$group</span> = <span class="php-var">$this</span>-&gt;group ? <span class="php-var">$this</span>-&gt;group_exists( <span class="php-var">$this</span>-&gt;group ) : <span class="php-quote">''</span>;
 </span><span id="79" class="l"><a class="l" href="#79"> 79: </a>        <span class="php-keyword1">if</span> ( ! <span class="php-keyword1">empty</span>( <span class="php-var">$group</span> ) ) {
-</span><span id="80" class="l"><a class="l" href="#80"> 80: </a>            <span class="php-keyword1">if</span> ( ! <span class="php-var">$group</span>-&gt;sanizer-&gt;check_group( <span class="php-var">$group</span> ) ) <span class="php-keyword1">return</span>;
-</span><span id="81" class="l"><a class="l" href="#81"> 81: </a>            <span class="php-var">$this</span>-&gt;setter-&gt;merge_group( <span class="php-var">$group</span>-&gt;args );
-</span><span id="82" class="l"><a class="l" href="#82"> 82: </a>            <span class="php-var">$this</span>-&gt;args = <span class="php-var">$this</span>-&gt;setter-&gt;get_all();
-</span><span id="83" class="l"><a class="l" href="#83"> 83: </a>        }
-</span><span id="84" class="l"><a class="l" href="#84"> 84: </a>    }
+</span><span id="80" class="l"><a class="l" href="#80"> 80: </a>            <span class="php-var">$group_args</span> = \apply_filters( <span class="php-quote">'clever_rules_group_args'</span>, <span class="php-var">$group</span>-&gt;args, <span class="php-var">$this</span>-&gt;args );
+</span><span id="81" class="l"><a class="l" href="#81"> 81: </a>            <span class="php-var">$this</span>-&gt;args = \wp_parse_args( <span class="php-var">$this</span>-&gt;args, <span class="php-var">$group_args</span> );
+</span><span id="82" class="l"><a class="l" href="#82"> 82: </a>        }
+</span><span id="83" class="l"><a class="l" href="#83"> 83: </a>    }
+</span><span id="84" class="l"><a class="l" href="#84"> 84: </a>
 </span><span id="85" class="l"><a class="l" href="#85"> 85: </a>
-</span><span id="86" class="l"><a class="l" href="#86"> 86: </a>
-</span><span id="87" class="l"><a class="l" href="#87"> 87: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_sanitize" href="#_sanitize">sanitize</a>() {
-</span><span id="88" class="l"><a class="l" href="#88"> 88: </a>        <span class="php-var">$this</span>-&gt;sanitizer-&gt;setup( <span class="php-var">$this</span>-&gt;args );
-</span><span id="89" class="l"><a class="l" href="#89"> 89: </a>        <span class="php-var">$this</span>-&gt;sanitizer-&gt;sanitize();
-</span><span id="90" class="l"><a class="l" href="#90"> 90: </a>    }
+</span><span id="86" class="l"><a class="l" href="#86"> 86: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_sanitize" href="#_sanitize">sanitize</a>() {
+</span><span id="87" class="l"><a class="l" href="#87"> 87: </a>        <span class="php-var">$this</span>-&gt;sanitizer-&gt;setup( <span class="php-var">$this</span>-&gt;args );
+</span><span id="88" class="l"><a class="l" href="#88"> 88: </a>        <span class="php-var">$this</span>-&gt;sanitizer-&gt;sanitize();
+</span><span id="89" class="l"><a class="l" href="#89"> 89: </a>    }
+</span><span id="90" class="l"><a class="l" href="#90"> 90: </a>
 </span><span id="91" class="l"><a class="l" href="#91"> 91: </a>
-</span><span id="92" class="l"><a class="l" href="#92"> 92: </a>
-</span><span id="93" class="l"><a class="l" href="#93"> 93: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="_save" href="#_save">save</a>() {
-</span><span id="94" class="l"><a class="l" href="#94"> 94: </a>        <span class="php-var">$id</span> = <span class="php-var">$this</span>-&gt;get_name();
-</span><span id="95" class="l"><a class="l" href="#95"> 95: </a>        <span class="php-keyword1">if</span> ( <span class="php-var">$this</span>-&gt;is_group ) {
-</span><span id="96" class="l"><a class="l" href="#96"> 96: </a>            Rules::<span class="php-var">$groups</span>[<span class="php-var">$id</span>] = <span class="php-var">$this</span>;
-</span><span id="97" class="l"><a class="l" href="#97"> 97: </a>        } <span class="php-keyword1">else</span> {
-</span><span id="98" class="l"><a class="l" href="#98"> 98: </a>            Rules::<span class="php-var">$rules</span>[<span class="php-var">$id</span>] = <span class="php-var">$this</span>;
-</span><span id="99" class="l"><a class="l" href="#99"> 99: </a>        }
-</span><span id="100" class="l"><a class="l" href="#100">100: </a>    }
+</span><span id="92" class="l"><a class="l" href="#92"> 92: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_save" href="#_save">save</a>() {
+</span><span id="93" class="l"><a class="l" href="#93"> 93: </a>        <span class="php-var">$id</span> = <span class="php-var">$this</span>-&gt;get_name();
+</span><span id="94" class="l"><a class="l" href="#94"> 94: </a>        <span class="php-keyword1">if</span> ( <span class="php-var">$this</span>-&gt;is_group ) {
+</span><span id="95" class="l"><a class="l" href="#95"> 95: </a>            Rules::<span class="php-var">$groups</span>[<span class="php-var">$id</span>] = <span class="php-var">$this</span>;
+</span><span id="96" class="l"><a class="l" href="#96"> 96: </a>        } <span class="php-keyword1">else</span> {
+</span><span id="97" class="l"><a class="l" href="#97"> 97: </a>            Rules::<span class="php-var">$rules</span>[<span class="php-var">$id</span>] = <span class="php-var">$this</span>;
+</span><span id="98" class="l"><a class="l" href="#98"> 98: </a>        }
+</span><span id="99" class="l"><a class="l" href="#99"> 99: </a>    }
+</span><span id="100" class="l"><a class="l" href="#100">100: </a>
 </span><span id="101" class="l"><a class="l" href="#101">101: </a>
-</span><span id="102" class="l"><a class="l" href="#102">102: </a>
-</span><span id="103" class="l"><a class="l" href="#103">103: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="_group_exists" href="#_group_exists">group_exists</a>( <span class="php-var">$group</span> ) {
-</span><span id="104" class="l"><a class="l" href="#104">104: </a>        <span class="php-var">$id</span> = <span class="php-keyword2">md5</span>( <span class="php-var">$group</span> );
-</span><span id="105" class="l"><a class="l" href="#105">105: </a>        <span class="php-keyword1">if</span> ( <span class="php-keyword2">array_key_exists</span>( <span class="php-var">$id</span>, Rules::<span class="php-var">$groups</span> ) ) <span class="php-keyword1">return</span> Rules::<span class="php-var">$groups</span>[<span class="php-var">$id</span>];
+</span><span id="102" class="l"><a class="l" href="#102">102: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="_group_exists" href="#_group_exists">group_exists</a>( <span class="php-var">$group</span> ) {
+</span><span id="103" class="l"><a class="l" href="#103">103: </a>        <span class="php-var">$id</span> = <span class="php-keyword2">md5</span>( <span class="php-var">$group</span> );
+</span><span id="104" class="l"><a class="l" href="#104">104: </a>        <span class="php-keyword1">if</span> ( ! <span class="php-keyword1">empty</span>(Rules::<span class="php-var">$groups</span>) &amp;&amp; <span class="php-keyword2">array_key_exists</span>( <span class="php-var">$id</span>, Rules::<span class="php-var">$groups</span> ) )
+</span><span id="105" class="l"><a class="l" href="#105">105: </a>            <span class="php-keyword1">return</span> Rules::<span class="php-var">$groups</span>[<span class="php-var">$id</span>];
 </span><span id="106" class="l"><a class="l" href="#106">106: </a>    }
 </span><span id="107" class="l"><a class="l" href="#107">107: </a>
 </span><span id="108" class="l"><a class="l" href="#108">108: </a>
 </span><span id="109" class="l"><a class="l" href="#109">109: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="_get_name" href="#_get_name">get_name</a>() {
-</span><span id="110" class="l"><a class="l" href="#110">110: </a>        <span class="php-var">$key</span> = <span class="php-var">$this</span>-&gt;id ? <span class="php-quote">'id'</span> : <span class="php-quote">'route'</span>;
-</span><span id="111" class="l"><a class="l" href="#111">111: </a>        <span class="php-var">$value</span> = <span class="php-var">$this</span>-&gt;id ? <span class="php-var">$this</span>-&gt;id : <span class="php-var">$this</span>-&gt;route;
+</span><span id="110" class="l"><a class="l" href="#110">110: </a>        <span class="php-var">$key</span> = <span class="php-keyword1">isset</span>(<span class="php-var">$this</span>-&gt;args[<span class="php-quote">'id'</span>]) ? <span class="php-quote">'id'</span> : <span class="php-quote">'route'</span>;
+</span><span id="111" class="l"><a class="l" href="#111">111: </a>        <span class="php-var">$value</span> = <span class="php-keyword1">isset</span>(<span class="php-var">$this</span>-&gt;args[<span class="php-quote">'id'</span>]) ? <span class="php-var">$this</span>-&gt;args[<span class="php-quote">'id'</span>] : <span class="php-var">$this</span>-&gt;args[<span class="php-quote">'route'</span>];
 </span><span id="112" class="l"><a class="l" href="#112">112: </a>        <span class="php-keyword1">return</span> self::get_rule_name( <span class="php-keyword1">array</span>(<span class="php-var">$key</span> =&gt; <span class="php-var">$value</span>) );
 </span><span id="113" class="l"><a class="l" href="#113">113: </a>    }
 </span><span id="114" class="l"><a class="l" href="#114">114: </a>
@@ -230,53 +221,56 @@
 </span><span id="126" class="l"><a class="l" href="#126">126: </a>
 </span><span id="127" class="l"><a class="l" href="#127">127: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="_setup_chained" href="#_setup_chained">setup_chained</a>( <span class="php-var">$name</span>, <span class="php-var">$sanitized</span> ) {
 </span><span id="128" class="l"><a class="l" href="#128">128: </a>        <span class="php-var">$id</span> = <span class="php-var">$this</span>-&gt;get_name();
-</span><span id="129" class="l"><a class="l" href="#129">129: </a>        <span class="php-keyword1">if</span> ( ! <span class="php-var">$this</span>-&gt;is_group ) {
-</span><span id="130" class="l"><a class="l" href="#130">130: </a>            Rules::<span class="php-var">$rules</span>[<span class="php-var">$id</span>]-&gt;args[<span class="php-var">$name</span>] = <span class="php-var">$sanitized</span>;
-</span><span id="131" class="l"><a class="l" href="#131">131: </a>        } <span class="php-keyword1">else</span> {
-</span><span id="132" class="l"><a class="l" href="#132">132: </a>            Rules::<span class="php-var">$groups</span>[<span class="php-var">$id</span>]-&gt;args[<span class="php-var">$name</span>] = <span class="php-var">$sanitized</span>;
-</span><span id="133" class="l"><a class="l" href="#133">133: </a>        }
-</span><span id="134" class="l"><a class="l" href="#134">134: </a>    }
-</span><span id="135" class="l"><a class="l" href="#135">135: </a>
-</span><span id="136" class="l"><a class="l" href="#136">136: </a>
-</span><span id="137" class="l"><a class="l" href="#137">137: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_paginate" href="#_paginate">paginate</a>() {
-</span><span id="138" class="l"><a class="l" href="#138">138: </a>        <span class="php-keyword1">if</span> ( <span class="php-var">$this</span>-&gt;paginated === <span class="php-keyword1">true</span> || <span class="php-var">$this</span>-&gt;paginated === <span class="php-quote">'single'</span> ) {
-</span><span id="139" class="l"><a class="l" href="#139">139: </a>            <span class="php-var">$var</span> = <span class="php-var">$this</span>-&gt;paginated === <span class="php-quote">'single'</span> ? <span class="php-quote">'page'</span> : <span class="php-quote">'paged'</span>;
-</span><span id="140" class="l"><a class="l" href="#140">140: </a>            <span class="php-var">$paged</span> = <span class="php-quote">'['</span> . <span class="php-keyword2">substr_count</span>( <span class="php-var">$this</span>-&gt;route, <span class="php-quote">'%'</span> ) . <span class="php-quote">']'</span>;
-</span><span id="141" class="l"><a class="l" href="#141">141: </a>            <span class="php-var">$args</span> = <span class="php-keyword1">array</span>(
-</span><span id="142" class="l"><a class="l" href="#142">142: </a>                <span class="php-quote">'route'</span> =&gt; \trailingslashit( <span class="php-var">$this</span>-&gt;route ) . <span class="php-quote">'page/%d/'</span>,
-</span><span id="143" class="l"><a class="l" href="#143">143: </a>                <span class="php-quote">'query'</span> =&gt; \wp_parse_args( <span class="php-keyword1">array</span>(<span class="php-var">$var</span> =&gt; <span class="php-var">$paged</span>), <span class="php-var">$this</span>-&gt;query ),
-</span><span id="144" class="l"><a class="l" href="#144">144: </a>                <span class="php-quote">'paginated'</span> =&gt; <span class="php-keyword1">false</span>
-</span><span id="145" class="l"><a class="l" href="#145">145: </a>            );
-</span><span id="146" class="l"><a class="l" href="#146">146: </a>            <span class="php-keyword1">if</span> ( ! <span class="php-var">$this</span>-&gt;id ) <span class="php-var">$args</span>[<span class="php-quote">'id'</span>] = <span class="php-var">$this</span>-&gt;id . <span class="php-quote">'.page'</span>;
-</span><span id="147" class="l"><a class="l" href="#147">147: </a>            <span class="php-var">$newrule</span> = <span class="php-keyword1">clone</span> <span class="php-var">$this</span>;
-</span><span id="148" class="l"><a class="l" href="#148">148: </a>            <span class="php-var">$newrule</span>-&gt;args( \wp_parse_args( <span class="php-var">$args</span>, <span class="php-var">$this</span>-&gt;args ) );
-</span><span id="149" class="l"><a class="l" href="#149">149: </a>            <span class="php-var">$newrule</span>-&gt;save();
-</span><span id="150" class="l"><a class="l" href="#150">150: </a>        }
-</span><span id="151" class="l"><a class="l" href="#151">151: </a>    }
-</span><span id="152" class="l"><a class="l" href="#152">152: </a>
-</span><span id="153" class="l"><a class="l" href="#153">153: </a>
-</span><span id="154" class="l"><a class="l" href="#154">154: </a>    <span class="php-keyword1">static</span> <span class="php-keyword1">function</span> <a id="_get_rule_name" href="#_get_rule_name">get_rule_name</a>( <span class="php-var">$args</span> = <span class="php-keyword1">array</span>() ) {
-</span><span id="155" class="l"><a class="l" href="#155">155: </a>        <span class="php-keyword1">if</span> ( <span class="php-keyword1">isset</span>( <span class="php-var">$args</span>[<span class="php-quote">'id'</span>] ) &amp;&amp; ! <span class="php-keyword1">empty</span>( <span class="php-var">$args</span>[<span class="php-quote">'id'</span>] ) ) {
-</span><span id="156" class="l"><a class="l" href="#156">156: </a>            <span class="php-keyword1">return</span> <span class="php-keyword2">md5</span>( <span class="php-var">$args</span>[<span class="php-quote">'id'</span>] );
-</span><span id="157" class="l"><a class="l" href="#157">157: </a>        } <span class="php-keyword1">elseif</span> ( <span class="php-keyword1">isset</span>( <span class="php-var">$args</span>[<span class="php-quote">'route'</span>] ) &amp;&amp; ! <span class="php-keyword1">empty</span>( <span class="php-var">$args</span>[<span class="php-quote">'route'</span>] ) ) {
-</span><span id="158" class="l"><a class="l" href="#158">158: </a>            <span class="php-keyword1">return</span> <span class="php-keyword2">md5</span>( <span class="php-var">$args</span>[<span class="php-quote">'route'</span>] );
-</span><span id="159" class="l"><a class="l" href="#159">159: </a>        }
-</span><span id="160" class="l"><a class="l" href="#160">160: </a>    }
-</span><span id="161" class="l"><a class="l" href="#161">161: </a>
-</span><span id="162" class="l"><a class="l" href="#162">162: </a>
-</span><span id="163" class="l"><a class="l" href="#163">163: </a>    <span class="php-keyword1">static</span> <span class="php-keyword1">function</span> <a id="_get_rule_link" href="#_get_rule_link">get_rule_link</a>( <span class="php-var">$id</span> = <span class="php-quote">''</span>, <span class="php-var">$args</span> = <span class="php-keyword1">array</span>() ) {
-</span><span id="164" class="l"><a class="l" href="#164">164: </a>        <span class="php-keyword1">if</span> ( <span class="php-keyword2">array_key_exists</span>( <span class="php-var">$id</span>, Rules::<span class="php-var">$rules</span> ) ) {
-</span><span id="165" class="l"><a class="l" href="#165">165: </a>            <span class="php-var">$rule</span> = Rules::<span class="php-var">$rules</span>[<span class="php-var">$id</span>];
-</span><span id="166" class="l"><a class="l" href="#166">166: </a>            <span class="php-var">$part</span> = <span class="php-keyword2">trim</span>( <span class="php-keyword2">vsprintf</span>( <span class="php-var">$rule</span>[<span class="php-quote">'route'</span>], <span class="php-var">$args</span> ), <span class="php-quote">'/\\ '</span> );
-</span><span id="167" class="l"><a class="l" href="#167">167: </a>            <span class="php-keyword1">return</span> trailingslashit( trailingslashit( home_url() ) . <span class="php-var">$part</span> );
-</span><span id="168" class="l"><a class="l" href="#168">168: </a>        }
-</span><span id="169" class="l"><a class="l" href="#169">169: </a>    }
-</span><span id="170" class="l"><a class="l" href="#170">170: </a>
-</span><span id="171" class="l"><a class="l" href="#171">171: </a>
-</span><span id="172" class="l"><a class="l" href="#172">172: </a></span>}</code></pre>
+</span><span id="129" class="l"><a class="l" href="#129">129: </a>        <span class="php-var">$this</span>-&gt;args[<span class="php-var">$name</span>] = <span class="php-var">$sanitized</span>;
+</span><span id="130" class="l"><a class="l" href="#130">130: </a>        <span class="php-var">$this</span>-&gt;setter-&gt;set_all(<span class="php-var">$this</span>-&gt;args);
+</span><span id="131" class="l"><a class="l" href="#131">131: </a>        <span class="php-keyword1">if</span> ( ! <span class="php-var">$this</span>-&gt;is_group ) {
+</span><span id="132" class="l"><a class="l" href="#132">132: </a>            Rules::<span class="php-var">$rules</span>[<span class="php-var">$id</span>]-&gt;args = <span class="php-var">$this</span>-&gt;args;
+</span><span id="133" class="l"><a class="l" href="#133">133: </a>        } <span class="php-keyword1">else</span> {
+</span><span id="134" class="l"><a class="l" href="#134">134: </a>            Rules::<span class="php-var">$groups</span>[<span class="php-var">$id</span>]-&gt;args = <span class="php-var">$this</span>-&gt;args;
+</span><span id="135" class="l"><a class="l" href="#135">135: </a>        }
+</span><span id="136" class="l"><a class="l" href="#136">136: </a>    }
+</span><span id="137" class="l"><a class="l" href="#137">137: </a>
+</span><span id="138" class="l"><a class="l" href="#138">138: </a>
+</span><span id="139" class="l"><a class="l" href="#139">139: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_paginate" href="#_paginate">paginate</a>() {
+</span><span id="140" class="l"><a class="l" href="#140">140: </a>        <span class="php-keyword1">if</span> ( <span class="php-var">$this</span>-&gt;paginated === <span class="php-keyword1">true</span> || <span class="php-var">$this</span>-&gt;paginated === <span class="php-quote">'single'</span> ) {
+</span><span id="141" class="l"><a class="l" href="#141">141: </a>            <span class="php-var">$var</span> = <span class="php-var">$this</span>-&gt;paginated === <span class="php-quote">'single'</span> ? <span class="php-quote">'page'</span> : <span class="php-quote">'paged'</span>;
+</span><span id="142" class="l"><a class="l" href="#142">142: </a>            <span class="php-var">$paged</span> = <span class="php-quote">'['</span> . \<span class="php-keyword2">substr_count</span>( <span class="php-var">$this</span>-&gt;route, <span class="php-quote">'%'</span> ) . <span class="php-quote">']'</span>;
+</span><span id="143" class="l"><a class="l" href="#143">143: </a>            <span class="php-var">$args</span> = <span class="php-keyword1">array</span>(
+</span><span id="144" class="l"><a class="l" href="#144">144: </a>                <span class="php-quote">'route'</span> =&gt; \trailingslashit( <span class="php-var">$this</span>-&gt;route ) . <span class="php-quote">'page/%d'</span>,
+</span><span id="145" class="l"><a class="l" href="#145">145: </a>                <span class="php-quote">'query'</span> =&gt; \wp_parse_args( <span class="php-keyword1">array</span>(<span class="php-var">$var</span> =&gt; <span class="php-var">$paged</span>), <span class="php-var">$this</span>-&gt;query ),
+</span><span id="146" class="l"><a class="l" href="#146">146: </a>                <span class="php-quote">'paginated'</span> =&gt; <span class="php-keyword1">false</span>
+</span><span id="147" class="l"><a class="l" href="#147">147: </a>            );
+</span><span id="148" class="l"><a class="l" href="#148">148: </a>            <span class="php-keyword1">if</span> ( <span class="php-var">$this</span>-&gt;id ) <span class="php-var">$args</span>[<span class="php-quote">'id'</span>] = <span class="php-var">$this</span>-&gt;id . <span class="php-quote">'.page'</span>;
+</span><span id="149" class="l"><a class="l" href="#149">149: </a>            <span class="php-var">$newrule</span> = <span class="php-keyword1">clone</span> <span class="php-var">$this</span>;
+</span><span id="150" class="l"><a class="l" href="#150">150: </a>            <span class="php-var">$newrule</span>-&gt;is_home = <span class="php-keyword1">null</span>;
+</span><span id="151" class="l"><a class="l" href="#151">151: </a>            <span class="php-var">$newrule</span>-&gt;args = \wp_parse_args( <span class="php-var">$args</span>, <span class="php-var">$this</span>-&gt;args );
+</span><span id="152" class="l"><a class="l" href="#152">152: </a>            <span class="php-var">$newrule</span>-&gt;save();
+</span><span id="153" class="l"><a class="l" href="#153">153: </a>        }
+</span><span id="154" class="l"><a class="l" href="#154">154: </a>    }
+</span><span id="155" class="l"><a class="l" href="#155">155: </a>
+</span><span id="156" class="l"><a class="l" href="#156">156: </a>
+</span><span id="157" class="l"><a class="l" href="#157">157: </a>    <span class="php-keyword1">static</span> <span class="php-keyword1">function</span> <a id="_get_rule_name" href="#_get_rule_name">get_rule_name</a>( <span class="php-var">$args</span> = <span class="php-keyword1">array</span>() ) {
+</span><span id="158" class="l"><a class="l" href="#158">158: </a>        <span class="php-keyword1">if</span> ( <span class="php-keyword1">isset</span>( <span class="php-var">$args</span>[<span class="php-quote">'id'</span>] ) &amp;&amp; ! <span class="php-keyword1">empty</span>( <span class="php-var">$args</span>[<span class="php-quote">'id'</span>] ) ) {
+</span><span id="159" class="l"><a class="l" href="#159">159: </a>            <span class="php-keyword1">return</span> \<span class="php-keyword2">md5</span>( <span class="php-var">$args</span>[<span class="php-quote">'id'</span>] );
+</span><span id="160" class="l"><a class="l" href="#160">160: </a>        } <span class="php-keyword1">elseif</span> ( <span class="php-keyword1">isset</span>( <span class="php-var">$args</span>[<span class="php-quote">'route'</span>] ) &amp;&amp; ! <span class="php-keyword1">empty</span>( <span class="php-var">$args</span>[<span class="php-quote">'route'</span>] ) ) {
+</span><span id="161" class="l"><a class="l" href="#161">161: </a>            <span class="php-keyword1">return</span> \<span class="php-keyword2">md5</span>( <span class="php-var">$args</span>[<span class="php-quote">'route'</span>] );
+</span><span id="162" class="l"><a class="l" href="#162">162: </a>        }
+</span><span id="163" class="l"><a class="l" href="#163">163: </a>    }
+</span><span id="164" class="l"><a class="l" href="#164">164: </a>
+</span><span id="165" class="l"><a class="l" href="#165">165: </a>
+</span><span id="166" class="l"><a class="l" href="#166">166: </a>    <span class="php-keyword1">static</span> <span class="php-keyword1">function</span> <a id="_get_rule_link" href="#_get_rule_link">get_rule_link</a>( <span class="php-var">$id</span> = <span class="php-quote">''</span>, <span class="php-var">$args</span> = <span class="php-keyword1">array</span>() ) {
+</span><span id="167" class="l"><a class="l" href="#167">167: </a>        <span class="php-keyword1">if</span> ( \<span class="php-keyword2">array_key_exists</span>( <span class="php-var">$id</span>, Rules::<span class="php-var">$rules</span> ) ) {
+</span><span id="168" class="l"><a class="l" href="#168">168: </a>            <span class="php-var">$rule</span> = Rules::<span class="php-var">$rules</span>[<span class="php-var">$id</span>];
+</span><span id="169" class="l"><a class="l" href="#169">169: </a>            <span class="php-var">$part</span> = <span class="php-keyword2">trim</span>( \<span class="php-keyword2">vsprintf</span>( <span class="php-var">$rule</span>[<span class="php-quote">'route'</span>], <span class="php-var">$args</span> ), <span class="php-quote">'/\\ '</span> );
+</span><span id="170" class="l"><a class="l" href="#170">170: </a>            <span class="php-keyword1">return</span> \trailingslashit( \trailingslashit( \home_url() ) . <span class="php-var">$part</span> );
+</span><span id="171" class="l"><a class="l" href="#171">171: </a>        }
+</span><span id="172" class="l"><a class="l" href="#172">172: </a>    }
+</span><span id="173" class="l"><a class="l" href="#173">173: </a>
+</span><span id="174" class="l"><a class="l" href="#174">174: </a>
+</span><span id="175" class="l"><a class="l" href="#175">175: </a></span>}</code></pre>
 
 	<div id="footer">
-		CleverRules 0.2 API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+		CleverRules API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

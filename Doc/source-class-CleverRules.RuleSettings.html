@@ -5,7 +5,7 @@
 	<meta name="generator" content="ApiGen 2.8.0" />
 	<meta name="robots" content="noindex" />
 
-	<title>File CleverRules/RuleSettings.php | CleverRules 0.2</title>
+	<title>File CleverRules/RuleSettings.php | CleverRules</title>
 
 	<script type="text/javascript" src="resources/combined.js?2391869379"></script>
 	<script type="text/javascript" src="elementlist.js?2845275725"></script>
@@ -88,17 +88,8 @@
 			<li>
 				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
 			</li>
-			<li>
-				<a href="deprecated.html" title="List of deprecated elements"><span>Deprecated</span></a>
-			</li>
-			<li>
-				<a href="todo.html" title="Todo list"><span>Todo</span></a>
-			</li>
 		</ul>
 		<ul>
-			<li>
-				<a href="cleverrules-0-2-api-documentation.zip" title="Download documentation as ZIP archive"><span>Download</span></a>
-			</li>
 		</ul>
 	</div>
 
@@ -158,43 +149,34 @@
 </span><span id="54" class="l"><a class="l" href="#54">54: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_merge" href="#_merge">merge</a>( <span class="php-var">$args</span> = <span class="php-keyword1">array</span>() ) {
 </span><span id="55" class="l"><a class="l" href="#55">55: </a>        <span class="php-var">$this</span>-&gt;args = \wp_parse_args( <span class="php-var">$this</span>-&gt;args, <span class="php-var">$args</span> );
 </span><span id="56" class="l"><a class="l" href="#56">56: </a>    }
-</span><span id="57" class="l"><a class="l" href="#57">57: </a>
+</span><span id="57" class="l"><a class="l" href="#57">57: </a>    
 </span><span id="58" class="l"><a class="l" href="#58">58: </a>
-</span><span id="59" class="l"><a class="l" href="#59">59: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_merge_group" href="#_merge_group">merge_group</a>( <span class="php-var">$args</span> = <span class="php-keyword1">array</span>() ) {
-</span><span id="60" class="l"><a class="l" href="#60">60: </a>        \do_action_ref_array( <span class="php-quote">'pre_clever_rules_merge_group'</span>, <span class="php-var">$this</span>-&gt;args );
-</span><span id="61" class="l"><a class="l" href="#61">61: </a>        <span class="php-var">$this</span>-&gt;merge( <span class="php-var">$args</span> );
-</span><span id="62" class="l"><a class="l" href="#62">62: </a>    }
-</span><span id="63" class="l"><a class="l" href="#63">63: </a>
-</span><span id="64" class="l"><a class="l" href="#64">64: </a>
-</span><span id="65" class="l"><a class="l" href="#65">65: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_defaults" href="#_defaults">defaults</a>() {
-</span><span id="66" class="l"><a class="l" href="#66">66: </a>        <span class="php-var">$rule_def</span> = <span class="php-keyword1">array</span>(<span class="php-quote">'id'</span> =&gt; <span class="php-quote">''</span>, <span class="php-quote">'route'</span> =&gt; <span class="php-keyword1">null</span>, <span class="php-quote">'query'</span> =&gt; <span class="php-keyword1">array</span>(), <span class="php-quote">'priority'</span> =&gt; <span class="php-num">0</span>);
-</span><span id="67" class="l"><a class="l" href="#67">67: </a>        <span class="php-var">$def</span> = <span class="php-keyword1">array</span>(
-</span><span id="68" class="l"><a class="l" href="#68">68: </a>            <span class="php-quote">'vars'</span> =&gt; <span class="php-keyword1">array</span>(), <span class="php-quote">'paginated'</span> =&gt; <span class="php-keyword1">false</span>,
-</span><span id="69" class="l"><a class="l" href="#69">69: </a>            <span class="php-quote">'before'</span> =&gt; <span class="php-keyword1">null</span>, <span class="php-quote">'after'</span> =&gt; <span class="php-keyword1">null</span>, <span class="php-quote">'qs_merge'</span> =&gt; <span class="php-keyword1">false</span>
-</span><span id="70" class="l"><a class="l" href="#70">70: </a>        );
-</span><span id="71" class="l"><a class="l" href="#71">71: </a>        <span class="php-var">$merged</span> = ! <span class="php-var">$this</span>-&gt;is_group ? \wp_parse_args( <span class="php-var">$rule_def</span>, <span class="php-var">$def</span> ) : <span class="php-var">$def</span>;
-</span><span id="72" class="l"><a class="l" href="#72">72: </a>        <span class="php-var">$filtered</span> = \apply_filters( <span class="php-quote">'clever_rule_default_args'</span>, <span class="php-var">$merged</span> );
-</span><span id="73" class="l"><a class="l" href="#73">73: </a>        <span class="php-var">$this</span>-&gt;defaults = <span class="php-var">$filtered</span>;
-</span><span id="74" class="l"><a class="l" href="#74">74: </a>    }
-</span><span id="75" class="l"><a class="l" href="#75">75: </a>
-</span><span id="76" class="l"><a class="l" href="#76">76: </a>
-</span><span id="77" class="l"><a class="l" href="#77">77: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="_preserve_group_args" href="#_preserve_group_args">preserve_group_args</a>( <span class="php-var">$args</span> = <span class="php-keyword1">array</span>() ) {
-</span><span id="78" class="l"><a class="l" href="#78">78: </a>        <span class="php-keyword1">if</span> ( ! <span class="php-var">$this</span>-&gt;is_group ) <span class="php-keyword1">return</span> <span class="php-var">$args</span>;
-</span><span id="79" class="l"><a class="l" href="#79">79: </a>        <span class="php-var">$preserve</span> = <span class="php-keyword1">array</span>(<span class="php-quote">'route'</span>, <span class="php-quote">'priority'</span>, <span class="php-quote">'query'</span>);
-</span><span id="80" class="l"><a class="l" href="#80">80: </a>        <span class="php-keyword1">foreach</span> ( <span class="php-var">$preserve</span> <span class="php-keyword1">as</span> <span class="php-var">$key</span> ) {
-</span><span id="81" class="l"><a class="l" href="#81">81: </a>            <span class="php-keyword1">if</span> ( <span class="php-keyword1">isset</span>( <span class="php-var">$args</span>[<span class="php-var">$key</span>] ) ) <span class="php-keyword1">unset</span>( <span class="php-var">$args</span>[<span class="php-var">$key</span>] );
-</span><span id="82" class="l"><a class="l" href="#82">82: </a>        }
-</span><span id="83" class="l"><a class="l" href="#83">83: </a>        <span class="php-keyword1">return</span> <span class="php-var">$args</span>;
-</span><span id="84" class="l"><a class="l" href="#84">84: </a>    }
-</span><span id="85" class="l"><a class="l" href="#85">85: </a>
-</span><span id="86" class="l"><a class="l" href="#86">86: </a>
-</span><span id="87" class="l"><a class="l" href="#87">87: </a>}
-</span><span id="88" class="l"><a class="l" href="#88">88: </a>
-</span><span id="89" class="l"><a class="l" href="#89">89: </a>
-</span><span id="90" class="l"><a class="l" href="#90">90: </a></span></code></pre>
+</span><span id="59" class="l"><a class="l" href="#59">59: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_defaults" href="#_defaults">defaults</a>() {
+</span><span id="60" class="l"><a class="l" href="#60">60: </a>        <span class="php-var">$rule_def</span> = <span class="php-keyword1">array</span>(<span class="php-quote">'id'</span> =&gt; <span class="php-quote">''</span>, <span class="php-quote">'route'</span> =&gt; <span class="php-keyword1">null</span>, <span class="php-quote">'query'</span> =&gt; <span class="php-keyword1">array</span>(), <span class="php-quote">'priority'</span> =&gt; <span class="php-num">0</span>);
+</span><span id="61" class="l"><a class="l" href="#61">61: </a>        <span class="php-var">$def</span> = <span class="php-keyword1">array</span>(
+</span><span id="62" class="l"><a class="l" href="#62">62: </a>            <span class="php-quote">'vars'</span> =&gt; <span class="php-keyword1">array</span>(), <span class="php-quote">'paginated'</span> =&gt; <span class="php-keyword1">false</span>,
+</span><span id="63" class="l"><a class="l" href="#63">63: </a>            <span class="php-quote">'before'</span> =&gt; <span class="php-keyword1">null</span>, <span class="php-quote">'after'</span> =&gt; <span class="php-keyword1">null</span>, <span class="php-quote">'qs_merge'</span> =&gt; <span class="php-keyword1">false</span>
+</span><span id="64" class="l"><a class="l" href="#64">64: </a>        );
+</span><span id="65" class="l"><a class="l" href="#65">65: </a>        <span class="php-var">$merged</span> = ! <span class="php-var">$this</span>-&gt;is_group ? \wp_parse_args( <span class="php-var">$rule_def</span>, <span class="php-var">$def</span> ) : <span class="php-var">$def</span>;
+</span><span id="66" class="l"><a class="l" href="#66">66: </a>        <span class="php-var">$filtered</span> = \apply_filters( <span class="php-quote">'clever_rule_default_args'</span>, <span class="php-var">$merged</span> );
+</span><span id="67" class="l"><a class="l" href="#67">67: </a>        <span class="php-var">$this</span>-&gt;defaults = <span class="php-var">$filtered</span>;
+</span><span id="68" class="l"><a class="l" href="#68">68: </a>    }
+</span><span id="69" class="l"><a class="l" href="#69">69: </a>
+</span><span id="70" class="l"><a class="l" href="#70">70: </a>
+</span><span id="71" class="l"><a class="l" href="#71">71: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="_preserve_group_args" href="#_preserve_group_args">preserve_group_args</a>( <span class="php-var">$args</span> = <span class="php-keyword1">array</span>() ) {
+</span><span id="72" class="l"><a class="l" href="#72">72: </a>        <span class="php-keyword1">if</span> ( ! <span class="php-var">$this</span>-&gt;is_group ) <span class="php-keyword1">return</span> <span class="php-var">$args</span>;
+</span><span id="73" class="l"><a class="l" href="#73">73: </a>        <span class="php-var">$preserve</span> = <span class="php-keyword1">array</span>(<span class="php-quote">'route'</span>, <span class="php-quote">'priority'</span>, <span class="php-quote">'query'</span>);
+</span><span id="74" class="l"><a class="l" href="#74">74: </a>        <span class="php-keyword1">foreach</span> ( <span class="php-var">$preserve</span> <span class="php-keyword1">as</span> <span class="php-var">$key</span> ) {
+</span><span id="75" class="l"><a class="l" href="#75">75: </a>            <span class="php-keyword1">if</span> ( <span class="php-keyword1">isset</span>( <span class="php-var">$args</span>[<span class="php-var">$key</span>] ) ) <span class="php-keyword1">unset</span>( <span class="php-var">$args</span>[<span class="php-var">$key</span>] );
+</span><span id="76" class="l"><a class="l" href="#76">76: </a>        }
+</span><span id="77" class="l"><a class="l" href="#77">77: </a>        <span class="php-keyword1">return</span> <span class="php-var">$args</span>;
+</span><span id="78" class="l"><a class="l" href="#78">78: </a>    }
+</span><span id="79" class="l"><a class="l" href="#79">79: </a>
+</span><span id="80" class="l"><a class="l" href="#80">80: </a>
+</span><span id="81" class="l"><a class="l" href="#81">81: </a></span>}</code></pre>
 
 	<div id="footer">
-		CleverRules 0.2 API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+		CleverRules API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

@@ -37,7 +37,7 @@ class Settings implements CRI\Settings {
 
 
     public function merge( $settings = array() ) {
-        $this->settings = array_merge( $this->settings, $settings );
+        $this->settings = \array_merge( $this->settings, $settings );
     }
 
 
