@@ -142,7 +142,7 @@
 </span><span id="47" class="l"><a class="l" href="#47"> 47: </a>
 </span><span id="48" class="l"><a class="l" href="#48"> 48: </a>
 </span><span id="49" class="l"><a class="l" href="#49"> 49: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="_match_rule" href="#_match_rule">match_rule</a>( <span class="php-var">$rule</span> ) {
-</span><span id="50" class="l"><a class="l" href="#50"> 50: </a>        <span class="php-keyword1">if</span> ( \apply_filters( <span class="php-quote">'skip_clever_rule'</span>, <span class="php-keyword1">false</span>, (<span class="php-keyword1">array</span>) <span class="php-var">$rule</span>, <span class="php-var">$this</span>-&gt;url-&gt;parts ) )
+</span><span id="50" class="l"><a class="l" href="#50"> 50: </a>        <span class="php-keyword1">if</span> ( \apply_filters( <span class="php-quote">'skip_clever_rule'</span>, <span class="php-keyword1">false</span>, (<span class="php-keyword1">array</span>) <span class="php-var">$rule</span>-&gt;args, <span class="php-var">$this</span>-&gt;url-&gt;parts ) )
 </span><span id="51" class="l"><a class="l" href="#51"> 51: </a>                <span class="php-keyword1">return</span> <span class="php-keyword1">false</span>;
 </span><span id="52" class="l"><a class="l" href="#52"> 52: </a>        <span class="php-var">$count</span> = <span class="php-var">$this</span>-&gt;check_rule( <span class="php-var">$rule</span> );
 </span><span id="53" class="l"><a class="l" href="#53"> 53: </a>        <span class="php-keyword1">if</span> ( <span class="php-var">$count</span> === \<span class="php-keyword2">count</span>( <span class="php-var">$this</span>-&gt;url-&gt;parts ) ) {
