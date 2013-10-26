@@ -30,7 +30,7 @@ class RuleSettings implements CRI\Settings {
 
     public function set_all( $args = array() ) {
         $merged = \wp_parse_args( \array_filter($args), $this->defaults );
-        $filtered = $this->preserve_group_args( $merged );
+        $this->args = $this->preserve_group_args( $merged );
     }
 
 
