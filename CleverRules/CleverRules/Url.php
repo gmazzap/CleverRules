@@ -36,7 +36,8 @@ class Url implements CRI\Url {
 
 
     public function set_url() {
-        $this->full = \add_query_arg( array() );
+        $home_path = \trim( \parse_url( \home_url(), \PHP_URL_PATH ), '/' );
+        $this->full = \str_replace( $home_path, '', \add_query_arg( array() ) );
         $this->sane_array = \explode( '?', $this->full );
     }
 
@@ -44,7 +45,7 @@ class Url implements CRI\Url {
     public function set_vars() {
         $qs = array();
         if ( isset( $this->sane_array[1] ) ) \parse_str( $this->sane_array[1], $qs );
-        $this->sane = trim($this->sane_array[0], '/\\');
+        $this->sane = trim( $this->sane_array[0], '/\\' );
         $this->qs = $qs;
     }
 
@@ -55,3 +56,5 @@ class Url implements CRI\Url {
 
 
 }
+
+
