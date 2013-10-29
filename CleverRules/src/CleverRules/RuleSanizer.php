@@ -51,11 +51,9 @@ class RuleSanitizer implements CRI\RuleSanitizer {
 
 
     public function setup( $args = array() ) {
-        if ( $this->is_group && ( ! isset( $args['id'] ) || empty( $args['id'] ) ) ) return;        
+        if ( $this->is_group && ( ! isset( $args['id'] ) || empty( $args['id'] ) ) ) return;
         if ( ! $this->is_group && ( ! isset( $args['route'] ) || empty( $args['route'] ) ) ) return;
         $this->raw = $args;
-        $loader = Loader::get_instance();
-        $loader->load_dir( CLEVER_RULES_PATH . 'CleverRules/Sanitizers' );
         $this->add_valid();
     }
 
@@ -121,3 +119,5 @@ class RuleSanitizer implements CRI\RuleSanitizer {
 
 
 }
+
+

@@ -1,0 +1,17 @@
+{
+    "name": "zoomlab/cleverrules",
+    "description": "Just a no surprises to handle rewrite rules in WordPress.",
+    "authors": [
+        {
+            "name": "Giuseppe Mazzapica",
+            "email": "giuseppe.mazzapica@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3"
+    },
+    "autoload": {
+        "psr-0": {"CleverRules\\": "src/"},
+        "files": ["src/API.php"]
+    }
+}
