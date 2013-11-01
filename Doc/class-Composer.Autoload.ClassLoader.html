@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Class Composer\Autoload\ClassLoader | CleverRules</title>
+
+	<script type="text/javascript" src="resources/combined.js?2391869379"></script>
+	<script type="text/javascript" src="elementlist.js?1330135507"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li><a href="namespace-CleverRules.html">CleverRules<span></span></a>
+						<ul>
+				<li><a href="namespace-CleverRules.Interfaces.html">Interfaces</a>
+						</li>
+				<li><a href="namespace-CleverRules.Sanitizers.html">Sanitizers</a>
+						</li>
+							</ul></li>
+				<li class="active"><a href="namespace-Composer.html">Composer<span></span></a>
+						<ul>
+				<li class="active"><a href="namespace-Composer.Autoload.html">Autoload</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-None.html">None</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-Composer.Autoload.ClassLoader.html">ClassLoader</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-Composer.Autoload.html" title="Summary of Composer\Autoload"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class ClassLoader</h1>
+
+
+	<div class="description">
+	
+<p>ClassLoader implements a PSR-0 class loader</p>
+
+<p>See <a
+href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md">https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md</a><br
+/>
+$loader = new \Composer\Autoload\ClassLoader();<br />
+// register classes with namespaces $loader-&gt;add('Symfony\Component',
+__DIR__.'/component'); $loader-&gt;add('Symfony', __DIR__.'/framework');<br />
+// activate the autoloader $loader-&gt;register();<br />
+// to enable searching the include path (eg. for PEAR packages)
+$loader-&gt;setUseIncludePath(true);</p>
+
+<p>In this example, if you try to use a class in the Symfony\Component namespace
+or one of its children (Symfony\Component\Console for instance), the autoloader
+will first look for the class under the component/ directory, and it will then
+fallback to the framework/ directory if not found before giving up.</p>
+
+<p>This class is loosely based on the Symfony UniversalClassLoader.</p>
+
+	</div>
+
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Composer.html">Composer</a>\<a href="namespace-Composer.Autoload.html">Autoload</a><br />
+		
+
+				<b>Author:</b>
+				Fabien Potencier &lt;<a
+href="mailto:fabien&#64;symfony.com">fabien&#64;<!---->symfony.com</a>&gt;<br />
+				<b>Author:</b>
+				Jordi Boggiano &lt;<a
+href="mailto:j.boggiano&#64;seld.be">j.boggiano&#64;<!---->seld.be</a>&gt;<br />
+		<b>Located at</b> <a href="source-class-Composer.Autoload.ClassLoader.html#15-246" title="Go to source code">CleverRules/vendor/composer/ClassLoader.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="getPrefixes" id="_getPrefixes">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getPrefixes">#</a>
+		<code><a href="source-class-Composer.Autoload.ClassLoader.html#50-53" title="Go to source code">getPrefixes</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getFallbackDirs" id="_getFallbackDirs">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getFallbackDirs">#</a>
+		<code><a href="source-class-Composer.Autoload.ClassLoader.html#55-58" title="Go to source code">getFallbackDirs</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getClassMap" id="_getClassMap">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getClassMap">#</a>
+		<code><a href="source-class-Composer.Autoload.ClassLoader.html#60-63" title="Go to source code">getClassMap</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="addClassMap" id="_addClassMap">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_addClassMap">#</a>
+		<code><a href="source-class-Composer.Autoload.ClassLoader.html#65-75" title="Go to source code">addClassMap</a>( <span>array <var>$classMap</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$classMap</var></dt>
+					<dd><code>array</code><br>$classMap Class to filename map</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="add" id="_add">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_add">#</a>
+		<code><a href="source-class-Composer.Autoload.ClassLoader.html#77-119" title="Go to source code">add</a>( <span>string <var>$prefix</var></span>, <span>array|string <var>$paths</var></span>, <span>boolean <var>$prepend</var> = <span class="php-keyword1">false</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Registers a set of classes, merging with any others previously set.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Registers a set of classes, merging with any others previously set.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$prefix</var></dt>
+					<dd><code>string</code><br>$prefix The classes prefix</dd>
+					<dt><var>$paths</var></dt>
+					<dd><code>array|string</code><br>$paths The location(s) of the classes</dd>
+					<dt><var>$prepend</var></dt>
+					<dd><code>boolean</code><br>$prepend Prepend the location(s)</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="set" id="_set">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_set">#</a>
+		<code><a href="source-class-Composer.Autoload.ClassLoader.html#121-135" title="Go to source code">set</a>( <span>string <var>$prefix</var></span>, <span>array|string <var>$paths</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Registers a set of classes, replacing any others previously set.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Registers a set of classes, replacing any others previously set.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$prefix</var></dt>
+					<dd><code>string</code><br>$prefix The classes prefix</dd>
+					<dt><var>$paths</var></dt>
+					<dd><code>array|string</code><br>$paths The location(s) of the classes</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setUseIncludePath" id="_setUseIncludePath">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setUseIncludePath">#</a>
+		<code><a href="source-class-Composer.Autoload.ClassLoader.html#137-145" title="Go to source code">setUseIncludePath</a>( <span>boolean <var>$useIncludePath</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Turns on searching the include path for class files.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Turns on searching the include path for class files.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$useIncludePath</var></dt>
+					<dd><code>boolean</code><br>$useIncludePath</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getUseIncludePath" id="_getUseIncludePath">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getUseIncludePath">#</a>
+		<code><a href="source-class-Composer.Autoload.ClassLoader.html#147-156" title="Go to source code">getUseIncludePath</a>( )</code>
+
+		<div class="description short">
+			
+<p>Can be used to check if the autoloader uses the include path to check for
+classes.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Can be used to check if the autoloader uses the include path to check for
+classes.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="register" id="_register">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_register">#</a>
+		<code><a href="source-class-Composer.Autoload.ClassLoader.html#158-166" title="Go to source code">register</a>( <span>boolean <var>$prepend</var> = <span class="php-keyword1">false</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Registers this instance as an autoloader.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Registers this instance as an autoloader.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$prepend</var></dt>
+					<dd><code>boolean</code><br>$prepend Whether to prepend the autoloader or not</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="unregister" id="_unregister">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_unregister">#</a>
+		<code><a href="source-class-Composer.Autoload.ClassLoader.html#168-174" title="Go to source code">unregister</a>( )</code>
+
+		<div class="description short">
+			
+<p>Unregisters this instance as an autoloader.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Unregisters this instance as an autoloader.</p>
+
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="loadClass" id="_loadClass">
+
+		<td class="attributes"><code>
+			 public 
+			boolean|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_loadClass">#</a>
+		<code><a href="source-class-Composer.Autoload.ClassLoader.html#176-189" title="Go to source code">loadClass</a>( <span>string <var>$class</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Loads the given class or interface.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Loads the given class or interface.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$class</var></dt>
+					<dd><code>string</code><br>$class The name of the class</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean|null</code><br>True if loaded, null otherwise<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="findFile" id="_findFile">
+
+		<td class="attributes"><code>
+			 public 
+			string|false
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_findFile">#</a>
+		<code><a href="source-class-Composer.Autoload.ClassLoader.html#191-245" title="Go to source code">findFile</a>( <span>string <var>$class</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Finds the path to the file where the class is defined.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Finds the path to the file where the class is defined.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$class</var></dt>
+					<dd><code>string</code><br>$class The name of the class</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string|false</code><br>The path if found, false otherwise<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		CleverRules API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

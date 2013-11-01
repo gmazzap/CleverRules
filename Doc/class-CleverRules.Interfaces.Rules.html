@@ -4,10 +4,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.8.0" />
 
-	<title>Interface CleverRules\Interfaces\Rules</title>
+	<title>Interface CleverRules\Interfaces\Rules | CleverRules</title>
 
 	<script type="text/javascript" src="resources/combined.js?2391869379"></script>
-	<script type="text/javascript" src="elementlist.js?408586114"></script>
+	<script type="text/javascript" src="elementlist.js?1330135507"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -26,6 +26,11 @@
 				<li class="active"><a href="namespace-CleverRules.Interfaces.html">Interfaces</a>
 						</li>
 				<li><a href="namespace-CleverRules.Sanitizers.html">Sanitizers</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Composer.html">Composer<span></span></a>
+						<ul>
+				<li><a href="namespace-Composer.Autoload.html">Autoload</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-None.html">None</a>
@@ -120,7 +125,7 @@
 
 				<b>Author:</b>
 				Giuseppe Mazzapica<br />
-		<b>Located at</b> <a href="source-class-CleverRules.Interfaces.Rules.html#5-83" title="Go to source code">CleverRules/src/CleverRules/Interfaces/Rules.php</a><br />
+		<b>Located at</b> <a href="source-class-CleverRules.Interfaces.Rules.html#5-53" title="Go to source code">CleverRules/src/CleverRules/Interfaces/Rules.php</a><br />
 	</div>
 
 
@@ -171,126 +176,6 @@
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="unset_rewrite" id="_unset_rewrite">
-
-		<td class="attributes"><code>
-			 public 
-			null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_unset_rewrite">#</a>
-		<code><a href="source-class-CleverRules.Interfaces.Rules.html#25-31" title="Go to source code">unset_rewrite</a>( )</code>
-
-		<div class="description short">
-			
-<p>Clean the global $wp_rewrite to avoid unwanted redirection</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Clean the global $wp_rewrite to avoid unwanted redirection</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>null</code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="reset_rewrite" id="_reset_rewrite">
-
-		<td class="attributes"><code>
-			 public 
-			null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_reset_rewrite">#</a>
-		<code><a href="source-class-CleverRules.Interfaces.Rules.html#34-43" title="Go to source code">reset_rewrite</a>( <span>boolean <var>$late</var> = <span class="php-keyword1">false</span> </span> )</code>
-
-		<div class="description short">
-			
-<p>Reset global $wp_rewrite after a rule match or before sending request to core
-method. In first case $late is true and reset is done on template_redirect hook,
-in second case $late is false and resed is dome immediately</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Reset global $wp_rewrite after a rule match or before sending request to core
-method. In first case $late is true and reset is done on template_redirect hook,
-in second case $late is false and resed is dome immediately</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$late</var></dt>
-					<dd><code>boolean</code><br>$late if false reset wp_rewrite immediately, on template_redirect otherwise</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>null</code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="setup" id="_setup">
-
-		<td class="attributes"><code>
-			 public 
-			null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_setup">#</a>
-		<code><a href="source-class-CleverRules.Interfaces.Rules.html#46-52" title="Go to source code">setup</a>( )</code>
-
-		<div class="description short">
-			
-<p>Prepare object for rules checking</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Prepare object for rules checking</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>null</code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="found" id="_found">
 
 		<td class="attributes"><code>
@@ -302,7 +187,7 @@ in second case $late is false and resed is dome immediately</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_found">#</a>
-		<code><a href="source-class-CleverRules.Interfaces.Rules.html#55-62" title="Go to source code">found</a>( )</code>
+		<code><a href="source-class-CleverRules.Interfaces.Rules.html#25-32" title="Go to source code">found</a>( )</code>
 
 		<div class="description short">
 			
@@ -341,7 +226,7 @@ are found, order them by priority.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_match">#</a>
-		<code><a href="source-class-CleverRules.Interfaces.Rules.html#65-71" title="Go to source code">match</a>( )</code>
+		<code><a href="source-class-CleverRules.Interfaces.Rules.html#35-41" title="Go to source code">match</a>( )</code>
 
 		<div class="description short">
 			
@@ -378,7 +263,7 @@ are found, order them by priority.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_parse">#</a>
-		<code><a href="source-class-CleverRules.Interfaces.Rules.html#74-80" title="Go to source code">parse</a>( )</code>
+		<code><a href="source-class-CleverRules.Interfaces.Rules.html#44-50" title="Go to source code">parse</a>( )</code>
 
 		<div class="description short">
 			
@@ -426,7 +311,7 @@ are found, order them by priority.</p>
 </div>
 
 	<div id="footer">
-		 API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+		CleverRules API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

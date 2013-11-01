@@ -38,7 +38,6 @@ function cleverRulesInit() {
         $matcher = new \CleverRules\Matcher( $url );
         $parser = new \CleverRules\Parser( $settings, $url );
         $rules = new \CleverRules\Rules( $url, $settings, $matcher, $parser );
-        $rules->setup();
         $wp = new \CleverRules\RulesFront( $rules );
     }
 }

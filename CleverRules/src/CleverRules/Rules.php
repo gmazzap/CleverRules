@@ -34,9 +34,6 @@ class Rules implements CRI\Rules {
     protected $matcher;
 
 
-    protected static $rewrite;
-
-
     protected $found = array();
 
 
@@ -48,37 +45,6 @@ class Rules implements CRI\Rules {
         $this->settings = $s;
         $this->parser = $p;
         $this->matcher = $m;
-    }
-
-
-    public function unset_rewrite() {
-        global $wp_rewrite;
-        self::$rewrite = clone $wp_rewrite;
-        $wp_rewrite->permalink_structure = '';
-        $wp_rewrite->rules = array();
-        $wp_rewrite->extra_rules = array();
-        $wp_rewrite->extra_rules_top = array();
-        $wp_rewrite->non_wp_rules = array();
-        $wp_rewrite->extra_permastructs = array();
-    }
-
-
-    public function reset_rewrite( $late = false ) {
-        if ( ! $late ) {
-            self::reset_rewrite_now();
-        } else {
-            \add_action( 'template_redirect',  array( __CLASS__, 'reset_rewrite_now' ), 9999 );
-        }
-    }
-    
-    public static function reset_rewrite_now() {
-        global $wp_rewrite;
-        $wp_rewrite = self::$rewrite;
-    }
-
-
-    public function setup() {
-        $this->unset_rewrite();
     }
 
 
@@ -135,10 +101,11 @@ class Rules implements CRI\Rules {
             return true;
         }
         if ( $rule->is_home ) return;
-        $route = \explode( '/', \trim($rule->route, '/') );
+        $route = \explode( '/', \trim( $rule->route, '/' ) );
         if ( ( count( $route ) == count( $this->url->parts ) ) && $rule->query ) {
             $priority = $rule->priority ? $rule->priority : \count( $this->found );
-            while ( isset($this->found[$priority]) ) $priority++;
+            while ( isset( $this->found[$priority] ) )
+                $priority ++;
             $this->found[$priority] = $rule;
         }
     }
@@ -154,3 +121,5 @@ class Rules implements CRI\Rules {
 
 
 }
+
+

@@ -5,10 +5,10 @@
 	<meta name="generator" content="ApiGen 2.8.0" />
 	<meta name="robots" content="noindex" />
 
-	<title>File CleverRules/src/CleverRules/Interfaces/Rules.php</title>
+	<title>File CleverRules/src/CleverRules/Interfaces/Rules.php | CleverRules</title>
 
 	<script type="text/javascript" src="resources/combined.js?2391869379"></script>
-	<script type="text/javascript" src="elementlist.js?408586114"></script>
+	<script type="text/javascript" src="elementlist.js?1330135507"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -27,6 +27,11 @@
 				<li class="active"><a href="namespace-CleverRules.Interfaces.html">Interfaces</a>
 						</li>
 				<li><a href="namespace-CleverRules.Sanitizers.html">Sanitizers</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Composer.html">Composer<span></span></a>
+						<ul>
+				<li><a href="namespace-Composer.Autoload.html">Autoload</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-None.html">None</a>
@@ -107,7 +112,7 @@
 </span><span id="13" class="l"><a class="l" href="#13">13: </a>
 </span><span id="14" class="l"><a class="l" href="#14">14: </a>    <span class="php-comment">/**
 </span></span><span id="15" class="l"><a class="l" href="#15">15: </a><span class="php-comment">     * Contructor
-</span></span><span id="16" class="l"><a class="l" href="#16">16: </a><span class="php-comment">     * 
+</span></span><span id="16" class="l"><a class="l" href="#16">16: </a><span class="php-comment">     *
 </span></span><span id="17" class="l"><a class="l" href="#17">17: </a><span class="php-comment">     * @param CleverRules\Interfaces\Url $url object implementing Url interface
 </span></span><span id="18" class="l"><a class="l" href="#18">18: </a><span class="php-comment">     * @param CleverRules\Interfaces\Settings $s object implementing Settings interface
 </span></span><span id="19" class="l"><a class="l" href="#19">19: </a><span class="php-comment">     * @param CleverRules\Interfaces\Matcher $m pbject implementing Matcher interface
@@ -117,67 +122,40 @@
 </span><span id="23" class="l"><a class="l" href="#23">23: </a>
 </span><span id="24" class="l"><a class="l" href="#24">24: </a>
 </span><span id="25" class="l"><a class="l" href="#25">25: </a>    <span class="php-comment">/**
-</span></span><span id="26" class="l"><a class="l" href="#26">26: </a><span class="php-comment">     * Clean the global $wp_rewrite to avoid unwanted redirection
-</span></span><span id="27" class="l"><a class="l" href="#27">27: </a><span class="php-comment">     * 
-</span></span><span id="28" class="l"><a class="l" href="#28">28: </a><span class="php-comment">     * @return null
-</span></span><span id="29" class="l"><a class="l" href="#29">29: </a><span class="php-comment">     * @access public
-</span></span><span id="30" class="l"><a class="l" href="#30">30: </a><span class="php-comment">     */</span>
-</span><span id="31" class="l"><a class="l" href="#31">31: </a>    <span class="php-keyword1">function</span> <a id="_unset_rewrite" href="#_unset_rewrite">unset_rewrite</a>();
-</span><span id="32" class="l"><a class="l" href="#32">32: </a>
+</span></span><span id="26" class="l"><a class="l" href="#26">26: </a><span class="php-comment">     * Loop through registered rules to find ones compatible with url.
+</span></span><span id="27" class="l"><a class="l" href="#27">27: </a><span class="php-comment">     * If more rules are found, order them by priority.
+</span></span><span id="28" class="l"><a class="l" href="#28">28: </a><span class="php-comment">     *
+</span></span><span id="29" class="l"><a class="l" href="#29">29: </a><span class="php-comment">     * @return bool True if one or more rules are found, false otherwise
+</span></span><span id="30" class="l"><a class="l" href="#30">30: </a><span class="php-comment">     * @access public
+</span></span><span id="31" class="l"><a class="l" href="#31">31: </a><span class="php-comment">     */</span>
+</span><span id="32" class="l"><a class="l" href="#32">32: </a>    <span class="php-keyword1">function</span> <a id="_found" href="#_found">found</a>();
 </span><span id="33" class="l"><a class="l" href="#33">33: </a>
-</span><span id="34" class="l"><a class="l" href="#34">34: </a>    <span class="php-comment">/**
-</span></span><span id="35" class="l"><a class="l" href="#35">35: </a><span class="php-comment">     * Reset global $wp_rewrite after a rule match or before sending request to core method.
-</span></span><span id="36" class="l"><a class="l" href="#36">36: </a><span class="php-comment">     * In first case $late is true and reset is done on template_redirect hook, in second case
-</span></span><span id="37" class="l"><a class="l" href="#37">37: </a><span class="php-comment">     * $late is false and resed is dome immediately
-</span></span><span id="38" class="l"><a class="l" href="#38">38: </a><span class="php-comment">     * 
-</span></span><span id="39" class="l"><a class="l" href="#39">39: </a><span class="php-comment">     * @param bool $late if false reset wp_rewrite immediately, on template_redirect otherwise
-</span></span><span id="40" class="l"><a class="l" href="#40">40: </a><span class="php-comment">     * @return null
-</span></span><span id="41" class="l"><a class="l" href="#41">41: </a><span class="php-comment">     * @access public
-</span></span><span id="42" class="l"><a class="l" href="#42">42: </a><span class="php-comment">     */</span>
-</span><span id="43" class="l"><a class="l" href="#43">43: </a>    <span class="php-keyword1">function</span> <a id="_reset_rewrite" href="#_reset_rewrite">reset_rewrite</a>( <span class="php-var">$late</span> = <span class="php-keyword1">false</span> );
-</span><span id="44" class="l"><a class="l" href="#44">44: </a>
-</span><span id="45" class="l"><a class="l" href="#45">45: </a>
-</span><span id="46" class="l"><a class="l" href="#46">46: </a>    <span class="php-comment">/**
-</span></span><span id="47" class="l"><a class="l" href="#47">47: </a><span class="php-comment">     * Prepare object for rules checking
-</span></span><span id="48" class="l"><a class="l" href="#48">48: </a><span class="php-comment">     * 
-</span></span><span id="49" class="l"><a class="l" href="#49">49: </a><span class="php-comment">     * @return null
-</span></span><span id="50" class="l"><a class="l" href="#50">50: </a><span class="php-comment">     * @access public
-</span></span><span id="51" class="l"><a class="l" href="#51">51: </a><span class="php-comment">     */</span>
-</span><span id="52" class="l"><a class="l" href="#52">52: </a>    <span class="php-keyword1">function</span> <a id="_setup" href="#_setup">setup</a>();
-</span><span id="53" class="l"><a class="l" href="#53">53: </a>
+</span><span id="34" class="l"><a class="l" href="#34">34: </a>
+</span><span id="35" class="l"><a class="l" href="#35">35: </a>    <span class="php-comment">/**
+</span></span><span id="36" class="l"><a class="l" href="#36">36: </a><span class="php-comment">     * Loop through found rules to find one that match (if exists)
+</span></span><span id="37" class="l"><a class="l" href="#37">37: </a><span class="php-comment">     *
+</span></span><span id="38" class="l"><a class="l" href="#38">38: </a><span class="php-comment">     * @return null
+</span></span><span id="39" class="l"><a class="l" href="#39">39: </a><span class="php-comment">     * @access public
+</span></span><span id="40" class="l"><a class="l" href="#40">40: </a><span class="php-comment">     */</span>
+</span><span id="41" class="l"><a class="l" href="#41">41: </a>    <span class="php-keyword1">function</span> <a id="_match" href="#_match">match</a>();
+</span><span id="42" class="l"><a class="l" href="#42">42: </a>
+</span><span id="43" class="l"><a class="l" href="#43">43: </a>
+</span><span id="44" class="l"><a class="l" href="#44">44: </a>    <span class="php-comment">/**
+</span></span><span id="45" class="l"><a class="l" href="#45">45: </a><span class="php-comment">     * When a rule match this method setup the query vars according to rule
+</span></span><span id="46" class="l"><a class="l" href="#46">46: </a><span class="php-comment">     *
+</span></span><span id="47" class="l"><a class="l" href="#47">47: </a><span class="php-comment">     * @return bool if a rule match and query vars are set up, false otherwise
+</span></span><span id="48" class="l"><a class="l" href="#48">48: </a><span class="php-comment">     * @access public
+</span></span><span id="49" class="l"><a class="l" href="#49">49: </a><span class="php-comment">     */</span>
+</span><span id="50" class="l"><a class="l" href="#50">50: </a>    <span class="php-keyword1">function</span> <a id="_parse" href="#_parse">parse</a>();
+</span><span id="51" class="l"><a class="l" href="#51">51: </a>
+</span><span id="52" class="l"><a class="l" href="#52">52: </a>
+</span><span id="53" class="l"><a class="l" href="#53">53: </a>}
 </span><span id="54" class="l"><a class="l" href="#54">54: </a>
-</span><span id="55" class="l"><a class="l" href="#55">55: </a>    <span class="php-comment">/**
-</span></span><span id="56" class="l"><a class="l" href="#56">56: </a><span class="php-comment">     * Loop through registered rules to find ones compatible with url.
-</span></span><span id="57" class="l"><a class="l" href="#57">57: </a><span class="php-comment">     * If more rules are found, order them by priority.
-</span></span><span id="58" class="l"><a class="l" href="#58">58: </a><span class="php-comment">     * 
-</span></span><span id="59" class="l"><a class="l" href="#59">59: </a><span class="php-comment">     * @return bool True if one or more rules are found, false otherwise
-</span></span><span id="60" class="l"><a class="l" href="#60">60: </a><span class="php-comment">     * @access public
-</span></span><span id="61" class="l"><a class="l" href="#61">61: </a><span class="php-comment">     */</span>
-</span><span id="62" class="l"><a class="l" href="#62">62: </a>    <span class="php-keyword1">function</span> <a id="_found" href="#_found">found</a>();
-</span><span id="63" class="l"><a class="l" href="#63">63: </a>
-</span><span id="64" class="l"><a class="l" href="#64">64: </a>
-</span><span id="65" class="l"><a class="l" href="#65">65: </a>    <span class="php-comment">/**
-</span></span><span id="66" class="l"><a class="l" href="#66">66: </a><span class="php-comment">     * Loop through found rules to find one that match (if exists)
-</span></span><span id="67" class="l"><a class="l" href="#67">67: </a><span class="php-comment">     * 
-</span></span><span id="68" class="l"><a class="l" href="#68">68: </a><span class="php-comment">     * @return null
-</span></span><span id="69" class="l"><a class="l" href="#69">69: </a><span class="php-comment">     * @access public
-</span></span><span id="70" class="l"><a class="l" href="#70">70: </a><span class="php-comment">     */</span>
-</span><span id="71" class="l"><a class="l" href="#71">71: </a>    <span class="php-keyword1">function</span> <a id="_match" href="#_match">match</a>();
-</span><span id="72" class="l"><a class="l" href="#72">72: </a>
-</span><span id="73" class="l"><a class="l" href="#73">73: </a>
-</span><span id="74" class="l"><a class="l" href="#74">74: </a>    <span class="php-comment">/**
-</span></span><span id="75" class="l"><a class="l" href="#75">75: </a><span class="php-comment">     * When a rule match this method setup the query vars according to rule
-</span></span><span id="76" class="l"><a class="l" href="#76">76: </a><span class="php-comment">     * 
-</span></span><span id="77" class="l"><a class="l" href="#77">77: </a><span class="php-comment">     * @return bool if a rule match and query vars are set up, false otherwise
-</span></span><span id="78" class="l"><a class="l" href="#78">78: </a><span class="php-comment">     * @access public
-</span></span><span id="79" class="l"><a class="l" href="#79">79: </a><span class="php-comment">     */</span>
-</span><span id="80" class="l"><a class="l" href="#80">80: </a>    <span class="php-keyword1">function</span> <a id="_parse" href="#_parse">parse</a>();
-</span><span id="81" class="l"><a class="l" href="#81">81: </a>
-</span><span id="82" class="l"><a class="l" href="#82">82: </a>
-</span><span id="83" class="l"><a class="l" href="#83">83: </a></span>}</code></pre>
+</span><span id="55" class="l"><a class="l" href="#55">55: </a>
+</span><span id="56" class="l"><a class="l" href="#56">56: </a></span></code></pre>
 
 	<div id="footer">
-		 API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+		CleverRules API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

@@ -32,10 +32,14 @@ class RulesFront extends \WP implements CRI\RulesFront {
     public function parse_request( $extra_query_vars = '' ) {
         $this->cr_extra = $extra_query_vars;
         $clever = $this->cr_rules->found() && $this->cr_rules->parse();
-        if ( $clever ) $this->query_vars = $this->cr_rules->query_vars;
-        $this->cr_rules->reset_rewrite( $clever );
+        if ( $clever ) {
+            $this->query_vars = $this->cr_rules->query_vars;
+            \remove_filter( 'template_redirect', 'redirect_canonical' );
+        }
         if ( ! $clever ) $this->to_wp();
     }
 
 
 }
+
+
