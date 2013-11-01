@@ -62,7 +62,7 @@ class Matcher implements CRI\Matcher {
         $stop = false;
         $i = 0;
         $url_parts = $this->url->parts;
-        $route = \explode( '/', \trim($rule->route, '/') );
+        $route = \explode( '/', \trim( $rule->route, '/' ) );
         while ( ! empty( $url_parts ) && ( $stop === false ) ) {
             $url_part = \array_shift( $url_parts );
             $stop = $this->check_rule_part( $route[$i], $url_part ) !== true;
@@ -88,12 +88,12 @@ class Matcher implements CRI\Matcher {
 
     protected function check_rule_part_dyn( $route_part, $url_part ) {
         $type = \substr_count( $route_part, '%d' ) == 1 && \is_numeric( $url_part ) ? '%d' : '%s';
-        $rep = ( $type == '%d' ) ? '[0-9]' : '[a-z0-9\-_]';
+        $rep = ( $type == '%d' ) ? '[0-9]' : '[a-z0-9\-_%]';
         $pattern = \str_replace( $type, '(' . $rep . '+)', $route_part );
         if ( \substr_count( $pattern, '(' . $rep . '+){' ) == 1 )
                 $pattern = \str_replace( '(' . $rep . '+){', '(' . $rep . '){', $pattern );
         $matches = array();
-        if ( \preg_match( '/^' . $pattern . '$/', $url_part, $matches ) == 1 )
+        if ( \preg_match( '/^' . $pattern . '$/i', $url_part, $matches ) == 1 )
                 return \sprintf( $type, $matches[0] );
     }
 
@@ -111,3 +111,5 @@ class Matcher implements CRI\Matcher {
 
 
 }
+
+
