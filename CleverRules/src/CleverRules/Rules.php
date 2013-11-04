@@ -49,10 +49,7 @@ class Rules implements CRI\Rules {
 
 
     public function found() {
-        if ( empty( self::$rules ) ) {
-            $this->reset_rewrite();
-            return false;
-        }
+        if ( empty( self::$rules ) ) return false;
         $this->paginate_rules();
         return $this->found_rules();
     }
