@@ -14,7 +14,7 @@ Rules are registered via the function `register_clever_rule`.
 
 ##Basic Usage##
 `register_clever_rule` has several arguments, however only 2 are required, the route and the query.
-Rute is the url to handle, query is the query to run for that url.
+Route is the url to handle, query is the query to run for that url.
 
     $args = array(
         'route' => '/say/%s/to/%s',
