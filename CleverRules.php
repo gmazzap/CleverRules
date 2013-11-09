@@ -14,7 +14,7 @@
  */
 define( 'CLEVER_RULES_PATH', plugin_dir_path( __FILE__ ) );
 
-require CLEVER_RULES_PATH . 'vendor/autoload.php';
+if ( ! \class_exists( '\CleverRules' ) ) require CLEVER_RULES_PATH . 'vendor/autoload.php';
 
 
 /**
@@ -34,14 +34,12 @@ function cleverRulesInit() {
         $settings = new \CleverRules\Settings();
         $merger = new \CleverRules\WPMerger( $wp );
         $merger->wp_merge();
-        $settings->merge( array('vars' => $merger->get_vars()) );
+        $settings->merge( array( 'vars' => $merger->get_vars() ) );
         $matcher = new \CleverRules\Matcher( $url );
         $parser = new \CleverRules\Parser( $settings, $url );
         $rules = new \CleverRules\Rules( $url, $settings, $matcher, $parser );
         $wp = new \CleverRules\RulesFront( $rules );
     }
 }
-
-
 // let's go clever!
 add_action( 'setup_theme', 'cleverRulesInit', 9999 );
