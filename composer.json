@@ -13,5 +13,6 @@
     "autoload": {
         "psr-0": {"CleverRules\\": "src/"},
         "files": ["src/API.php"]
-    }
+    },
+    "license": "GPL-3.0+"
 }
