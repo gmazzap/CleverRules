@@ -44,7 +44,3 @@ This example use the alternative syntax, where arguments are setted via methods 
 ## Please Note ##
 
 Rules registration (`register_clever_rule` calls) must go in a plugin and **not** in `functions.php`: you can create a separate plugin for registering rules or put them in an existing plugin.
-
-***
-
-For complete docs and how-to please visit plugin site [rules.zoomlab.it](http://rules.zoomlab.it/)
